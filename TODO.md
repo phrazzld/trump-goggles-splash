@@ -34,7 +34,7 @@
     - **Verification:**
         1. Apply a retro color class (e.g., `bg-retro-red`), the `shadow-vintage` class, and a custom font class (e.g., `font-display`) to test elements and verify their appearance in the browser.
     - **Depends‑on:** [T001]
-- [ ] **T004 · Feature · P1: set up custom fonts using next/font**
+- [x] **T004 · Feature · P1: set up custom fonts using next/font**
     - **Context:** Design System (Typography), Technical Stack (Fonts), Implementation Phases (Phase 1)
     - **Action:**
         1. In `app/layout.tsx` (or a dedicated fonts file), import `Playfair Display`, `Inter`, and `Courier Prime` using `next/font/google` (or local, if preferred).
