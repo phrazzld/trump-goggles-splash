@@ -62,7 +62,7 @@
         1. Inspect the page in a browser; verify the cream background and subtle global texture.
         2. Confirm that default browser styles are normalized.
     - **Depends‑on:** [T003] *(for `--color-cream`)*
-- [ ] **T006 · Feature · P1: create base root layout with responsive container**
+- [x] **T006 · Feature · P1: create base root layout with responsive container**
     - **Context:** Implementation Phases (Phase 1), Component Architecture (Layout Structure)
     - **Action:**
         1. Structure `app/layout.tsx` with `html`, `head`, and `body` tags.

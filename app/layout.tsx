@@ -36,7 +36,9 @@ export default function RootLayout({
       <body
         className={`${playfairDisplay.variable} ${inter.variable} ${courierPrime.variable} antialiased`}
       >
-        {children}
+        <main className="container mx-auto px-4">
+          {children}
+        </main>
       </body>
     </html>
   );
