@@ -23,7 +23,7 @@
     - **Verification:**
         1. Verify the existence and content of `components.json` and the `components/ui` directory.
     - **Depends‑on:** [T001]
-- [ ] **T003 · Feature · P1: configure tailwind with project colors, fonts, and shadows**
+- [x] **T003 · Feature · P1: configure tailwind with project colors, fonts, and shadows**
     - **Context:** Design System (Color Palette, Typography), File Structure Implementation (Tailwind Configuration), Implementation Phases (Phase 1)
     - **Action:**
         1. Update `tailwind.config.ts` to include the custom `retro` color palette (`red`, `blue`, `cream`, `gold`).
