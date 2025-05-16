@@ -76,7 +76,7 @@
         1. View a simple page; verify content is centered and padded.
         2. Resize the browser window to check responsiveness.
     - **Depends‑on:** [T004]
-- [ ] **T007 · Chore · P2: create initial component directory structure and placeholder files**
+- [x] **T007 · Chore · P2: create initial component directory structure and placeholder files**
     - **Context:** Implementation Phases (Phase 1), Component Architecture (Layout Structure)
     - **Action:**
         1. Create `components/` directory in `app/`.
