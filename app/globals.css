@@ -159,3 +159,24 @@ body > * {
   position: relative;
   z-index: 2;
 }
+
+/* Custom Tailwind utility classes for Retro Americana theme */
+@layer utilities {
+  .text-shadow-vintage {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .border-double-retro {
+    border: 3px double currentColor;
+  }
+  
+  .texture-paper {
+    background-image: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.01) 2px,
+      rgba(0, 0, 0, 0.01) 4px
+    );
+  }
+}

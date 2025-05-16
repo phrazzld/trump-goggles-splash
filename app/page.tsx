@@ -13,9 +13,15 @@ export default function Home() {
           priority
         />
         <div className="mb-8 space-y-4 bg-retro-cream p-6 rounded-lg shadow-vintage">
-          <h2 className="font-display text-3xl text-retro-blue">Retro Font Test</h2>
+          <h2 className="font-display text-3xl text-retro-blue text-shadow-vintage">Retro Font Test</h2>
           <p className="font-body text-retro-black">This is Inter for body text. It should be clean and readable.</p>
           <p className="font-accent text-retro-black">This is Courier Prime for accent text.</p>
+          <div className="mt-4 p-4 border-double-retro text-retro-gold">
+            Border test
+          </div>
+          <div className="mt-4 p-4 texture-paper bg-retro-cream rounded">
+            Texture test
+          </div>
         </div>
 
 

@@ -85,7 +85,7 @@
     - **Done‑when:**
         1. All specified directories and empty React component files are created.
     - **Depends‑on:** [T001]
-- [ ] **T008 · Feature · P2: add custom tailwind utility classes**
+- [x] **T008 · Feature · P2: add custom tailwind utility classes**
     - **Context:** Rapid Development Strategies (CSS Utilities First)
     - **Action:**
         1. In `app/globals.css`, define `.text-shadow-vintage { text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); }` under `@layer utilities`.
