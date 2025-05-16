@@ -47,7 +47,7 @@
         1. Inspect text elements in the browser to confirm the correct fonts are applied.
         2. Check the network tab to ensure fonts are loaded as optimized web fonts.
     - **Depends‑on:** [T001]
-- [ ] **T005 · Feature · P1: implement global styles: css reset, body background, and texture overlay**
+- [x] **T005 · Feature · P1: implement global styles: css reset, body background, and texture overlay**
     - **Context:** Implementation Phases (Phase 1), File Structure Implementation (Global Styles)
     - **Action:**
         1. Add a basic CSS reset (or use Tailwind's preflight) and global styles to `app/globals.css`.

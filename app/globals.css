@@ -45,6 +45,24 @@
 
 :root {
   --radius: 0.625rem;
+  
+  /* Retro Americana Color Palette */
+  --color-cream: #FEFBF3;
+  --color-red: #B91C1C;
+  --color-blue: #1E3A8A;
+  --color-gold: #D97706;
+  --color-black: #18181B;
+  
+  /* Paper texture placeholder using CSS gradient */
+  --texture-paper: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.01) 2px,
+    rgba(0, 0, 0, 0.01) 4px
+  );
+  
+  /* Default shadcn variables */
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -117,6 +135,27 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply text-foreground;
+    background-color: var(--color-cream);
   }
+}
+
+/* Global styles for retro americana aesthetic */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: var(--texture-paper);
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Ensure content appears above texture overlay */
+body > * {
+  position: relative;
+  z-index: 2;
 }
