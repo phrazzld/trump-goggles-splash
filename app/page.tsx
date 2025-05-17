@@ -1,4 +1,6 @@
 import Image from "next/image";
+import RetroButton from "./components/shared/RetroButton";
+import StarDecoration from "./components/shared/StarDecoration";
 
 export default function Home() {
   return (
@@ -22,8 +24,18 @@ export default function Home() {
           <div className="mt-4 p-4 texture-paper bg-retro-cream rounded">
             Texture test
           </div>
+          <div className="mt-4 flex gap-2">
+            <RetroButton variant="primary" size="sm">Small Primary</RetroButton>
+            <RetroButton variant="secondary" size="md">Medium Secondary</RetroButton>
+            <RetroButton variant="primary" size="lg">Large Primary</RetroButton>
+          </div>
+          <div className="mt-4 flex gap-4 items-center">
+            <StarDecoration size={16} />
+            <StarDecoration />
+            <StarDecoration size={32} />
+            <StarDecoration className="text-retro-blue fill-retro-blue" />
+          </div>
         </div>
-
 
         <div className="flex gap-4 items-center flex-col sm:flex-row">
           <a
