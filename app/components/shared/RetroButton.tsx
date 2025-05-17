@@ -1,6 +1,7 @@
 import { ButtonHTMLAttributes, forwardRef } from 'react'
 import { cva, type VariantProps } from 'class-variance-authority'
 import { cn } from '@/lib/utils'
+import { Star } from 'lucide-react'
 
 const retroButtonVariants = cva(
   'inline-flex items-center justify-center transition-colors focus:outline-none shadow-vintage rounded-md font-display',
@@ -31,12 +32,20 @@ export interface RetroButtonProps
 
 const RetroButton = forwardRef<HTMLButtonElement, RetroButtonProps>(
   ({ className, variant, size, children, ...props }, ref) => {
+    const starSize = size === 'sm' ? 14 : size === 'lg' ? 20 : 16
+    
     return (
       <button
         ref={ref}
         className={cn(retroButtonVariants({ variant, size, className }))}
         {...props}
       >
+        {variant === 'primary' && (
+          <Star 
+            className="mr-2 text-retro-gold fill-retro-gold" 
+            size={starSize}
+          />
+        )}
         {children}
       </button>
     )
