@@ -19,6 +19,7 @@ const config: Config = {
           'blue': '#1E3A8A',
           'cream': '#FEFBF3',
           'gold': '#D97706',
+          'black': '#18181B',
         }
       },
       boxShadow: {
