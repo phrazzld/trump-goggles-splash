@@ -1,6 +1,7 @@
 import Image from "next/image";
 import RetroButton from "./components/shared/RetroButton";
 import StarDecoration from "./components/shared/StarDecoration";
+import TexturedCard from "./components/shared/TexturedCard";
 
 export default function Home() {
   return (
@@ -35,6 +36,10 @@ export default function Home() {
             <StarDecoration size={32} />
             <StarDecoration className="text-retro-blue fill-retro-blue" />
           </div>
+          <TexturedCard className="mt-4">
+            <h3 className="font-display text-xl mb-2">TexturedCard Test</h3>
+            <p className="font-body">This card has a paper texture, rounded corners, and vintage shadow.</p>
+          </TexturedCard>
         </div>
 
         <div className="flex gap-4 items-center flex-col sm:flex-row">
