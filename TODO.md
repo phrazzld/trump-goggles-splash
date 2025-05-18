@@ -91,7 +91,7 @@ Transform the minimal splash page into a professional, engaging, and accurate la
     - **Done-when:** Full splash page renders with all sections
     - **Depends-on:** [T004, T005, T006, T007, T008]
 
-- [ ] **T010 · Feature · P1: Add Entrance Animations**
+- [x] **T010 · Feature · P1: Add Entrance Animations**
     - Implement subtle Framer Motion animations
     - Ensure all animations respect `prefers-reduced-motion`
     - Add StarDecoration elements throughout sections

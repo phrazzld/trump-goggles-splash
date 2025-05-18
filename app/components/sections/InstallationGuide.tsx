@@ -1,7 +1,11 @@
+"use client";
+
+import { motion, Variants } from "framer-motion";
 import SectionHeading from "@/app/components/shared/SectionHeading";
 import ExternalLink from "@/app/components/shared/ExternalLink";
 import TexturedCard from "@/app/components/shared/TexturedCard";
-import StarDecoration from "@/app/components/shared/StarDecoration";
+import AnimatedSection from "@/app/components/shared/AnimatedSection";
+import AnimatedStar from "@/app/components/shared/AnimatedStar";
 
 interface InstallStep {
   number: number;
@@ -32,13 +36,36 @@ const installSteps: InstallStep[] = [
   },
 ];
 
+const stepVariants: Variants = {
+  hidden: { opacity: 0, x: -30 },
+  visible: { 
+    opacity: 1, 
+    x: 0,
+    transition: {
+      duration: 0.5,
+      ease: "easeOut"
+    }
+  },
+};
+
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+      delayChildren: 0.1,
+    },
+  },
+};
+
 export default function InstallationGuide() {
   return (
-    <section className="py-20 px-6 relative bg-white">
+    <AnimatedSection className="py-20 px-6 relative bg-white" delay={0.3}>
       {/* Background decorations */}
-      <StarDecoration className="absolute top-[15%] left-[10%] w-10 h-10 opacity-20 rotate-45" />
-      <StarDecoration className="absolute bottom-[25%] right-[5%] w-12 h-12 opacity-15 -rotate-12" />
-      <StarDecoration className="absolute top-[70%] right-[20%] w-6 h-6 opacity-10" />
+      <AnimatedStar className="absolute top-[15%] left-[10%] w-10 h-10 opacity-20 rotate-45" delay={0.2} />
+      <AnimatedStar className="absolute bottom-[25%] right-[5%] w-12 h-12 opacity-15 -rotate-12" delay={0.4} />
+      <AnimatedStar className="absolute top-[70%] right-[20%] w-6 h-6 opacity-10" delay={0.6} />
 
       <div className="max-w-5xl mx-auto">
         <SectionHeading level={2} className="text-center mb-8">
@@ -50,30 +77,55 @@ export default function InstallationGuide() {
         </p>
 
         {/* Installation steps */}
-        <div className="grid gap-6 mb-12">
+        <motion.div 
+          className="grid gap-6 mb-12"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+        >
           {installSteps.map((step) => (
-            <TexturedCard
+            <motion.div
               key={step.number}
-              className="flex items-start gap-6 bg-gray-50 hover:bg-gray-100 transition-colors"
+              variants={stepVariants}
+              whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
             >
-              {/* Step number */}
-              <div className="flex-shrink-0 w-12 h-12 bg-retro-blue text-retro-cream rounded-full flex items-center justify-center font-black text-xl">
-                {step.number}
-              </div>
+              <TexturedCard className="flex items-start gap-6 bg-gray-50 hover:bg-gray-100 transition-colors">
+                {/* Step number */}
+                <motion.div 
+                  className="flex-shrink-0 w-12 h-12 bg-retro-blue text-retro-cream rounded-full flex items-center justify-center font-black text-xl"
+                  initial={{ scale: 0 }}
+                  whileInView={{ scale: 1 }}
+                  transition={{ 
+                    delay: step.number * 0.1 + 0.3,
+                    type: "spring",
+                    stiffness: 200
+                  }}
+                  viewport={{ once: true }}
+                >
+                  {step.number}
+                </motion.div>
 
-              {/* Step content */}
-              <div className="flex-grow">
-                <h3 className="font-display text-xl md:text-2xl text-retro-blue mb-2">
-                  {step.title}
-                </h3>
-                <p className="text-gray-700">{step.description}</p>
-              </div>
-            </TexturedCard>
+                {/* Step content */}
+                <div className="flex-grow">
+                  <h3 className="font-display text-xl md:text-2xl text-retro-blue mb-2">
+                    {step.title}
+                  </h3>
+                  <p className="text-gray-700">{step.description}</p>
+                </div>
+              </TexturedCard>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* CTAs */}
-        <div className="text-center space-y-8">
+        <motion.div 
+          className="text-center space-y-8"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          viewport={{ once: true }}
+        >
           {/* Chrome Store button */}
           <div>
             <ExternalLink
@@ -90,7 +142,12 @@ export default function InstallationGuide() {
           </div>
 
           {/* GitHub link */}
-          <div>
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.4, delay: 0.6 }}
+            viewport={{ once: true }}
+          >
             <p className="text-gray-600 mb-2">Want to see the code?</p>
             <ExternalLink
               href="https://github.com/phrazzld/trump-goggles"
@@ -98,17 +155,23 @@ export default function InstallationGuide() {
             >
               View on GitHub →
             </ExternalLink>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         {/* Browser compatibility note */}
-        <div className="mt-16 text-center">
+        <motion.div 
+          className="mt-16 text-center"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.4, delay: 0.8 }}
+          viewport={{ once: true }}
+        >
           <p className="text-sm text-gray-500">
             Trump Goggles is compatible with Chrome, Edge, and other
             Chromium-based browsers
           </p>
-        </div>
+        </motion.div>
       </div>
-    </section>
+    </AnimatedSection>
   );
 }
