@@ -15,7 +15,7 @@ Transform the minimal splash page into a professional, engaging, and accurate la
     - **Done-when:** Fonts render correctly across all breakpoints without layout shifts
     - **Depends-on:** none
 
-- [ ] **T002 · Feature · P1: Create SectionHeading Component**
+- [x] **T002 · Feature · P1: Create SectionHeading Component**
     - Build `app/components/shared/SectionHeading.tsx`
     - Accept semantic heading level prop (h1-h6)
     - Apply retro Americana styling with display fonts
