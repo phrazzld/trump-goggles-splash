@@ -65,7 +65,7 @@ Transform the minimal splash page into a professional, engaging, and accurate la
     - **Done-when:** Grid of examples showcases extension's personality
     - **Depends-on:** [T002]
 
-- [ ] **T007 · Feature · P1: Build InstallationGuide Section**
+- [x] **T007 · Feature · P1: Build InstallationGuide Section**
     - Create `app/components/sections/InstallationGuide.tsx`
     - Clear step-by-step installation instructions
     - Prominent Chrome Store link
