@@ -1,25 +1,36 @@
-# T009 - Create RetroButton Component Structure and Props
+# T009: Assemble All Sections on Main Page - Implementation Plan
 
-## Objective
-Create the RetroButton component with proper TypeScript interfaces and variant management using class-variance-authority.
+## Task Overview
+Assemble all created sections into the main page (`app/page.tsx`) in the specified logical order to create the complete splash page.
+
+## Requirements
+- Import all new sections into `app/page.tsx`
+- Arrange in logical order: Hero → FeatureShowcase → TrumpismExamples → InstallationGuide → Footer
+- Full splash page renders with all sections
 
 ## Implementation Approach
-1. Replace placeholder component with proper structure
-2. Define RetroButtonProps interface extending ButtonHTMLAttributes
-3. Include variant ('primary' | 'secondary') and size ('sm' | 'md' | 'lg') props
-4. Use class-variance-authority (cva) to manage variant classes
-5. Create button component that accepts and applies all props
 
-## Interface Structure
-```typescript
-interface RetroButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'secondary'
-  size?: 'sm' | 'md' | 'lg'
-  children: React.ReactNode
-}
-```
+### Component Order
+1. Hero (already in place)
+2. FeatureShowcase
+3. TrumpismExamples
+4. InstallationGuide  
+5. Footer
 
-## Notes
-- Use forwardRef for proper ref handling
-- Set default variant to 'primary' and size to 'md'
-- Use cn utility from lib/utils for class name merging
+### Key Features
+- Import all section components
+- Arrange in the specified order
+- Ensure proper spacing between sections
+- Maintain consistent wrapper structure
+
+### Design Decisions
+- Keep existing Hero section placement
+- Add new sections in specified order
+- Use existing component naming conventions
+- No additional styling needed (handled by components)
+
+## Testing Considerations
+- Verify all imports work correctly
+- Check visual order matches requirements
+- Ensure no TypeScript errors
+- Test responsive behavior across all sections

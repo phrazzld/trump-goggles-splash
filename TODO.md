@@ -85,7 +85,7 @@ Transform the minimal splash page into a professional, engaging, and accurate la
 
 ## Phase 4: Page Assembly & Polish
 
-- [ ] **T009 · Feature · P0: Assemble All Sections on Main Page**
+- [x] **T009 · Feature · P0: Assemble All Sections on Main Page**
     - Import all new sections into `app/page.tsx`
     - Arrange in logical order: Hero → FeatureShowcase → TrumpismExamples → InstallationGuide → Footer
     - **Done-when:** Full splash page renders with all sections
