@@ -98,7 +98,7 @@
     - **Depends‑on:** [T003]
 
 ## Shared Components
-- [ ] **T009 · Feature · P1: create `RetroButton` component structure and props**
+- [x] **T009 · Feature · P1: create `RetroButton` component structure and props**
     - **Context:** Component Architecture (Custom Retro Components - RetroButton.tsx)
     - **Action:**
         1. Create `components/shared/RetroButton.tsx`.
@@ -110,7 +110,7 @@
     - **Verification:**
         1. Render the button with different props in a test page/Storybook. Inspect applied classes.
     - **Depends‑on:** [T007]
-- [ ] **T010 · Feature · P2: style `RetroButton` with retro aesthetics**
+- [x] **T010 · Feature · P2: style `RetroButton` with retro aesthetics**
     - **Context:** Component Architecture (Custom Retro Components - RetroButton.tsx)
     - **Action:**
         1. Apply styling to `RetroButton`: rounded corners, use `.border-double-retro` utility, and `shadow-vintage` (Tailwind class).
@@ -120,7 +120,7 @@
     - **Verification:**
         1. Visually inspect all variants and sizes of the button. Check CSS properties in dev tools.
     - **Depends‑on:** [T003, T008, T009]
-- [ ] **T011 · Feature · P2: implement star accent on `RetroButton` primary variant**
+- [x] **T011 · Feature · P2: implement star accent on `RetroButton` primary variant**
     - **Context:** Component Architecture (Custom Retro Components - RetroButton.tsx features)
     - **Action:**
         1. Conditionally render a small star icon (e.g., using Lucide React or a simple SVG) within the `RetroButton` when `variant="primary"`.
@@ -130,7 +130,7 @@
     - **Verification:**
         1. Visually inspect the `RetroButton` with `variant="primary"`.
     - **Depends‑on:** [T010]
-- [ ] **T012 · Feature · P2: create `StarDecoration` component (CSS-only styling)**
+- [x] **T012 · Feature · P2: create `StarDecoration` component (CSS-only styling)**
     - **Context:** Component Architecture (Shared Components - StarDecoration.tsx), Hero Section Components (Animated star decorations - CSS-only for phase 2)
     - **Action:**
         1. Create `components/shared/StarDecoration.tsx`.
@@ -143,7 +143,7 @@
     - **Verification:**
         1. Render the component in different positions on a test page.
     - **Depends‑on:** [T007]
-- [ ] **T013 · Feature · P2: create `TexturedCard` component**
+- [x] **T013 · Feature · P2: create `TexturedCard` component**
     - **Context:** Component Architecture (Shared Components - TexturedCard.tsx), Component Composition
     - **Action:**
         1. Create `components/shared/TexturedCard.tsx`.
@@ -157,7 +157,7 @@
     - **Depends‑on:** [T007, T008]
 
 ## Section Components
-- [ ] **T014 · Feature · P1: build `Hero` section component content and structure**
+- [x] **T014 · Feature · P1: build `Hero` section component content and structure**
     - **Context:** Component Architecture (Hero Section Components), File Structure Implementation (Hero.tsx template), Implementation Phases (Phase 2)
     - **Action:**
         1. Create `components/Hero.tsx` following the provided template structure.
@@ -168,4 +168,27 @@
         6. Place `StarDecoration` components using absolute positioning as per the template.
         7. Implement a subtle stripe pattern as an accent within the Hero section (e.g., as a border, background element).
     - **Done‑when:**
-        1.
+        1. `Hero` component renders with all specified elements.
+        2. Layout is responsive and matches template.
+        3. Styling matches retro americana aesthetic.
+    - **Verification:**
+        1. Visually inspect the Hero section at different breakpoints.
+        2. Verify all elements (headline, paragraph, button, decorations) are present.
+        3. Check that the textured background and stripe pattern are visible.
+    - **Depends‑on:** [T007, T009, T012]
+- [x] **T015 · Feature · P2: build `Features` section card-based layout**
+    - **Context:** Component Architecture (Features Section), Implementation Phases (Phase 2)
+    - **Action:**
+        1. Create `components/Features.tsx`.
+        2. Implement a multi-column card layout using Tailwind's grid system.
+        3. Use the `TexturedCard` component for each feature card.
+        4. Add mock feature content (3-4 features as temporary placeholders).
+        5. Ensure responsive behavior (single column on mobile, multi-column on larger screens).
+    - **Done‑when:**
+        1. `Features` component renders with a card-based layout.
+        2. Layout is fully responsive.
+        3. Uses `TexturedCard` for consistent styling.
+    - **Verification:**
+        1. Check responsive layout at various breakpoints.
+        2. Verify `TexturedCard` renders correctly for each feature.
+    - **Depends‑on:** [T013, T014]

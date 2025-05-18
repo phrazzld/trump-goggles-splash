@@ -24,6 +24,10 @@ const config: Config = {
       },
       boxShadow: {
         'vintage': '4px 4px 0px 0px rgba(0,0,0,0.1)',
+        'retro': '4px 4px 0px 0px rgba(0,0,0,0.1)',
+      },
+      backgroundImage: {
+        'texture-paper': 'repeating-linear-gradient(45deg,transparent,transparent 2px,rgba(0, 0, 0, 0.01) 2px,rgba(0, 0, 0, 0.01) 4px)',
       }
     }
   },
