@@ -52,7 +52,7 @@ Transform the minimal splash page into a professional, engaging, and accurate la
     - **Done-when:** Visual demonstrations clearly explain functionality
     - **Depends-on:** [T002]
 
-- [ ] **T006 · Feature · P1: Build TrumpismExamples Section**
+- [x] **T006 · Feature · P1: Build TrumpismExamples Section**
     - Create `app/components/sections/TrumpismExamples.tsx`
     - Display 4-6 iconic Trumpism translations in grid layout
     - Examples:
