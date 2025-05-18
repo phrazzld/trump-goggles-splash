@@ -1,16 +1,17 @@
-import RetroButton from './shared/RetroButton';
-import StarDecoration from './shared/StarDecoration';
+import RetroButton from "./shared/RetroButton";
+import StarDecoration from "./shared/StarDecoration";
+import ExternalLink from "./shared/ExternalLink";
 
 export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background texture overlay */}
       <div className="absolute inset-0 texture-paper opacity-10" />
-      
+
       {/* Stripe pattern accent - diagonal stripes */}
       <div className="absolute inset-0 opacity-[0.03]">
-        <div 
-          className="absolute inset-0" 
+        <div
+          className="absolute inset-0"
           style={{
             backgroundImage: `repeating-linear-gradient(
               45deg,
@@ -22,7 +23,7 @@ export default function Hero() {
               transparent 104px,
               #1E3A8A 104px,
               #1E3A8A 108px
-            )`
+            )`,
           }}
         />
       </div>
@@ -42,17 +43,40 @@ export default function Hero() {
         <h1 className="text-retro-blue mb-10 text-shadow-hero">
           Trump Goggles
         </h1>
-        
-        {/* Tagline */}
+
+        {/* Accurate description with examples */}
         <p className="lead text-gray-800 mb-16 max-w-3xl mx-auto">
-          See every Trump-related headline, story, and mention on any webpage
+          Translates text to Trumpisms (e.g., &apos;ISIS&apos; → &apos;Evil Losers&apos;, &apos;Hillary
+          Clinton&apos; → &apos;Crooked Hillary&apos;)
         </p>
-        
-        {/* CTA Button */}
-        <div className="transform hover:scale-105 transition-transform duration-200">
-          <RetroButton variant="primary" size="lg" className="text-xl md:text-2xl px-10 py-5">
-            Install Trump Goggles
-          </RetroButton>
+
+        {/* CTA Buttons */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+          <div className="transform hover:scale-105 transition-transform duration-200">
+            <ExternalLink
+              href="https://chromewebstore.google.com/detail/trump-goggles/jffbimfdmgbfannficjejaffmnggoigd"
+              variant="button"
+              buttonProps={{
+                variant: "primary",
+                size: "lg",
+                className: "text-xl md:text-2xl px-10 py-5",
+              }}
+            >
+              Install Trump Goggles
+            </ExternalLink>
+          </div>
+
+          <div className="text-gray-600">or</div>
+
+          <div className="transform hover:scale-105 transition-transform duration-200">
+            <RetroButton
+              variant="secondary"
+              size="lg"
+              className="text-xl md:text-2xl px-10 py-5"
+            >
+              Learn More
+            </RetroButton>
+          </div>
         </div>
       </div>
 

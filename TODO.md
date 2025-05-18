@@ -33,7 +33,7 @@ Transform the minimal splash page into a professional, engaging, and accurate la
 
 ## Phase 2: Hero Section Fix
 
-- [ ] **T004 · Feature · P0: Fix Hero Description & Add Chrome Store CTA**
+- [x] **T004 · Feature · P0: Fix Hero Description & Add Chrome Store CTA**
     - Update description to: "Translates text to Trumpisms (e.g., 'ISIS' → 'Evil Losers', 'Hillary Clinton' → 'Crooked Hillary')"
     - Add Chrome Store button using ExternalLink
     - URL: `https://chromewebstore.google.com/detail/trump-goggles/jffbimfdmgbfannficjejaffmnggoigd`
