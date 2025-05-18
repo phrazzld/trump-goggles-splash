@@ -45,7 +45,7 @@ Transform the minimal splash page into a professional, engaging, and accurate la
 
 ## Phase 3: Content Sections
 
-- [ ] **T005 · Feature · P1: Build FeatureShowcase Section**
+- [x] **T005 · Feature · P1: Build FeatureShowcase Section**
     - Create `app/components/sections/FeatureShowcase.tsx`
     - Show before/after translation comparisons using TexturedCards
     - Clear explanation of how the extension works
