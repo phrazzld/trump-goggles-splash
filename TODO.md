@@ -22,7 +22,7 @@ Transform the minimal splash page into a professional, engaging, and accurate la
     - **Done-when:** Component renders with correct semantic tag and styling
     - **Depends-on:** [T001]
 
-- [ ] **T003 · Feature · P1: Create ExternalLink Component**
+- [x] **T003 · Feature · P1: Create ExternalLink Component**
     - Build `app/components/shared/ExternalLink.tsx`
     - Include `rel="noopener noreferrer"` and `target="_blank"`
     - Support button variant (using RetroButton) and text variant
