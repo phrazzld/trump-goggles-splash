@@ -18,13 +18,69 @@ html {
   font-size: 16px;
 }
 
-body {
-  background-color: var(--color-retro-cream);
-  position: relative;
-  min-height: 100vh;
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
+/* Typography Base Styles */
+@layer base {
+  body {
+    font-family: var(--font-body), sans-serif;
+    @apply text-base leading-relaxed text-gray-900;
+    background-color: var(--color-retro-cream);
+    position: relative;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+  
+  /* Heading hierarchy for retro Americana impact */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display), serif;
+    @apply font-black tracking-tight leading-tight;
+  }
+  
+  h1 {
+    @apply text-6xl md:text-7xl lg:text-8xl xl:text-9xl;
+  }
+  
+  h2 {
+    @apply text-4xl md:text-5xl lg:text-6xl;
+  }
+  
+  h3 {
+    @apply text-3xl md:text-4xl lg:text-5xl;
+  }
+  
+  h4 {
+    @apply text-2xl md:text-3xl lg:text-4xl;
+  }
+  
+  h5 {
+    @apply text-xl md:text-2xl lg:text-3xl;
+  }
+  
+  h6 {
+    @apply text-lg md:text-xl lg:text-2xl;
+  }
+  
+  /* Body text hierarchy */
+  p {
+    font-family: var(--font-body), sans-serif;
+    @apply text-base md:text-lg leading-relaxed;
+  }
+  
+  .lead {
+    @apply text-lg md:text-xl lg:text-2xl leading-relaxed;
+  }
+  
+  /* Button and UI text */
+  .text-ui {
+    font-family: var(--font-body), sans-serif;
+    @apply font-medium;
+  }
+  
+  /* Accent text using display font */
+  .text-accent {
+    font-family: var(--font-display), serif;
+  }
 }
 
 /* Paper texture overlay */

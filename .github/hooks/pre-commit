@@ -1,0 +1,31 @@
+#!/bin/sh
+# Pre-commit hook to prevent wrong lock files
+
+# Check for package-lock.json
+if [ -f "package-lock.json" ]; then
+    echo "❌ ERROR: package-lock.json detected!"
+    echo "This project uses pnpm. Please remove package-lock.json and use pnpm."
+    exit 1
+fi
+
+# Check for yarn.lock
+if [ -f "yarn.lock" ]; then
+    echo "❌ ERROR: yarn.lock detected!"
+    echo "This project uses pnpm. Please remove yarn.lock and use pnpm."
+    exit 1
+fi
+
+# Check if pnpm-lock.yaml exists
+if [ ! -f "pnpm-lock.yaml" ]; then
+    echo "⚠️  WARNING: pnpm-lock.yaml not found!"
+    echo "Please run 'pnpm install' to generate the lock file."
+fi
+
+# Check for node_modules in git
+if git ls-files --error-unmatch node_modules &> /dev/null; then
+    echo "❌ ERROR: node_modules should not be committed!"
+    echo "Please add node_modules to .gitignore"
+    exit 1
+fi
+
+exit 0

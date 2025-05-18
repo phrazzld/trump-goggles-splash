@@ -9,9 +9,17 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        'display': ['var(--font-playfair)'],
-        'body': ['var(--font-inter)'],
-        'accent': ['var(--font-courier)'],
+        // Primary semantic names
+        'display': ['var(--font-display)', 'serif'],
+        'body': ['var(--font-body)', 'sans-serif'],
+        
+        // Compatibility with existing components
+        'playfair-display': ['var(--font-playfair)'],
+        'inter': ['var(--font-inter)'],
+        'courier-prime': ['var(--font-courier)'],
+        'playfair': ['var(--font-playfair)'],
+        'courier': ['var(--font-courier)'],
+        'accent': ['var(--font-courier)', 'monospace'],
       },
       colors: {
         'retro': {

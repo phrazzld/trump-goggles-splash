@@ -39,12 +39,12 @@ export default function Hero() {
       {/* Content */}
       <div className="relative z-10 text-center px-6 max-w-6xl mx-auto">
         {/* Main headline */}
-        <h1 className="font-display text-7xl md:text-8xl lg:text-[10rem] text-retro-blue mb-10 text-shadow-hero leading-none tracking-tight">
+        <h1 className="text-retro-blue mb-10 text-shadow-hero">
           Trump Goggles
         </h1>
         
         {/* Tagline */}
-        <p className="font-body text-xl md:text-2xl lg:text-3xl text-gray-800 mb-16 max-w-3xl mx-auto leading-relaxed">
+        <p className="lead text-gray-800 mb-16 max-w-3xl mx-auto">
           See every Trump-related headline, story, and mention on any webpage
         </p>
         
