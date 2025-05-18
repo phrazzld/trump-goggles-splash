@@ -14,9 +14,17 @@
 }
 
 /* Global styles */
+html {
+  font-size: 16px;
+}
+
 body {
   background-color: var(--color-retro-cream);
   position: relative;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
 }
 
 /* Paper texture overlay */
@@ -46,22 +54,28 @@ body > * {
 }
 
 /* Custom utility classes */
-.text-shadow-vintage {
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.border-double-retro {
-  border: 3px double currentColor;
-}
-
-.texture-paper {
-  background-image: repeating-linear-gradient(
-    45deg,
-    transparent,
-    transparent 2px,
-    rgba(0, 0, 0, 0.01) 2px,
-    rgba(0, 0, 0, 0.01) 4px
-  );
+@layer utilities {
+  .text-shadow-vintage {
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.15);
+  }
+  
+  .text-shadow-hero {
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .border-double-retro {
+    border: 3px double currentColor;
+  }
+  
+  .texture-paper {
+    background-image: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.01) 2px,
+      rgba(0, 0, 0, 0.01) 4px
+    );
+  }
 }
 
 /* Font CSS Variables for Tailwind v4 */
@@ -69,4 +83,15 @@ body > * {
   --font-playfair: var(--font-playfair-display);
   --font-inter: var(--font-inter);
   --font-courier: var(--font-courier-prime);
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Better button focus states */
+button:focus-visible {
+  outline: 3px solid var(--color-retro-gold);
+  outline-offset: 2px;
 }

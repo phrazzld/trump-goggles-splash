@@ -1,38 +1,63 @@
-import RetroButton from './shared/RetroButton'
-import StarDecoration from './shared/StarDecoration'
+import RetroButton from './shared/RetroButton';
+import StarDecoration from './shared/StarDecoration';
 
-const Hero: React.FC = () => {
+export default function Hero() {
   return (
-    <section className="relative py-20 lg:py-32 overflow-hidden texture-paper">
-      {/* Decorative Stars */}
-      <StarDecoration 
-        className="absolute top-8 left-8 md:top-12 md:left-12" 
-        size={48}
-      />
-      <StarDecoration 
-        className="absolute bottom-8 right-8 md:bottom-12 md:right-12" 
-        size={48}
-      />
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Background texture overlay */}
+      <div className="absolute inset-0 texture-paper opacity-10" />
       
-      {/* Content Container */}
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-3xl mx-auto text-center">
-          <h1 className="font-display text-5xl md:text-7xl lg:text-8xl text-retro-blue text-shadow-vintage mb-6">
-            Trump Goggles
-          </h1>
-          <p className="font-body text-lg md:text-xl lg:text-2xl text-retro-black mb-8">
-            See every Trump-related headline, story, and mention on any webpage
-          </p>
-          <RetroButton variant="primary" size="lg">
+      {/* Stripe pattern accent - diagonal stripes */}
+      <div className="absolute inset-0 opacity-[0.03]">
+        <div 
+          className="absolute inset-0" 
+          style={{
+            backgroundImage: `repeating-linear-gradient(
+              45deg,
+              transparent,
+              transparent 50px,
+              #B91C1C 50px,
+              #B91C1C 54px,
+              transparent 54px,
+              transparent 104px,
+              #1E3A8A 104px,
+              #1E3A8A 108px
+            )`
+          }}
+        />
+      </div>
+
+      {/* Star decorations - positioned artfully */}
+      <StarDecoration className="absolute top-[10%] left-[7%] w-14 h-14 md:w-20 md:h-20 rotate-12 opacity-80" />
+      <StarDecoration className="absolute top-[15%] right-[10%] w-8 h-8 md:w-12 md:h-12 -rotate-12 opacity-70" />
+      <StarDecoration className="absolute bottom-[15%] left-[8%] w-12 h-12 md:w-16 md:h-16 rotate-45 opacity-75" />
+      <StarDecoration className="absolute bottom-[10%] right-[7%] w-10 h-10 md:w-14 md:h-14 -rotate-45 opacity-80" />
+      <StarDecoration className="absolute top-[35%] left-[20%] w-6 h-6 opacity-40" />
+      <StarDecoration className="absolute bottom-[35%] right-[25%] w-5 h-5 opacity-40" />
+      <StarDecoration className="absolute top-[60%] right-[15%] w-4 h-4 opacity-30" />
+
+      {/* Content */}
+      <div className="relative z-10 text-center px-6 max-w-6xl mx-auto">
+        {/* Main headline */}
+        <h1 className="font-display text-7xl md:text-8xl lg:text-[10rem] text-retro-blue mb-10 text-shadow-hero leading-none tracking-tight">
+          Trump Goggles
+        </h1>
+        
+        {/* Tagline */}
+        <p className="font-body text-xl md:text-2xl lg:text-3xl text-gray-800 mb-16 max-w-3xl mx-auto leading-relaxed">
+          See every Trump-related headline, story, and mention on any webpage
+        </p>
+        
+        {/* CTA Button */}
+        <div className="transform hover:scale-105 transition-transform duration-200">
+          <RetroButton variant="primary" size="lg" className="text-xl md:text-2xl px-10 py-5">
             Install Trump Goggles
           </RetroButton>
         </div>
       </div>
-      
-      {/* Stripe Accent */}
-      <div className="absolute bottom-0 inset-x-0 h-2 bg-gradient-to-r from-retro-red via-retro-blue to-retro-red opacity-50" />
-    </section>
-  )
-}
 
-export default Hero
+      {/* Vintage border frame effect */}
+      <div className="absolute inset-8 md:inset-16 border-8 border-retro-blue/10 pointer-events-none" />
+    </section>
+  );
+}
