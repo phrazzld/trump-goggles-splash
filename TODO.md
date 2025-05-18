@@ -73,7 +73,7 @@ Transform the minimal splash page into a professional, engaging, and accurate la
     - **Done-when:** Users can easily find and follow installation steps
     - **Depends-on:** [T002, T003]
 
-- [ ] **T008 · Feature · P1: Build Footer Section**
+- [x] **T008 · Feature · P1: Build Footer Section**
     - Create/enhance `app/components/sections/Footer.tsx`
     - Add GitHub repository link
     - Include copyright notice

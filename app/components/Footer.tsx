@@ -1,3 +1,2 @@
-export default function Footer() {
-  return <footer>Footer Component</footer>;
-}
+// Re-export Footer from sections
+export { default } from './sections/Footer';
