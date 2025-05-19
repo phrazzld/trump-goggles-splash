@@ -12,7 +12,9 @@
     "test": "vitest",
     "test:watch": "vitest --watch",
     "test:cov": "vitest run --coverage",
-    "test:ui": "vitest --ui"
+    "test:ui": "vitest --ui",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.2",
@@ -27,6 +29,14 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@storybook/addon-a11y": "8.6.14",
+    "@storybook/addon-essentials": "^8.6.14",
+    "@storybook/addon-interactions": "^8.6.14",
+    "@storybook/addon-onboarding": "^8.6.14",
+    "@storybook/blocks": "^8.6.14",
+    "@storybook/nextjs": "^8.6.14",
+    "@storybook/react": "^8.6.14",
+    "@storybook/test": "^8.6.14",
     "@tailwindcss/postcss": "^4",
     "@testing-library/jest-dom": "6.6.3",
     "@testing-library/react": "16.3.0",
@@ -42,8 +52,10 @@
     "eslint": "^9",
     "eslint-config-next": "15.3.2",
     "eslint-plugin-jsx-a11y": "6.10.2",
+    "eslint-plugin-storybook": "0.12.0",
     "jest-axe": "10.0.0",
     "jsdom": "26.1.0",
+    "storybook": "^8.6.14",
     "tailwindcss": "^4",
     "tw-animate-css": "^1.2.9",
     "typescript": "^5",
@@ -52,5 +64,10 @@
   "engines": {
     "node": ">=20.0.0",
     "pnpm": ">=10.0.0"
+  },
+  "eslintConfig": {
+    "extends": [
+      "plugin:storybook/recommended"
+    ]
   }
 }
