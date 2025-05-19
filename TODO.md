@@ -109,7 +109,7 @@ Transform the minimal splash page into a professional, engaging, and accurate la
 
 ## Phase 5: Testing & QA
 
-- [ ] **T012 · Test · P1: Unit Tests for Shared Components**
+- [~] **T012 · Test · P1: Unit Tests for Shared Components**
     - Test ExternalLink component (security attributes, variants)
     - Test SectionHeading component (semantic tags, props)
     - **Done-when:** 90%+ coverage on shared components
