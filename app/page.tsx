@@ -6,12 +6,14 @@ import Footer from "./components/Footer";
 
 export default function Home() {
   return (
-    <main>
-      <Hero />
-      <FeatureShowcase />
-      <TrumpismExamples />
-      <InstallationGuide />
+    <>
+      <main className="container mx-auto px-4">
+        <Hero />
+        <FeatureShowcase />
+        <TrumpismExamples />
+        <InstallationGuide />
+      </main>
       <Footer />
-    </main>
+    </>
   );
 }

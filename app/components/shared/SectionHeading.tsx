@@ -7,16 +7,18 @@ interface SectionHeadingProps {
   level: HeadingLevel;
   children: ReactNode;
   className?: string;
+  id?: string;
 }
 
 export default function SectionHeading({
   level,
   children,
   className,
+  id,
 }: SectionHeadingProps) {
   const tag = `h${level}`;
 
   const defaultClasses = cn("text-retro-blue text-shadow-vintage", className);
 
-  return createElement(tag, { className: defaultClasses }, children);
+  return createElement(tag, { className: defaultClasses, id }, children);
 }

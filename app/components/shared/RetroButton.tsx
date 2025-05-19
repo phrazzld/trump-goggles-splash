@@ -4,7 +4,7 @@ import { cn } from '@/lib/utils'
 import { Star } from 'lucide-react'
 
 const retroButtonVariants = cva(
-  'inline-flex items-center justify-center transition-colors focus:outline-none shadow-vintage rounded-md font-display',
+  'inline-flex items-center justify-center transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-retro-blue focus-visible:ring-offset-2 focus-visible:ring-offset-retro-cream shadow-vintage rounded-md font-display',
   {
     variants: {
       variant: {
@@ -44,6 +44,7 @@ const RetroButton = forwardRef<HTMLButtonElement, RetroButtonProps>(
           <Star 
             className="mr-2 text-retro-gold fill-retro-gold" 
             size={starSize}
+            aria-hidden="true"
           />
         )}
         {children}

@@ -50,9 +50,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${playfairDisplayBlack.variable} ${inter.variable} ${playfairDisplay.variable} ${interCompat.variable} ${courierPrime.variable}`}>
       <body className="antialiased">
-        <main className="container mx-auto px-4">
-          {children}
-        </main>
+        {children}
       </body>
     </html>
   );

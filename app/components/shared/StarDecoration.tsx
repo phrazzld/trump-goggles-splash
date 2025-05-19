@@ -11,6 +11,7 @@ const StarDecoration: React.FC<StarDecorationProps> = ({ className, size = 24 })
     <Star 
       className={cn('text-retro-gold fill-retro-gold', className)}
       size={size}
+      aria-hidden="true"
     />
   )
 }

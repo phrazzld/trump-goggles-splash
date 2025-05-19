@@ -14,6 +14,7 @@ export default function Hero() {
       initial={shouldReduceMotion ? {} : { opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.7 }}
+      aria-labelledby="hero-heading"
     >
       {/* Background texture overlay */}
       <div className="absolute inset-0 texture-paper opacity-10" />
@@ -56,6 +57,7 @@ export default function Hero() {
       >
         {/* Main headline */}
         <motion.h1 
+          id="hero-heading"
           className="text-retro-blue mb-10 text-shadow-hero"
           initial={shouldReduceMotion ? {} : { opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -90,6 +92,7 @@ export default function Hero() {
             <ExternalLink
               href="https://chromewebstore.google.com/detail/trump-goggles/jffbimfdmgbfannficjejaffmnggoigd"
               variant="button"
+              ariaLabel="Install Trump Goggles from Chrome Web Store"
               buttonProps={{
                 variant: "primary",
                 size: "lg",

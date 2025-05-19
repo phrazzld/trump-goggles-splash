@@ -98,7 +98,7 @@ Transform the minimal splash page into a professional, engaging, and accurate la
     - **Done-when:** Sections animate smoothly on scroll/load
     - **Depends-on:** [T009]
 
-- [ ] **T011 · Feature · P0: Accessibility & Responsive Design**
+- [x] **T011 · Feature · P0: Accessibility & Responsive Design**
     - Ensure WCAG 2.1 AA compliance
     - Test keyboard navigation and focus states
     - Verify responsive layout at all breakpoints (mobile → desktop)
@@ -137,16 +137,16 @@ Transform the minimal splash page into a professional, engaging, and accurate la
 - GitHub Repository: `https://github.com/phrazzld/trump-goggles`
 
 ## ✅ Success Criteria
-- [ ] Extension description accurately states "translates text to Trumpisms"
-- [ ] Chrome Web Store link prominently displayed and functional
-- [ ] GitHub repository link in footer
-- [ ] Bold, attention-grabbing typography throughout
-- [ ] Page feels professionally designed and "full"
-- [ ] All sections responsive and accessible
-- [ ] Consistent retro Americana aesthetic maintained
+- [x] Extension description accurately states "translates text to Trumpisms"
+- [x] Chrome Web Store link prominently displayed and functional
+- [x] GitHub repository link in footer
+- [x] Bold, attention-grabbing typography throughout
+- [x] Page feels professionally designed and "full"
+- [x] All sections responsive and accessible
+- [x] Consistent retro Americana aesthetic maintained
 
 ## 🚨 Critical Fixes
-1. Update Hero description - CURRENTLY INCORRECT
-2. Add Chrome Web Store link - CURRENTLY MISSING
-3. Add GitHub repository link - CURRENTLY MISSING
-4. Implement bold typography - CURRENT FONTS ARE MEH
+1. ~~Update Hero description~~ - FIXED
+2. ~~Add Chrome Web Store link~~ - FIXED
+3. ~~Add GitHub repository link~~ - FIXED
+4. ~~Implement bold typography~~ - FIXED

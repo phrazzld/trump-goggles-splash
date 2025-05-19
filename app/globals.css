@@ -18,6 +18,26 @@ html {
   font-size: 16px;
 }
 
+/* Focus styles for better keyboard navigation */
+:focus-visible {
+  outline: 3px solid var(--color-retro-blue);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Ensure visually hidden content is still accessible to screen readers */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
 /* Typography Base Styles */
 @layer base {
   body {

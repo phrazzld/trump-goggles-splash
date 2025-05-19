@@ -61,14 +61,15 @@ const containerVariants: Variants = {
 
 export default function InstallationGuide() {
   return (
-    <AnimatedSection className="py-20 px-6 relative bg-white" delay={0.3}>
+    <section aria-labelledby="installation-guide-heading">
+      <AnimatedSection className="py-20 px-6 relative bg-white" delay={0.3}>
       {/* Background decorations */}
       <AnimatedStar className="absolute top-[15%] left-[10%] w-10 h-10 opacity-20 rotate-45" delay={0.2} />
       <AnimatedStar className="absolute bottom-[25%] right-[5%] w-12 h-12 opacity-15 -rotate-12" delay={0.4} />
       <AnimatedStar className="absolute top-[70%] right-[20%] w-6 h-6 opacity-10" delay={0.6} />
 
       <div className="max-w-5xl mx-auto">
-        <SectionHeading level={2} className="text-center mb-8">
+        <SectionHeading level={2} className="text-center mb-8" id="installation-guide-heading">
           How to Install Trump Goggles
         </SectionHeading>
 
@@ -131,6 +132,7 @@ export default function InstallationGuide() {
             <ExternalLink
               href="https://chromewebstore.google.com/detail/trump-goggles/jffbimfdmgbfannficjejaffmnggoigd"
               variant="button"
+              ariaLabel="Install Trump Goggles from Chrome Web Store"
               buttonProps={{
                 variant: "primary",
                 size: "lg",
@@ -152,6 +154,7 @@ export default function InstallationGuide() {
             <ExternalLink
               href="https://github.com/phrazzld/trump-goggles"
               className="text-lg font-semibold"
+              ariaLabel="View Trump Goggles source code on GitHub"
             >
               View on GitHub →
             </ExternalLink>
@@ -173,5 +176,6 @@ export default function InstallationGuide() {
         </motion.div>
       </div>
     </AnimatedSection>
+    </section>
   );
 }

@@ -9,14 +9,15 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <AnimatedSection 
-      className="relative bg-retro-black text-retro-cream py-12 px-6" 
-      delay={0.4}
-      customVariants={{
-        hidden: { opacity: 0 },
-        visible: { opacity: 1 }
-      }}
-    >
+    <footer>
+      <AnimatedSection 
+        className="relative bg-retro-black text-retro-cream py-12 px-6" 
+        delay={0.4}
+        customVariants={{
+          hidden: { opacity: 0 },
+          visible: { opacity: 1 }
+        }}
+      >
       {/* Decorative elements */}
       <AnimatedStar className="absolute top-[20%] left-[5%] w-6 h-6 opacity-20" delay={0.1} />
       <AnimatedStar className="absolute bottom-[30%] right-[10%] w-8 h-8 opacity-20 rotate-45" delay={0.3} />
@@ -38,6 +39,7 @@ export default function Footer() {
           <ExternalLink
             href="https://github.com/phrazzld/trump-goggles"
             className="text-retro-cream hover:text-retro-gold transition-colors text-lg font-semibold"
+            ariaLabel="View Trump Goggles source code on GitHub"
           >
             View on GitHub →
           </ExternalLink>
@@ -76,9 +78,10 @@ export default function Footer() {
           transition={{ duration: 0.4, delay: 0.7 }}
           viewport={{ once: true }}
         >
-          Made with <span className="text-retro-red">♥</span> for the internet
+          Made with <span className="text-retro-red" aria-label="love">♥</span> for the internet
         </motion.div>
       </motion.div>
     </AnimatedSection>
+    </footer>
   );
 }

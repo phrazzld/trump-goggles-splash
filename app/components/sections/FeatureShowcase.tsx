@@ -46,14 +46,15 @@ const itemVariants: Variants = {
 
 export default function FeatureShowcase() {
   return (
-    <AnimatedSection className="py-20 px-6 relative">
+    <section aria-labelledby="feature-showcase-heading">
+      <AnimatedSection className="py-20 px-6 relative">
       {/* Background accent elements */}
       <AnimatedStar className="absolute top-[20%] left-[5%] w-8 h-8 opacity-30 -rotate-12" delay={0.2} />
       <AnimatedStar className="absolute bottom-[30%] right-[8%] w-10 h-10 opacity-30 rotate-45" delay={0.4} />
       <AnimatedStar className="absolute top-[50%] left-[90%] w-6 h-6 opacity-20" delay={0.6} />
 
       <div className="max-w-6xl mx-auto">
-        <SectionHeading level={2} className="text-center mb-8">
+        <SectionHeading level={2} className="text-center mb-8" id="feature-showcase-heading">
           How Trump Goggles Works
         </SectionHeading>
 
@@ -134,5 +135,6 @@ export default function FeatureShowcase() {
         </motion.div>
       </div>
     </AnimatedSection>
+    </section>
   );
 }

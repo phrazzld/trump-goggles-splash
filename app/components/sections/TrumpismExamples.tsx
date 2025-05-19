@@ -46,7 +46,8 @@ const cardVariants: Variants = {
 
 export default function TrumpismExamples() {
   return (
-    <AnimatedSection className="py-20 px-6 relative bg-retro-cream" delay={0.2}>
+    <section aria-labelledby="trumpism-examples-heading">
+      <AnimatedSection className="py-20 px-6 relative bg-retro-cream" delay={0.2}>
       {/* Background accent elements */}
       <AnimatedStar className="absolute top-[10%] right-[15%] w-12 h-12 opacity-20 rotate-12" delay={0.1} />
       <AnimatedStar className="absolute bottom-[20%] left-[10%] w-8 h-8 opacity-20 -rotate-45" delay={0.3} />
@@ -54,7 +55,7 @@ export default function TrumpismExamples() {
       <AnimatedStar className="absolute bottom-[10%] right-[5%] w-10 h-10 opacity-15 rotate-30" delay={0.7} />
 
       <div className="max-w-7xl mx-auto">
-        <SectionHeading level={2} className="text-center mb-4">
+        <SectionHeading level={2} className="text-center mb-4" id="trumpism-examples-heading">
           Iconic Trumpisms
         </SectionHeading>
 
@@ -136,5 +137,6 @@ export default function TrumpismExamples() {
         </motion.div>
       </div>
     </AnimatedSection>
+    </section>
   );
 }
