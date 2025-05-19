@@ -115,7 +115,7 @@ Transform the minimal splash page into a professional, engaging, and accurate la
     - **Done-when:** 90%+ coverage on shared components
     - **Depends-on:** [T002, T003]
 
-- [~] **T013 · Test · P1: Create Storybook Stories**
+- [x] **T013 · Test · P1: Create Storybook Stories**
     - Stories for all shared components (SectionHeading, ExternalLink)
     - Stories for section components (FeatureShowcase, TrumpismExamples, etc.)
     - Include accessibility checks

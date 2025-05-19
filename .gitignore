@@ -19,6 +19,7 @@
 
 # production
 /build
+/storybook-static
 
 # misc
 .DS_Store
@@ -41,3 +42,5 @@ yarn-error.log*
 next-env.d.ts
 
 thinktank_*/
+
+*storybook.log
