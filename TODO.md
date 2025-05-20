@@ -197,7 +197,7 @@
         2. A test PR with a deliberate violation (e.g., an `any` type) fails the CI build at the appropriate step.
     - **Depends‑on:** [T008, T009, T010, T012, T013, T014, T015, T016]
 
-- [ ] **T018 · Chore · P3: update `CONTRIBUTING.md` with "no `any`" and "no suppression" policies**
+- [x] **T018 · Chore · P3: update `CONTRIBUTING.md` with "no `any`" and "no suppression" policies**
     - **Context:** Documentation - README/CONTRIBUTING Updates
     - **Action:**
         1. Add a section to `CONTRIBUTING.md` or project development guidelines stating the "no `any`" and "no suppression directives" policy.
