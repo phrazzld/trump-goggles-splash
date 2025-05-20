@@ -46,7 +46,7 @@
         1. Run `pnpm test` and confirm zero failing tests.
     - **Depends‑on:** [T001]
 
-- [ ] **T005 · Test · P1: resolve skipped tests in `app/components/shared/ExternalLink.test.tsx`**
+- [x] **T005 · Test · P1: resolve skipped tests in `app/components/shared/ExternalLink.test.tsx`**
     - **Context:** Detailed Build Steps - 3.1 (Critical for `ExternalLink.test.tsx`)
     - **Action:**
         1. For each skipped test in `ExternalLink.test.tsx` (from T001): unskip, analyze, and refactor/implement.
