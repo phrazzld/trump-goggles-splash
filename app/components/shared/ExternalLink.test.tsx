@@ -40,8 +40,7 @@ describe('ExternalLink', () => {
       expect(link).toHaveAttribute('rel', 'noopener noreferrer');
     });
 
-    // The component doesn't currently support overriding target attribute
-    it.skip('allows overriding target attribute', () => {
+    it('allows overriding target attribute', () => {
       render(
         <ExternalLink href="https://example.com" target="_self">
           Example Link
@@ -51,8 +50,7 @@ describe('ExternalLink', () => {
       expect(link).toHaveAttribute('target', '_self');
     });
 
-    // The component doesn't currently support overriding rel attribute
-    it.skip('allows overriding rel attribute', () => {
+    it('allows overriding rel attribute', () => {
       render(
         <ExternalLink href="https://example.com" rel="author">
           Example Link
@@ -126,8 +124,7 @@ describe('ExternalLink', () => {
   });
 
   describe('Props Inheritance', () => {
-    // The component doesn't pass through additional props
-    it.skip('passes through additional props', () => {
+    it('passes through additional props', () => {
       render(
         <ExternalLink 
           href="https://example.com" 

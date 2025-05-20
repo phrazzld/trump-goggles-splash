@@ -10,13 +10,21 @@ interface BaseExternalLinkProps {
   children: ReactNode;
   className?: string;
   ariaLabel?: string;
+  target?: string;
+  rel?: string;
 }
 
-interface TextLinkProps extends BaseExternalLinkProps {
+// Extend BaseExternalLinkProps to include all HTML anchor attributes
+type BaseProps = BaseExternalLinkProps & Omit<
+  React.AnchorHTMLAttributes<HTMLAnchorElement>,
+  keyof BaseExternalLinkProps
+>;
+
+interface TextLinkProps extends BaseProps {
   variant?: "text";
 }
 
-interface ButtonLinkProps extends BaseExternalLinkProps {
+interface ButtonLinkProps extends BaseProps {
   variant: "button";
   buttonProps?: Omit<RetroButtonProps, "children" | "onClick">;
 }
@@ -24,13 +32,23 @@ interface ButtonLinkProps extends BaseExternalLinkProps {
 export type ExternalLinkProps = TextLinkProps | ButtonLinkProps;
 
 export default function ExternalLink(props: ExternalLinkProps) {
-  const { href, children, className, ariaLabel, variant = "text" } = props;
+  const { 
+    href, 
+    children, 
+    className, 
+    ariaLabel, 
+    target, 
+    rel,
+    variant = "text",
+    ...restProps 
+  } = props;
 
-  // Security attributes for all external links
+  // Security attributes for all external links with ability to override
   const linkProps = {
+    ...restProps, // Spread additional props first so specific props take precedence
     href,
-    target: "_blank",
-    rel: "noopener noreferrer",
+    target: target ?? "_blank", // Use provided target or default to _blank
+    rel: rel ?? "noopener noreferrer", // Use provided rel or default to noopener noreferrer
     ...(ariaLabel && { "aria-label": ariaLabel }),
   };
 

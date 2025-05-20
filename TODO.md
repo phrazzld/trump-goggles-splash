@@ -12,7 +12,7 @@
         1. Review the generated list against the test runner output for completeness.
     - **Depends‑on:** none
 
-- [ ] **T002 · Bugfix · P1: resolve failing tests in `app/components/shared/ExternalLink.test.tsx`**
+- [x] **T002 · Bugfix · P1: resolve failing tests in `app/components/shared/ExternalLink.test.tsx`**
     - **Context:** Detailed Build Steps - 2.1
     - **Action:**
         1. For each failing test in `ExternalLink.test.tsx` (from T001), analyze, debug, and fix the component logic or test itself.
