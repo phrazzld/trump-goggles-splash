@@ -24,7 +24,7 @@
         2. Run `pnpm test` to check for regressions.
     - **Depends‑on:** [T001]
 
-- [ ] **T003 · Bugfix · P1: resolve failing tests in `app/components/shared/RetroButton.test.tsx`**
+- [x] **T003 · Bugfix · P1: resolve failing tests in `app/components/shared/RetroButton.test.tsx`**
     - **Context:** Detailed Build Steps - 2.1
     - **Action:**
         1. For each failing test in `RetroButton.test.tsx` (from T001), analyze, debug, and fix the component logic or test itself.
