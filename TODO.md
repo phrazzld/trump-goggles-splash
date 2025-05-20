@@ -91,7 +91,7 @@
     - **Depends‑on:** [T002, T003, T004, T005, T006, T007]
 
 ## Tooling Configuration
-- [ ] **T009 · Chore · P1: configure `tsconfig.json` for maximum strictness**
+- [x] **T009 · Chore · P1: configure `tsconfig.json` for maximum strictness**
     - **Context:** Detailed Build Steps - 5.1
     - **Action:**
         1. In `tsconfig.json`, ensure `"strict": true` is enabled.
