@@ -119,7 +119,7 @@
     - **Depends‑on:** none
 
 ## Code Quality Audit & Refactoring
-- [ ] **T011 · Chore · P1: audit codebase for `any` usages and suppression directives**
+- [x] **T011 · Chore · P1: audit codebase for `any` usages and suppression directives**
     - **Context:** Detailed Build Steps - 6
     - **Action:**
         1. Run `pnpm lint` and `pnpm tsc --noEmit` after T009 & T010 are configured.
