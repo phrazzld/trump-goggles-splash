@@ -57,7 +57,7 @@
         1. Run `pnpm test app/components/shared/ExternalLink.test.tsx` and confirm no skipped tests and all active tests pass.
     - **Depends‑on:** [T001]
 
-- [ ] **T006 · Test · P1: resolve skipped tests in `app/components/shared/RetroButton.test.tsx`**
+- [x] **T006 · Test · P1: resolve skipped tests in `app/components/shared/RetroButton.test.tsx`**
     - **Context:** Detailed Build Steps - 3.1 (Critical for `RetroButton.test.tsx`)
     - **Action:**
         1. For each skipped test in `RetroButton.test.tsx` (from T001): unskip, analyze, and refactor/implement.
