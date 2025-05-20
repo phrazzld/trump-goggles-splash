@@ -38,7 +38,6 @@ type LinkPropsWithButtonProps = {
   rel: string;
   "aria-label"?: string | undefined;
   buttonProps?: Omit<RetroButtonProps, "children" | "onClick"> | undefined;
-  [key: string]: unknown; // For other HTMLAnchorElement attributes
 };
 
 export default function ExternalLink(props: ExternalLinkProps) {

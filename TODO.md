@@ -1,207 +1,142 @@
 # Todo
 
-## Test Suite Audit & Remediation
-- [x] **T001 · Chore · P0: audit and document all failing and skipped tests**
-    - **Context:** Detailed Build Steps - 1.3
+## ExternalLink Component Remediation
+- [x] **T001 · Refactor · P1: remove `[key: string]: unknown` from `LinkPropsWithButtonProps` in `ExternalLink.tsx`**
+    - **Context:** PLAN.md – cr‑01 Type Safety Loophole, Steps 1 & 2
     - **Action:**
-        1. Execute `pnpm test` after `pnpm install`.
-        2. Systematically document all failing tests (name, file, error) and all skipped tests (name, file, e.g., `it.skip`, commented out), focusing on `app/components/shared/ExternalLink.test.tsx` and `app/components/shared/RetroButton.test.tsx`.
+        1.  In `app/components/shared/ExternalLink.tsx`, locate the `LinkPropsWithButtonProps` type definition (around line 36).
+        2.  Remove the `[key: string]: unknown;` line from this type.
     - **Done‑when:**
-        1. A comprehensive list of all failing and skipped tests is created and accessible.
-    - **Verification:**
-        1. Review the generated list against the test runner output for completeness.
+        1.  The `[key: string]: unknown;` line is removed from `LinkPropsWithButtonProps`.
     - **Depends‑on:** none
 
-- [x] **T002 · Bugfix · P1: resolve failing tests in `app/components/shared/ExternalLink.test.tsx`**
-    - **Context:** Detailed Build Steps - 2.1
+- [ ] **T002 · Refactor · P1: ensure `BaseProps` strictly types passthrough anchor attributes in `ExternalLink.tsx`**
+    - **Context:** PLAN.md – cr‑01 Type Safety Loophole, Step 3
     - **Action:**
-        1. For each failing test in `ExternalLink.test.tsx` (from T001), analyze, debug, and fix the component logic or test itself.
-        2. Ensure fixes align with `DEVELOPMENT_PHILOSOPHY.md` (e.g., "Testing Strategy - Verify Behavior", "Mock ONLY True External System Boundaries").
+        1.  In `app/components/shared/ExternalLink.tsx`, verify that `BaseProps` (or the type used for `restProps` that are spread into `linkProps` or `finalAnchorProps`) is correctly defined using `Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, ...>` to only allow valid anchor attributes.
+        2.  Ensure the `Omit` excludes props already handled by component-specific props (e.g., `href`, `children`, `variant`).
+        3.  If `BaseProps` is not correctly defined or needs adjustment, update it accordingly.
     - **Done‑when:**
-        1. All previously failing tests in `app/components/shared/ExternalLink.test.tsx` pass reliably.
-    - **Verification:**
-        1. Run `pnpm test app/components/shared/ExternalLink.test.tsx` and confirm all tests pass.
-        2. Run `pnpm test` to check for regressions.
-    - **Depends‑on:** [T001]
-
-- [x] **T003 · Bugfix · P1: resolve failing tests in `app/components/shared/RetroButton.test.tsx`**
-    - **Context:** Detailed Build Steps - 2.1
-    - **Action:**
-        1. For each failing test in `RetroButton.test.tsx` (from T001), analyze, debug, and fix the component logic or test itself.
-        2. Ensure fixes align with `DEVELOPMENT_PHILOSOPHY.md`.
-    - **Done‑when:**
-        1. All previously failing tests in `app/components/shared/RetroButton.test.tsx` pass reliably.
-    - **Verification:**
-        1. Run `pnpm test app/components/shared/RetroButton.test.tsx` and confirm all tests pass.
-        2. Run `pnpm test` to check for regressions.
-    - **Depends‑on:** [T001]
-
-- [x] **T004 · Bugfix · P2: resolve other identified failing tests project-wide**
-    - **Context:** Detailed Build Steps - 2.1
-    - **Action:**
-        1. For any other failing tests identified in T001 (outside T002, T003 scopes), analyze, debug, and fix.
-    - **Done‑when:**
-        1. All failing tests identified in T001 now pass reliably.
-    - **Verification:**
-        1. Run `pnpm test` and confirm zero failing tests.
-    - **Depends‑on:** [T001]
-
-- [x] **T005 · Test · P1: resolve skipped tests in `app/components/shared/ExternalLink.test.tsx`**
-    - **Context:** Detailed Build Steps - 3.1 (Critical for `ExternalLink.test.tsx`)
-    - **Action:**
-        1. For each skipped test in `ExternalLink.test.tsx` (from T001): unskip, analyze, and refactor/implement.
-        2. Investigate skipped tests for `target`, `rel` props: if these props should be supported, ensure component implements this and tests verify; if not, tests should reflect actual supported API.
-    - **Done‑when:**
-        1. All previously skipped tests in `app/components/shared/ExternalLink.test.tsx` are active and pass reliably, or are appropriately removed/adapted with justification.
-    - **Verification:**
-        1. Run `pnpm test app/components/shared/ExternalLink.test.tsx` and confirm no skipped tests and all active tests pass.
-    - **Depends‑on:** [T001]
-
-- [x] **T006 · Test · P1: resolve skipped tests in `app/components/shared/RetroButton.test.tsx`**
-    - **Context:** Detailed Build Steps - 3.1 (Critical for `RetroButton.test.tsx`)
-    - **Action:**
-        1. For each skipped test in `RetroButton.test.tsx` (from T001): unskip, analyze, and refactor/implement.
-        2. Evaluate if `href`-related tests are appropriate; if `RetroButton` is not navigational, remove/adapt tests to actual `RetroButton` responsibilities.
-    - **Done‑when:**
-        1. All previously skipped tests in `app/components/shared/RetroButton.test.tsx` are active and pass reliably, or are appropriately removed/adapted with justification.
-    - **Verification:**
-        1. Run `pnpm test app/components/shared/RetroButton.test.tsx` and confirm no skipped tests and all active tests pass.
-    - **Depends‑on:** [T001]
-
-- [x] **T007 · Test · P2: resolve other identified skipped tests project-wide**
-    - **Context:** Detailed Build Steps - 3.1
-    - **Action:**
-        1. For any other skipped tests identified in T001 (outside T005, T006 scopes), unskip, analyze, and refactor/implement.
-    - **Done‑when:**
-        1. All skipped tests identified in T001 are active and pass reliably, or are appropriately removed/adapted.
-    - **Verification:**
-        1. Run `pnpm test` and confirm zero skipped tests.
-    - **Depends‑on:** [T001]
-
-- [x] **T008 · Test · P1: verify full test suite health (100% pass, coverage, determinism)**
-    - **Context:** Detailed Build Steps - 4
-    - **Action:**
-        1. Run `pnpm test` and `pnpm test:cov`.
-        2. Confirm 100% of tests pass and tests are deterministic (pass consistently in a clean environment).
-        3. Ensure test coverage meets or exceeds thresholds defined in `vitest.config.ts`.
-    - **Done‑when:**
-        1. `pnpm test` reports 100% pass rate with no skipped tests.
-        2. Test coverage meets or exceeds defined thresholds.
-        3. Tests pass consistently.
-    - **Depends‑on:** [T002, T003, T004, T005, T006, T007]
-
-## Tooling Configuration
-- [x] **T009 · Chore · P1: configure `tsconfig.json` for maximum strictness**
-    - **Context:** Detailed Build Steps - 5.1
-    - **Action:**
-        1. In `tsconfig.json`, ensure `"strict": true` is enabled.
-        2. Verify derived strict flags like `"noImplicitAny": true` are active.
-        3. Set `"noEmitOnError": true` (or ensure CI build script fails on `tsc --noEmit` errors).
-    - **Done‑when:**
-        1. `tsconfig.json` is updated with specified strict settings.
-        2. `pnpm tsc --noEmit` (or equivalent type-checking script) reflects these settings.
-    - **Verification:**
-        1. Introduce a deliberate type error (e.g. `const x: string = 123;`) and confirm `tsc --noEmit` fails.
+        1.  `BaseProps` (or equivalent type for spreadable anchor attributes) is confirmed or updated to correctly and strictly type passthrough attributes for the `<a>` tag.
     - **Depends‑on:** none
 
-- [x] **T010 · Chore · P1: configure ESLint to forbid `any` and suppression directives**
-    - **Context:** Detailed Build Steps - 5.2
+- [ ] **T003 · Refactor · P1: explicitly type legitimate passthrough `data-*` or other attributes in `ExternalLink.tsx` if needed**
+    - **Context:** PLAN.md – cr‑01 Type Safety Loophole, Step 4
     - **Action:**
-        1. In ESLint config (`eslint.config.mjs` or equivalent), set `@typescript-eslint/no-explicit-any` to `error`.
-        2. Set `@typescript-eslint/ban-ts-comment` to `error` for `@ts-ignore`, `@ts-expect-error` (allowing with descriptive required comment only if unavoidable and peer-reviewed), and `@ts-nocheck`.
-        3. Consider `eslint-plugin-eslint-comments` rules like `no-restricted-disable` to manage `eslint-disable` comments.
+        1.  After T001 and T002 are complete, run `pnpm tsc --noEmit` to identify type errors from previously untyped passthrough props.
+        2.  If legitimate props (e.g., specific `data-*` attributes) cause errors, explicitly add them to `BaseExternalLinkProps` or a relevant intersected type within `app/components/shared/ExternalLink.tsx`.
     - **Done‑when:**
-        1. ESLint configuration is updated to enforce these rules at error level.
-        2. `pnpm lint` reflects these settings.
+        1.  All legitimate, previously untyped passthrough attributes are explicitly typed.
+        2.  `pnpm tsc --noEmit` shows no new errors related to these newly typed attributes in `ExternalLink.tsx`.
+    - **Depends‑on:** [T001, T002]
+
+- [ ] **T004 · Chore · P1: validate cr-01 type safety changes and linting for `ExternalLink.tsx`**
+    - **Context:** PLAN.md – cr‑01 Type Safety Loophole, Step 5 & Done-When criteria
+    - **Action:**
+        1.  Run `pnpm tsc --noEmit`.
+        2.  Run `pnpm lint`.
+        3.  Address any new type or lint errors in `ExternalLink.tsx` props stemming from cr-01 changes (T001, T002, T003).
+    - **Done‑when:**
+        1.  `pnpm tsc --noEmit` passes without errors related to `ExternalLink.tsx` props.
+        2.  `pnpm lint` passes without errors related to `ExternalLink.tsx` props.
+    - **Depends‑on:** [T003]
+
+- [ ] **T005 · Refactor · P1: destructure `props` for button variant in `ExternalLink.tsx` separating `buttonProps` and `anchorRestProps`**
+    - **Context:** PLAN.md – cr‑02 Convoluted Handling of `buttonProps`, Steps 1 & 2
+    - **Action:**
+        1.  In `app/components/shared/ExternalLink.tsx` (around lines 65-73), for the `variant === "button"` case, refactor prop destructuring.
+        2.  Cast `props` to `ButtonLinkProps` and destructure to separate `buttonProps`, other link-specific props (`currentHref`, `currentChildren`, etc.), and `...anchorRestProps` as per the plan's example.
+    - **Done‑when:**
+        1.  Component `props` for the button variant are destructured as specified, correctly isolating `buttonProps` and `anchorRestProps`.
+    - **Depends‑on:** [T004]
+
+- [ ] **T006 · Refactor · P1: remove redundant `buttonProps` assignment to `linkProps` in `ExternalLink.tsx`**
+    - **Context:** PLAN.md – cr‑02 Convoluted Handling of `buttonProps`, Step 3
+    - **Action:**
+        1.  In `app/components/shared/ExternalLink.tsx`, delete the line `linkProps.buttonProps = buttonProps;`.
+    - **Done‑when:**
+        1.  The line `linkProps.buttonProps = buttonProps;` is removed.
+    - **Depends‑on:** [T005]
+
+- [ ] **T007 · Refactor · P1: remove eslint suppression and associated unused `buttonProps` destructuring in `ExternalLink.tsx`**
+    - **Context:** PLAN.md – cr‑02 Convoluted Handling of `buttonProps`, Step 4
+    - **Action:**
+        1.  In `app/components/shared/ExternalLink.tsx`, remove the `eslint-disable-next-line @typescript-eslint/no-unused-vars` comment.
+        2.  Remove the subsequent destructuring: `const { buttonProps: unusedButtonProps, ...cleanLinkProps } = linkProps;`.
+    - **Done‑when:**
+        1.  The specified ESLint suppression comment is removed.
+        2.  The unused `buttonProps` destructuring from `linkProps` is removed.
+    - **Depends‑on:** [T006]
+
+- [ ] **T008 · Refactor · P1: construct `finalAnchorProps` with `anchorRestProps` for button variant in `ExternalLink.tsx`**
+    - **Context:** PLAN.md – cr‑02 Convoluted Handling of `buttonProps`, Step 5
+    - **Action:**
+        1.  In `app/components/shared/ExternalLink.tsx` for the button variant, construct the `finalAnchorProps` object for the `<a>` tag using `currentHref`, `currentTarget`, `currentRel`, `currentAriaLabel`, `currentClassName` (merged with `cn`), and spread `anchorRestProps` as per the plan's example.
+        2.  Ensure `anchorRestProps` are correctly typed, leveraging the strict typing established in cr-01.
+    - **Done‑when:**
+        1.  `finalAnchorProps` is correctly constructed for the button variant, incorporating `anchorRestProps` and adhering to strict typing.
+    - **Depends‑on:** [T005]
+
+- [ ] **T009 · Refactor · P1: pass `buttonProps` directly to `RetroButton` component in `ExternalLink.tsx`**
+    - **Context:** PLAN.md – cr‑02 Convoluted Handling of `buttonProps`, Step 6
+    - **Action:**
+        1.  In `app/components/shared/ExternalLink.tsx`, modify the `<RetroButton />` component invocation within the button variant to receive the isolated `buttonProps` directly.
+    - **Done‑when:**
+        1.  The `buttonProps` object is passed directly as a prop to the `<RetroButton />` component.
+    - **Depends‑on:** [T005]
+
+- [ ] **T010 · Refactor · P1: adjust `LinkPropsWithButtonProps` type or its usage for button variant anchor props in `ExternalLink.tsx`**
+    - **Context:** PLAN.md – cr‑02 Convoluted Handling of `buttonProps`, Step 7
+    - **Action:**
+        1.  Review the type used for props spread onto the `<a>` tag in the `variant === "button"` case in `app/components/shared/ExternalLink.tsx`.
+        2.  If `LinkPropsWithButtonProps` (or a derivative) was effectively typing these anchor props, ensure it's adjusted or replaced so that it does not expect `buttonProps` to be part of the anchor tag's own props.
+    - **Done‑when:**
+        1.  The type definition for props passed to the `<a>` element in the button variant accurately reflects that `buttonProps` are not spread onto it.
+    - **Depends‑on:** [T005, T008]
+
+- [ ] **T011 · Refactor · P2: verify and clarify text variant prop handling in `ExternalLink.tsx`**
+    - **Context:** PLAN.md – cr‑02 Convoluted Handling of `buttonProps`, Step 8
+    - **Action:**
+        1.  In `app/components/shared/ExternalLink.tsx`, review the prop handling for the text variant.
+        2.  If it shared parts of the convoluted logic or its clarity can be improved post cr-01 changes, refactor it for consistency, ensuring it uses strictly typed props directly.
+    - **Done‑when:**
+        1.  Prop handling for the text variant is clear, direct, and uses strictly typed props.
+    - **Depends‑on:** [T004, T010]
+
+- [ ] **T012 · Chore · P1: validate cr-02 prop handling refactor and linting for `ExternalLink.tsx`**
+    - **Context:** PLAN.md – cr‑02 Convoluted Handling of `buttonProps`, Step 9 & Done-When criteria
+    - **Action:**
+        1.  Run `pnpm tsc --noEmit`.
+        2.  Run `pnpm lint`.
+        3.  Address any new type or lint errors in `ExternalLink.tsx` props stemming from cr-02 changes (T005-T011).
+    - **Done‑when:**
+        1.  `pnpm tsc --noEmit` passes without errors related to `ExternalLink`.
+        2.  `pnpm lint` passes without errors related to `ExternalLink`, and the targeted suppression is removed.
+    - **Depends‑on:** [T007, T008, T009, T010, T011]
+
+- [ ] **T013 · Test · P1: ensure all automated tests for `ExternalLink.tsx` pass after remediation**
+    - **Context:** PLAN.md – Validation Checklist
+    - **Action:**
+        1.  Run all unit and integration tests for `ExternalLink.tsx`.
+        2.  If necessary, add new tests to cover the refactored prop handling, specific passthrough props, or distinct variant behaviors.
+    - **Done‑when:**
+        1.  All existing automated tests for `ExternalLink.tsx` pass.
+        2.  Any new tests required by the refactor are added and pass.
+    - **Depends‑on:** [T012]
+
+- [ ] **T014 · Chore · P2: perform manual review of `ExternalLink` component in storybook/dev page**
+    - **Context:** PLAN.md – Validation Checklist
+    - **Action:**
+        1.  Manually review `ExternalLink` component in Storybook or a development page.
+        2.  Confirm text variant renders correctly with various passthrough anchor attributes.
+        3.  Confirm button variant renders correctly, with anchor attributes on the `<a>` tag and button-specific props correctly applied to the `<RetroButton>`.
+        4.  Inspect the DOM for both variants to confirm no unexpected attributes are present.
+    - **Done‑when:**
+        1.  Manual review confirms correct rendering and attribute application for all variants as per the plan.
+        2.  No unexpected attributes are found on DOM elements.
     - **Verification:**
-        1. Introduce a deliberate `any` usage (e.g. `let foo: any;`) and confirm `pnpm lint` reports an error.
-        2. Introduce a `@ts-ignore` comment and confirm `pnpm lint` reports an error.
-    - **Depends‑on:** none
+        1.  For text variant: Test `id`, `data-testid`, `target`, `rel`, `aria-label`, `className` are correctly applied to the `<a>` tag.
+        2.  For button variant: Test anchor-specific props (e.g., `id` for `<a>`) and `buttonProps` (e.g., a button `variant`, `disabled`) are correctly applied to the `<a>` tag and the `<RetroButton>` respectively.
+    - **Depends‑on:** [T013]
 
-## Code Quality Audit & Refactoring
-- [x] **T011 · Chore · P1: audit codebase for `any` usages and suppression directives**
-    - **Context:** Detailed Build Steps - 6
-    - **Action:**
-        1. Run `pnpm lint` and `pnpm tsc --noEmit` after T009 & T010 are configured.
-        2. Generate a comprehensive list of all `any` usages and suppression directive violations (`@ts-ignore`, `@ts-expect-error`, `eslint-disable`), noting patterns and high-impact areas.
-    - **Done‑when:**
-        1. A comprehensive list of all `any` usages and suppression directive violations is created and accessible.
-    - **Depends‑on:** [T009, T010]
-
-- [x] **T012 · Refactor · P1: eliminate `any` types in `app/components/shared/`**
-    - **Context:** Detailed Build Steps - 7; Modules Affected
-    - **Action:**
-        1. For each `any` usage in `app/components/shared/` (identified in T011): analyze context, define precise types (interfaces, prop types like `ExternalLinkProps`, `RetroButtonProps`), and replace `any`.
-        2. Resolve any new TypeScript errors and verify with `tsc --noEmit` and relevant tests.
-    - **Done‑when:**
-        1. No `any` types remain in `app/components/shared/` (props, function signatures, variables).
-        2. `pnpm tsc --noEmit` passes for this module.
-    - **Verification:**
-        1. Run `pnpm tsc --noEmit` and `pnpm test` focusing on `app/components/shared/`.
-    - **Depends‑on:** [T011]
-
-- [x] **T013 · Refactor · P2: eliminate `any` types in remaining codebase**
-    - **Context:** Detailed Build Steps - 7
-    - **Action:**
-        1. For each `any` usage outside `app/components/shared/` (identified in T011), repeat the process from T012.
-    - **Done‑when:**
-        1. No `any` types remain in the entire codebase.
-        2. `pnpm tsc --noEmit` passes project-wide.
-    - **Verification:**
-        1. Run `pnpm tsc --noEmit` project-wide.
-    - **Depends‑on:** [T011]
-
-- [x] **T014 · Refactor · P1: eliminate suppression directives in `app/components/shared/`**
-    - **Context:** Detailed Build Steps - 8; Modules Affected
-    - **Action:**
-        1. For each suppression directive in `app/components/shared/` (identified in T011): understand intent, refactor code to address the underlying TypeScript error or ESLint violation, and remove the directive.
-    - **Done‑when:**
-        1. No suppression directives remain in `app/components/shared/`.
-        2. `pnpm lint` and `pnpm tsc --noEmit` pass for this module.
-    - **Verification:**
-        1. Run `pnpm lint` and `pnpm tsc --noEmit` focusing on `app/components/shared/`.
-    - **Depends‑on:** [T011]
-
-- [x] **T015 · Refactor · P2: eliminate suppression directives in remaining codebase**
-    - **Context:** Detailed Build Steps - 8
-    - **Action:**
-        1. For each suppression directive outside `app/components/shared/` (identified in T011), repeat the process from T014.
-    - **Done‑when:**
-        1. No suppression directives remain in the entire codebase (unless exceptionally justified per plan).
-        2. `pnpm lint` and `pnpm tsc --noEmit` pass project-wide.
-    - **Verification:**
-        1. Run `pnpm lint` and `pnpm tsc --noEmit` project-wide.
-    - **Depends‑on:** [T011]
-
-- [x] **T016 · Refactor · P2: remove/replace disallowed `console.log/warn/error` from component source code**
-    - **Context:** Logging & Observability - CRITICAL
-    - **Action:**
-        1. Scan all component source code (not test files) for `console.log`, `console.warn`, or `console.error`.
-        2. Remove these statements or replace them with calls to a structured logging mechanism if they represent necessary operational logging.
-    - **Done‑when:**
-        1. No disallowed `console.*` statements remain in component source code.
-    - **Verification:**
-        1. Perform a codebase search for `console.log`, `console.warn`, `console.error` in component files.
-    - **Depends‑on:** none
-
-## CI Enforcement & Documentation
-- [x] **T017 · Chore · P1: configure CI pipeline for strict enforcement of all standards**
-    - **Context:** Detailed Build Steps - 9.3; `vitest.config.ts`
-    - **Action:**
-        1. Configure CI pipeline to fail on any ESLint error (including `no-explicit-any`, `ban-ts-comment`).
-        2. Configure CI to fail on any TypeScript compilation error (`tsc --noEmit`).
-        3. Configure CI to fail if any test fails or is skipped (e.g., Vitest's `forbidOnly` or equivalent).
-        4. Configure CI to fail if test coverage drops below established thresholds (from `vitest.config.ts`).
-    - **Done‑when:**
-        1. CI pipeline configuration is updated to enforce all specified checks.
-        2. A test PR with a deliberate violation (e.g., an `any` type) fails the CI build at the appropriate step.
-    - **Depends‑on:** [T008, T009, T010, T012, T013, T014, T015, T016]
-
-- [x] **T018 · Chore · P3: update `CONTRIBUTING.md` with "no `any`" and "no suppression" policies**
-    - **Context:** Documentation - README/CONTRIBUTING Updates
-    - **Action:**
-        1. Add a section to `CONTRIBUTING.md` or project development guidelines stating the "no `any`" and "no suppression directives" policy.
-        2. Reference `DEVELOPMENT_PHILOSOPHY.md` as appropriate.
-    - **Done‑when:**
-        1. `CONTRIBUTING.md` (or equivalent) is updated with the new policies.
-    - **Depends‑on:** none
+- [ ] **T015 · Chore · P2: conduct final code review for all `ExternalLink.tsx
