@@ -173,7 +173,7 @@
         1. Run `pnpm lint` and `pnpm tsc --noEmit` project-wide.
     - **Depends‑on:** [T011]
 
-- [ ] **T016 · Refactor · P2: remove/replace disallowed `console.log/warn/error` from component source code**
+- [x] **T016 · Refactor · P2: remove/replace disallowed `console.log/warn/error` from component source code**
     - **Context:** Logging & Observability - CRITICAL
     - **Action:**
         1. Scan all component source code (not test files) for `console.log`, `console.warn`, or `console.error`.
