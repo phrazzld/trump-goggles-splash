@@ -54,9 +54,12 @@ export default function ExternalLink(props: ExternalLinkProps) {
 
   if (variant === "button") {
     const { buttonProps } = props as ButtonLinkProps;
+    
+    // Remove buttonProps from linkProps to avoid React DOM attribute warnings
+    const { buttonProps: _, ...cleanLinkProps } = linkProps as any;
 
     return (
-      <a {...linkProps} className={className}>
+      <a {...cleanLinkProps} className={className}>
         <RetroButton {...buttonProps}>{children}</RetroButton>
       </a>
     );

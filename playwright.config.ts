@@ -7,6 +7,7 @@ export default defineConfig({
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 1 : undefined,
   reporter: 'html',
+  testMatch: '**/*.e2e.ts', // Override to use .e2e.ts extension to avoid conflicts
   use: {
     baseURL: 'http://localhost:3000',
     trace: 'on-first-retry',

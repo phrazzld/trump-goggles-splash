@@ -36,7 +36,7 @@
         2. Run `pnpm test` to check for regressions.
     - **Depends‑on:** [T001]
 
-- [ ] **T004 · Bugfix · P2: resolve other identified failing tests project-wide**
+- [x] **T004 · Bugfix · P2: resolve other identified failing tests project-wide**
     - **Context:** Detailed Build Steps - 2.1
     - **Action:**
         1. For any other failing tests identified in T001 (outside T002, T003 scopes), analyze, debug, and fix.
