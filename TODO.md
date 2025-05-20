@@ -162,7 +162,7 @@
         1. Run `pnpm lint` and `pnpm tsc --noEmit` focusing on `app/components/shared/`.
     - **Depends‑on:** [T011]
 
-- [ ] **T015 · Refactor · P2: eliminate suppression directives in remaining codebase**
+- [x] **T015 · Refactor · P2: eliminate suppression directives in remaining codebase**
     - **Context:** Detailed Build Steps - 8
     - **Action:**
         1. For each suppression directive outside `app/components/shared/` (identified in T011), repeat the process from T014.
