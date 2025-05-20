@@ -31,6 +31,16 @@ interface ButtonLinkProps extends BaseProps {
 
 export type ExternalLinkProps = TextLinkProps | ButtonLinkProps;
 
+// Type for the linkProps object that may include buttonProps
+type LinkPropsWithButtonProps = {
+  href: string;
+  target: string;
+  rel: string;
+  "aria-label"?: string | undefined;
+  buttonProps?: Omit<RetroButtonProps, "children" | "onClick"> | undefined;
+  [key: string]: unknown; // For other HTMLAnchorElement attributes
+};
+
 export default function ExternalLink(props: ExternalLinkProps) {
   const { 
     href, 
@@ -44,7 +54,7 @@ export default function ExternalLink(props: ExternalLinkProps) {
   } = props;
 
   // Security attributes for all external links with ability to override
-  const linkProps = {
+  const linkProps: LinkPropsWithButtonProps = {
     ...restProps, // Spread additional props first so specific props take precedence
     href,
     target: target ?? "_blank", // Use provided target or default to _blank
@@ -55,8 +65,15 @@ export default function ExternalLink(props: ExternalLinkProps) {
   if (variant === "button") {
     const { buttonProps } = props as ButtonLinkProps;
     
+    // Add buttonProps to linkProps if we're in button variant
+    if (buttonProps) {
+      linkProps.buttonProps = buttonProps;
+    }
+    
     // Remove buttonProps from linkProps to avoid React DOM attribute warnings
-    const { buttonProps: _, ...cleanLinkProps } = linkProps as any;
+    // Using proper typing instead of 'any'
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars -- Intentionally extracting buttonProps to remove from linkProps
+    const { buttonProps: unusedButtonProps, ...cleanLinkProps } = linkProps;
 
     return (
       <a {...cleanLinkProps} className={className}>

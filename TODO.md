@@ -128,7 +128,7 @@
         1. A comprehensive list of all `any` usages and suppression directive violations is created and accessible.
     - **Depends‑on:** [T009, T010]
 
-- [ ] **T012 · Refactor · P1: eliminate `any` types in `app/components/shared/`**
+- [x] **T012 · Refactor · P1: eliminate `any` types in `app/components/shared/`**
     - **Context:** Detailed Build Steps - 7; Modules Affected
     - **Action:**
         1. For each `any` usage in `app/components/shared/` (identified in T011): analyze context, define precise types (interfaces, prop types like `ExternalLinkProps`, `RetroButtonProps`), and replace `any`.
