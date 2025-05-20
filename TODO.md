@@ -104,7 +104,7 @@
         1. Introduce a deliberate type error (e.g. `const x: string = 123;`) and confirm `tsc --noEmit` fails.
     - **Depends‑on:** none
 
-- [ ] **T010 · Chore · P1: configure ESLint to forbid `any` and suppression directives**
+- [x] **T010 · Chore · P1: configure ESLint to forbid `any` and suppression directives**
     - **Context:** Detailed Build Steps - 5.2
     - **Action:**
         1. In ESLint config (`eslint.config.mjs` or equivalent), set `@typescript-eslint/no-explicit-any` to `error`.
