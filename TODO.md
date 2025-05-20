@@ -122,7 +122,7 @@ Transform the minimal splash page into a professional, engaging, and accurate la
     - **Done-when:** All components documented in Storybook
     - **Depends-on:** [T002, T003, T005, T006, T007, T008]
 
-- [ ] **T014 · Test · P0: E2E Tests for Critical User Flows**
+- [x] **T014 · Test · P0: E2E Tests for Critical User Flows**
     - Test Chrome Store link functionality
     - Test GitHub link functionality
     - Verify responsive layouts
