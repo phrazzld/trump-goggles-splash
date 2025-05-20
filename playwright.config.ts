@@ -5,7 +5,8 @@ export default defineConfig({
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
-  workers: process.env.CI ? 1 : undefined,
+  // Fix the type issue by ensuring workers is never undefined
+  workers: process.env.CI ? 1 : 2,
   reporter: 'html',
   testMatch: '**/*.e2e.ts', // Override to use .e2e.ts extension to avoid conflicts
   use: {

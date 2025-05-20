@@ -140,7 +140,7 @@
         1. Run `pnpm tsc --noEmit` and `pnpm test` focusing on `app/components/shared/`.
     - **Depends‑on:** [T011]
 
-- [ ] **T013 · Refactor · P2: eliminate `any` types in remaining codebase**
+- [x] **T013 · Refactor · P2: eliminate `any` types in remaining codebase**
     - **Context:** Detailed Build Steps - 7
     - **Action:**
         1. For each `any` usage outside `app/components/shared/` (identified in T011), repeat the process from T012.

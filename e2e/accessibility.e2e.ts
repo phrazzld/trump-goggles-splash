@@ -28,7 +28,10 @@ test.describe('Accessibility compliance', () => {
     await expect(heading).toHaveText(/Trump Goggles/);
     
     // Run accessibility audit on just the hero section
-    await checkA11y(heroSection, {
+    // Fix TypeScript error by passing the page element with an appropriate selector
+    // rather than passing a Locator directly
+    await checkA11y(page, {
+      include: [['section:has-text("Trump Goggles")']],
       detailedReport: true,
       detailedReportOptions: {
         html: true,
@@ -91,13 +94,17 @@ test.describe('Accessibility compliance', () => {
     for (let i = 0; i < 20; i++) {
       await page.keyboard.press('Tab');
       const focusedElement = await page.evaluateHandle(() => document.activeElement);
-      const tagName = await focusedElement.evaluate(el => el.tagName.toLowerCase());
+      
+      // Fix null safety issues by adding null checks
+      const tagName = await focusedElement.evaluate(el => el ? el.tagName.toLowerCase() : '');
       
       if (tagName === 'a') {
-        const href = await focusedElement.evaluate(el => el.getAttribute('href'));
-        if (href?.includes('chromewebstore.google.com')) {
+        // Add null check for el
+        const href = await focusedElement.evaluate(el => el ? el.getAttribute('href') || '' : '');
+        
+        if (href.includes('chromewebstore.google.com')) {
           foundChromeStoreLink = true;
-        } else if (href?.includes('github.com')) {
+        } else if (href.includes('github.com')) {
           foundGithubLink = true;
         }
       }
