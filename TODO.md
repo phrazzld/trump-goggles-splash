@@ -185,7 +185,7 @@
     - **Depends‑on:** none
 
 ## CI Enforcement & Documentation
-- [ ] **T017 · Chore · P1: configure CI pipeline for strict enforcement of all standards**
+- [x] **T017 · Chore · P1: configure CI pipeline for strict enforcement of all standards**
     - **Context:** Detailed Build Steps - 9.3; `vitest.config.ts`
     - **Action:**
         1. Configure CI pipeline to fail on any ESLint error (including `no-explicit-any`, `ban-ts-comment`).

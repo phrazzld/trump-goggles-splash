@@ -17,7 +17,8 @@
     "test:e2e": "playwright test --config=playwright.config.ts",
     "test:e2e:ui": "playwright test --ui --config=playwright.config.ts",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "ci:check": "pnpm lint && pnpm tsc --noEmit && pnpm test:cov && pnpm build"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.2",
