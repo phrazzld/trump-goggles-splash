@@ -142,7 +142,7 @@ describe('TexturedCard', () => {
     it('maintains layout with different content types', () => {
       render(
         <TexturedCard>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
+          {/* eslint-disable-next-line @next/next/no-img-element -- Using standard img element in tests is acceptable since we're just testing the card's layout capabilities, not testing image optimization which is Next.js Image component's primary purpose */}
           <img src="test.jpg" alt="Test" />
           <span>Text content</span>
           <div>Block content</div>

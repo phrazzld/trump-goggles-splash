@@ -151,7 +151,7 @@
         1. Run `pnpm tsc --noEmit` project-wide.
     - **Depends‑on:** [T011]
 
-- [ ] **T014 · Refactor · P1: eliminate suppression directives in `app/components/shared/`**
+- [x] **T014 · Refactor · P1: eliminate suppression directives in `app/components/shared/`**
     - **Context:** Detailed Build Steps - 8; Modules Affected
     - **Action:**
         1. For each suppression directive in `app/components/shared/` (identified in T011): understand intent, refactor code to address the underlying TypeScript error or ESLint violation, and remove the directive.
