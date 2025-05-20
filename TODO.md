@@ -10,7 +10,7 @@
         1.  The `[key: string]: unknown;` line is removed from `LinkPropsWithButtonProps`.
     - **Depends‑on:** none
 
-- [ ] **T002 · Refactor · P1: ensure `BaseProps` strictly types passthrough anchor attributes in `ExternalLink.tsx`**
+- [x] **T002 · Refactor · P1: ensure `BaseProps` strictly types passthrough anchor attributes in `ExternalLink.tsx`**
     - **Context:** PLAN.md – cr‑01 Type Safety Loophole, Step 3
     - **Action:**
         1.  In `app/components/shared/ExternalLink.tsx`, verify that `BaseProps` (or the type used for `restProps` that are spread into `linkProps` or `finalAnchorProps`) is correctly defined using `Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, ...>` to only allow valid anchor attributes.

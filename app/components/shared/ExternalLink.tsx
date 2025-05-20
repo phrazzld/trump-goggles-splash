@@ -12,12 +12,14 @@ interface BaseExternalLinkProps {
   ariaLabel?: string;
   target?: string;
   rel?: string;
+  variant?: LinkVariant;
 }
 
-// Extend BaseExternalLinkProps to include all HTML anchor attributes
+// Extend BaseExternalLinkProps to include all HTML anchor attributes except those already handled
+// Note: ariaLabel is a prop we handle separately and convert to aria-label for the DOM
 type BaseProps = BaseExternalLinkProps & Omit<
   React.AnchorHTMLAttributes<HTMLAnchorElement>,
-  keyof BaseExternalLinkProps
+  keyof BaseExternalLinkProps | 'aria-label'
 >;
 
 interface TextLinkProps extends BaseProps {
