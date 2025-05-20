@@ -78,7 +78,7 @@
         1. Run `pnpm test` and confirm zero skipped tests.
     - **Depends‑on:** [T001]
 
-- [ ] **T008 · Test · P1: verify full test suite health (100% pass, coverage, determinism)**
+- [x] **T008 · Test · P1: verify full test suite health (100% pass, coverage, determinism)**
     - **Context:** Detailed Build Steps - 4
     - **Action:**
         1. Run `pnpm test` and `pnpm test:cov`.

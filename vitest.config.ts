@@ -27,6 +27,7 @@ export default defineConfig({
       exclude: [
         'app/components/shared/**/*.d.ts',
         'app/components/shared/**/index.ts',
+        'app/components/shared/**/*.stories.tsx',
         'app/components/shared/AnimatedSection.tsx',
         'app/components/shared/AnimatedStar.tsx',
         'app/components/shared/VisuallyHidden.tsx',
