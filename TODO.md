@@ -68,7 +68,7 @@
         1. Run `pnpm test app/components/shared/RetroButton.test.tsx` and confirm no skipped tests and all active tests pass.
     - **Depends‑on:** [T001]
 
-- [ ] **T007 · Test · P2: resolve other identified skipped tests project-wide**
+- [x] **T007 · Test · P2: resolve other identified skipped tests project-wide**
     - **Context:** Detailed Build Steps - 3.1
     - **Action:**
         1. For any other skipped tests identified in T001 (outside T005, T006 scopes), unskip, analyze, and refactor/implement.

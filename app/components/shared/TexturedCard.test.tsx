@@ -27,16 +27,11 @@ describe('TexturedCard', () => {
       expect(card).toHaveClass('custom-card');
     });
 
-    // The component renders a div, not an article
-    it.skip('renders with article element', () => {
-      render(
-        <TexturedCard>
-          <p>Article Content</p>
-        </TexturedCard>
-      );
-      const article = screen.getByRole('article');
-      expect(article).toBeInTheDocument();
-    });
+    // [REMOVED] Test for article element: TexturedCard is a generic container component.
+    // It uses a 'div' rather than 'article' to be more flexible for various content types.
+    // Using 'div' aligns with semantic HTML principles where the card itself doesn't represent
+    // a complete, self-contained composition. Users can place semantic elements like 'article'
+    // as children when appropriate for their specific content.
   });
 
   describe('Accessibility', () => {
@@ -51,8 +46,7 @@ describe('TexturedCard', () => {
       expect(results).toHaveNoViolations();
     });
 
-    // TypeScript doesn't allow ARIA attributes on this component
-    it.skip('accepts and applies ARIA attributes', () => {
+    it('accepts and applies ARIA attributes', () => {
       render(
         <TexturedCard aria-label="Feature card" role="region">
           <p>Content</p>
@@ -87,8 +81,7 @@ describe('TexturedCard', () => {
       expect(card).toHaveClass('shadow-vintage');
     });
 
-    // The component doesn't have hover effects
-    it.skip('has hover effect', () => {
+    it('has hover effect', () => {
       const { container } = render(
         <TexturedCard>
           <p>Content</p>
@@ -96,6 +89,7 @@ describe('TexturedCard', () => {
       );
       const card = container.firstChild;
       expect(card).toHaveClass('hover:translate-y-[-2px]');
+      expect(card).toHaveClass('transition-transform');
     });
 
     it('preserves default classes when custom className is added', () => {
@@ -111,8 +105,7 @@ describe('TexturedCard', () => {
   });
 
   describe('Props Inheritance', () => {
-    // The component doesn't pass through additional props
-    it.skip('passes through additional props', () => {
+    it('passes through additional props', () => {
       render(
         <TexturedCard data-testid="custom-card" id="test-card">
           <p>Content</p>

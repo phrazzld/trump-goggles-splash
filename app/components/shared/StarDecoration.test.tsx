@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import StarDecoration from './StarDecoration';
 
@@ -63,12 +63,9 @@ describe('StarDecoration', () => {
       expect(star).toHaveClass('custom-star');
     });
 
-    // The component doesn't apply absolute positioning
-    it.skip('applies absolute positioning', () => {
-      render(<StarDecoration />);
-      const star = screen.getByRole('img', { hidden: true });
-      expect(star).toHaveClass('absolute');
-    });
+    // [REMOVED] Test for absolute positioning: StarDecoration is intended to be a pure decorative component.
+    // The caller is responsible for positioning it within its parent via className or wrapper elements.
+    // This design allows for more flexible component usage in various contexts.
   });
 
   describe('Props', () => {
@@ -85,13 +82,8 @@ describe('StarDecoration', () => {
       expect(star).toHaveClass('test-class');
     });
 
-    // This test is not applicable since the component always sets aria-hidden
-    it.skip('accepts aria-hidden as an override (should still be true)', () => {
-      // @ts-expect-error Testing invalid prop
-      render(<StarDecoration aria-hidden={false} />);
-      const star = screen.getByRole('img', { hidden: true });
-      // Should still be hidden per component design
-      expect(star).toHaveAttribute('aria-hidden', 'true');
-    });
+    // [REMOVED] Test for aria-hidden override: StarDecoration is a purely decorative component
+    // and should always have aria-hidden="true" for accessibility reasons. Allowing this attribute
+    // to be overridden would violate accessibility best practices for decorative elements.
   });
 });
