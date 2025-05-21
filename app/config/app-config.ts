@@ -71,7 +71,7 @@ export const APP_CONFIG: AppConfig = {
   },
   footerText: {
     disclaimer: "Trump Goggles is a browser extension created for entertainment purposes only. This extension and its creators are not affiliated with, endorsed by, or connected to Donald Trump or any of his associated entities. All trademarks are property of their respective owners.",
-    madeWithLove: "Made with ♥ for the internet",
+    madeWithLove: "Made with ♥",
     viewOnGithub: "View on GitHub →"
   }
 } as const;

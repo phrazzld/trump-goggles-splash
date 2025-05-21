@@ -84,7 +84,7 @@
         1. Run the application and verify the browser tab title and page meta description (via dev tools) reflect the configured values.
     - **Depends‑on:** [T003]
 
-- [ ] **T008 · Refactor · P2: migrate footer text from `Footer.tsx` to config**
+- [x] **T008 · Refactor · P2: migrate footer text from `Footer.tsx` to config**
     - **Context:** PLAN.md - Implementation Steps (6. Identify and Migrate Footer Text); Architecture (Modified components: Footer.tsx)
     - **Action:**
         1. Move the disclaimer and other static text from `Footer.tsx` into the `APP_CONFIG` object in `app-config.ts`.
