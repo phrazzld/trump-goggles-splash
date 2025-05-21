@@ -103,7 +103,7 @@
         1.  Prop handling for the text variant is clear, direct, and uses strictly typed props.
     - **Depends‑on:** [T004, T010]
 
-- [ ] **T012 · Chore · P1: validate cr-02 prop handling refactor and linting for `ExternalLink.tsx`**
+- [x] **T012 · Chore · P1: validate cr-02 prop handling refactor and linting for `ExternalLink.tsx`**
     - **Context:** PLAN.md – cr‑02 Convoluted Handling of `buttonProps`, Step 9 & Done-When criteria
     - **Action:**
         1.  Run `pnpm tsc --noEmit`.
