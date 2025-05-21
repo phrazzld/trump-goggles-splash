@@ -94,7 +94,7 @@
         1.  The type definition for props passed to the `<a>` element in the button variant accurately reflects that `buttonProps` are not spread onto it.
     - **Depends‑on:** [T005, T008]
 
-- [ ] **T011 · Refactor · P2: verify and clarify text variant prop handling in `ExternalLink.tsx`**
+- [x] **T011 · Refactor · P2: verify and clarify text variant prop handling in `ExternalLink.tsx`**
     - **Context:** PLAN.md – cr‑02 Convoluted Handling of `buttonProps`, Step 8
     - **Action:**
         1.  In `app/components/shared/ExternalLink.tsx`, review the prop handling for the text variant.

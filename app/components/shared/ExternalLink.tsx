@@ -42,34 +42,9 @@ interface ButtonLinkProps extends BaseProps, DataTestProps {
 
 export type ExternalLinkProps = TextLinkProps | ButtonLinkProps;
 
-// Type for the linkProps object used in the text variant
-type TextVariantLinkProps = {
-  href: string;
-  target: string;
-  rel: string;
-  "aria-label"?: string | undefined;
-};
-
 export default function ExternalLink(props: ExternalLinkProps) {
-  const { 
-    href, 
-    children, 
-    className, 
-    ariaLabel, 
-    target, 
-    rel,
-    variant = "text",
-    ...restProps 
-  } = props;
-
-  // Security attributes for all external links with ability to override
-  const linkProps: TextVariantLinkProps = {
-    ...restProps, // Spread additional props first so specific props take precedence
-    href,
-    target: target ?? "_blank", // Use provided target or default to _blank
-    rel: rel ?? "noopener noreferrer", // Use provided rel or default to noopener noreferrer
-    ...(ariaLabel && { "aria-label": ariaLabel }),
-  };
+  // Extract variant with default value, which is used for conditional rendering
+  const { variant = "text" } = props;
 
   if (variant === "button") {
     // Using type assertion for ButtonLinkProps to get proper typing for buttonProps
@@ -107,15 +82,33 @@ export default function ExternalLink(props: ExternalLinkProps) {
   }
 
   // Text variant
+  const typedTextProps = props as TextLinkProps;
+  const {
+    href: textHref,
+    children: textChildren,
+    className: textClassName,
+    ariaLabel: textAriaLabel,
+    target: textTarget,
+    rel: textRel,
+    ...textAnchorRestProps // These are the actual passthrough props for the <a> tag
+  } = typedTextProps;
+
+  // Construct finalAnchorProps for the text variant <a> tag
+  const finalTextAnchorProps = {
+    ...textAnchorRestProps,
+    href: textHref,
+    target: textTarget ?? "_blank",
+    rel: textRel ?? "noopener noreferrer",
+    ...(textAriaLabel && { "aria-label": textAriaLabel }),
+    className: cn(
+      "text-retro-blue underline hover:text-retro-red transition-colors inline-flex items-center gap-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-retro-blue focus-visible:ring-offset-2 focus-visible:ring-offset-retro-cream",
+      textClassName
+    )
+  };
+
   return (
-    <a
-      {...linkProps}
-      className={cn(
-        "text-retro-blue underline hover:text-retro-red transition-colors inline-flex items-center gap-1",
-        className,
-      )}
-    >
-      {children}
+    <a {...finalTextAnchorProps}>
+      {textChildren}
       <ExternalLinkIcon 
         size={16} 
         className="inline" 
