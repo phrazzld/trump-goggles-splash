@@ -73,21 +73,30 @@ export default function ExternalLink(props: ExternalLinkProps) {
   };
 
   if (variant === "button") {
-    const { buttonProps } = props as ButtonLinkProps;
+    // Using type assertion for ButtonLinkProps to get proper typing for buttonProps
+    const typedProps = props as ButtonLinkProps;
+    const {
+      href: currentHref,
+      children: currentChildren,
+      className: currentClassName,
+      ariaLabel: currentAriaLabel,
+      target: currentTarget,
+      rel: currentRel,
+      buttonProps, // Specific to ButtonLinkProps
+      // Omit already destructured props and those we handle separately
+      ...anchorRestProps // These are the actual passthrough props for the <a> tag
+    } = typedProps;
     
-    // Add buttonProps to linkProps if we're in button variant
-    if (buttonProps) {
-      linkProps.buttonProps = buttonProps;
-    }
-    
-    // Remove buttonProps from linkProps to avoid React DOM attribute warnings
-    // Using proper typing instead of 'any'
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars -- Intentionally extracting buttonProps to remove from linkProps
-    const { buttonProps: unusedButtonProps, ...cleanLinkProps } = linkProps;
-
     return (
-      <a {...cleanLinkProps} className={className}>
-        <RetroButton {...buttonProps}>{children}</RetroButton>
+      <a 
+        {...anchorRestProps}
+        href={currentHref}
+        className={currentClassName}
+        target={currentTarget ?? "_blank"}
+        rel={currentRel ?? "noopener noreferrer"}
+        {...(currentAriaLabel && { "aria-label": currentAriaLabel })}
+      >
+        <RetroButton {...buttonProps}>{currentChildren}</RetroButton>
       </a>
     );
   }

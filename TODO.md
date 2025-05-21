@@ -41,7 +41,7 @@
         2.  `pnpm lint` passes without errors related to `ExternalLink.tsx` props.
     - **Depends‑on:** [T003]
 
-- [ ] **T005 · Refactor · P1: destructure `props` for button variant in `ExternalLink.tsx` separating `buttonProps` and `anchorRestProps`**
+- [x] **T005 · Refactor · P1: destructure `props` for button variant in `ExternalLink.tsx` separating `buttonProps` and `anchorRestProps`**
     - **Context:** PLAN.md – cr‑02 Convoluted Handling of `buttonProps`, Steps 1 & 2
     - **Action:**
         1.  In `app/components/shared/ExternalLink.tsx` (around lines 65-73), for the `variant === "button"` case, refactor prop destructuring.
