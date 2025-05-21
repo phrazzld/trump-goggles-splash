@@ -124,7 +124,7 @@
         2.  Any new tests required by the refactor are added and pass.
     - **Depends‑on:** [T012]
 
-- [ ] **T014 · Chore · P2: perform manual review of `ExternalLink` component in storybook/dev page**
+- [x] **T014 · Chore · P2: perform manual review of `ExternalLink` component in storybook/dev page**
     - **Context:** PLAN.md – Validation Checklist
     - **Action:**
         1.  Manually review `ExternalLink` component in Storybook or a development page.
