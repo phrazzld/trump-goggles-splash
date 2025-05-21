@@ -108,7 +108,7 @@
         3. Affected components are refactored.
     - **Depends‑on:** [T004, T005, T006, T007, T008]
 
-- [ ] **T010 · Test · P1: perform full testing and verification of externalized configuration**
+- [x] **T010 · Test · P1: perform full testing and verification of externalized configuration**
     - **Context:** PLAN.md - Implementation Steps (8. Testing and Verification); Testing Strategy; Risks and Mitigations
     - **Action:**
         1. Run TypeScript type checking across the entire project (e.g., `tsc --noEmit`).
