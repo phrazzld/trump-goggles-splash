@@ -20,13 +20,7 @@ describe('RetroButton', () => {
       expect(button).toHaveClass('custom-button');
     });
 
-    // The RetroButton component doesn't support href prop
-    it.skip('renders as anchor when href is provided', () => {
-      render(<RetroButton href="https://example.com">Link Button</RetroButton>);
-      const link = screen.getByRole('link', { name: 'Link Button' });
-      expect(link).toBeInTheDocument();
-      expect(link).toHaveAttribute('href', 'https://example.com');
-    });
+    // [REMOVED] Test for anchor rendering: RetroButton is a pure button. Link functionality is handled by ExternalLink. See DEVELOPMENT_PHILOSOPHY.md.
 
     it('renders with correct variant styles - primary', () => {
       render(<RetroButton variant="primary">Primary Button</RetroButton>);
@@ -105,36 +99,7 @@ describe('RetroButton', () => {
     });
   });
 
-  // The RetroButton component doesn't support link mode
-  describe.skip('Link Mode', () => {
-    it('renders as external link with security attributes', () => {
-      render(
-        <RetroButton href="https://example.com" target="_blank">
-          External Link
-        </RetroButton>
-      );
-      const link = screen.getByRole('link');
-      expect(link).toHaveAttribute('target', '_blank');
-      expect(link).toHaveAttribute('rel', 'noopener noreferrer');
-    });
-
-    it('renders as internal link without security attributes', () => {
-      render(<RetroButton href="/internal">Internal Link</RetroButton>);
-      const link = screen.getByRole('link');
-      expect(link).not.toHaveAttribute('target');
-      expect(link).not.toHaveAttribute('rel');
-    });
-
-    it('allows custom rel attribute', () => {
-      render(
-        <RetroButton href="https://example.com" rel="author">
-          Author Link
-        </RetroButton>
-      );
-      const link = screen.getByRole('link');
-      expect(link).toHaveAttribute('rel', 'author');
-    });
-  });
+  // [REMOVED] "Link Mode" tests: RetroButton is a pure button. Link functionality is handled by ExternalLink. See DEVELOPMENT_PHILOSOPHY.md.
 
   describe('Props Inheritance', () => {
     it('passes through additional props', () => {
@@ -147,8 +112,7 @@ describe('RetroButton', () => {
       expect(button).toHaveAttribute('id', 'test-button');
     });
 
-    // The RetroButton doesn't set a default type attribute
-    it.skip('applies type="button" by default', () => {
+    it('applies type="button" by default', () => {
       render(<RetroButton>Button</RetroButton>);
       const button = screen.getByRole('button');
       expect(button).toHaveAttribute('type', 'button');
@@ -177,12 +141,11 @@ describe('RetroButton', () => {
       expect(button).toHaveClass('hover:opacity-90');
     });
 
-    // The component doesn't have specific disabled styles
-    it.skip('has correct disabled styles', () => {
+    it('has correct disabled styles', () => {
       render(<RetroButton disabled>Disabled</RetroButton>);
       const button = screen.getByRole('button');
-      expect(button).toHaveClass('cursor-not-allowed');
-      expect(button).toHaveClass('opacity-75');
+      expect(button).toHaveClass('disabled:cursor-not-allowed');
+      expect(button).toHaveClass('disabled:opacity-50');
     });
   });
 

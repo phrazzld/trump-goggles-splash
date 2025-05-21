@@ -11,8 +11,11 @@ interface AnimatedStarProps {
 const AnimatedStar: React.FC<AnimatedStarProps> = ({ className, delay = 0 }) => {
   const shouldReduceMotion = useReducedMotion();
 
+  // Properly handle className by ensuring it's never undefined when passed to StarDecoration
+  const starClassName = className || "";
+
   if (shouldReduceMotion) {
-    return <StarDecoration className={className} />;
+    return <StarDecoration className={starClassName} />;
   }
 
   return (
@@ -28,7 +31,7 @@ const AnimatedStar: React.FC<AnimatedStarProps> = ({ className, delay = 0 }) => 
       }}
       aria-hidden="true"
     >
-      <StarDecoration className={className} />
+      <StarDecoration className={starClassName} />
     </motion.div>
   );
 };

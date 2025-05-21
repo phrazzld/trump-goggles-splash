@@ -55,5 +55,14 @@ jobs:
       - name: TypeScript Check
         run: pnpm tsc --noEmit
         
+      - name: Run Tests with Coverage
+        run: pnpm test:cov
+        
       - name: Build
         run: pnpm build
+        
+      - name: Upload Coverage Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-report
+          path: coverage/
