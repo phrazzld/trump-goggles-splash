@@ -60,7 +60,7 @@
         2. Click the GitHub link and confirm it navigates to the correct URL.
     - **Depends‑on:** [T003]
 
-- [ ] **T006 · Refactor · P2: migrate trumpism examples from `TrumpismExamples.tsx` to config**
+- [x] **T006 · Refactor · P2: migrate trumpism examples from `TrumpismExamples.tsx` to config**
     - **Context:** PLAN.md - Implementation Steps (4. Identify and Migrate Trumpism Examples); Architecture (Modified components: TrumpismExamples.tsx)
     - **Action:**
         1. Move the example conversions data from `TrumpismExamples.tsx` into the `APP_CONFIG` object in `app-config.ts`.

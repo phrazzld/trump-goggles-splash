@@ -5,20 +5,7 @@ import SectionHeading from "@/app/components/shared/SectionHeading";
 import TexturedCard from "@/app/components/shared/TexturedCard";
 import AnimatedSection from "@/app/components/shared/AnimatedSection";
 import AnimatedStar from "@/app/components/shared/AnimatedStar";
-
-interface TrumpismExample {
-  original: string;
-  trumpified: string;
-}
-
-const examples: TrumpismExample[] = [
-  { original: "ISIS", trumpified: "Evil Losers" },
-  { original: "Hillary Clinton", trumpified: "Crooked Hillary" },
-  { original: "Climate Change", trumpified: "The Chinese Hoax" },
-  { original: "The Media", trumpified: "Fake News" },
-  { original: "North Korea", trumpified: "Rocket Man" },
-  { original: "Trade Deficit", trumpified: "Terrible Trade Deals" },
-];
+import { APP_CONFIG } from "@/app/config/app-config";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -72,7 +59,7 @@ export default function TrumpismExamples() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
         >
-          {examples.map((example, index) => (
+          {APP_CONFIG.trumpismExamples.map((example, index) => (
             <motion.div
               key={index}
               variants={cardVariants}
