@@ -114,7 +114,7 @@
         2.  `pnpm lint` passes without errors related to `ExternalLink`, and the targeted suppression is removed.
     - **Depends‑on:** [T007, T008, T009, T010, T011]
 
-- [ ] **T013 · Test · P1: ensure all automated tests for `ExternalLink.tsx` pass after remediation**
+- [x] **T013 · Test · P1: ensure all automated tests for `ExternalLink.tsx` pass after remediation**
     - **Context:** PLAN.md – Validation Checklist
     - **Action:**
         1.  Run all unit and integration tests for `ExternalLink.tsx`.

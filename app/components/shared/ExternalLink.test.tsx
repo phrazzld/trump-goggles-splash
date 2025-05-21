@@ -172,5 +172,101 @@ describe('ExternalLink', () => {
       expect(button).toHaveClass('px-6');
       expect(button).toHaveClass('py-3');
     });
+    
+    it('correctly separates anchor props and button props', () => {
+      render(
+        <ExternalLink 
+          href="https://example.com" 
+          variant="button"
+          id="anchor-id"
+          data-testid="anchor-test-id"
+          buttonProps={{ 
+            variant: 'secondary', 
+            className: 'button-custom-class' 
+          }}
+        >
+          Button Link
+        </ExternalLink>
+      );
+      
+      // Anchor props should be on the anchor element
+      const link = screen.getByTestId('anchor-test-id');
+      expect(link).toHaveAttribute('id', 'anchor-id');
+      
+      // Button props should be on the button element
+      const button = screen.getByRole('button');
+      expect(button).toHaveClass('button-custom-class');
+      expect(button).toHaveClass('bg-transparent'); // From secondary variant
+      
+      // Button should not have anchor props
+      expect(button).not.toHaveAttribute('id', 'anchor-id');
+      expect(button).not.toHaveAttribute('data-testid', 'anchor-test-id');
+    });
+  });
+
+  describe('Focus Styles', () => {
+    it('applies focus styles to text variant', () => {
+      render(<ExternalLink href="https://example.com">Example Link</ExternalLink>);
+      const link = screen.getByRole('link');
+      expect(link).toHaveClass('focus-visible:outline-none');
+      expect(link).toHaveClass('focus-visible:ring-2');
+      expect(link).toHaveClass('focus-visible:ring-retro-blue');
+      expect(link).toHaveClass('focus-visible:ring-offset-2');
+    });
+
+    it('applies focus styles to button variant', () => {
+      render(
+        <ExternalLink href="https://example.com" variant="button">
+          Button Link
+        </ExternalLink>
+      );
+      const link = screen.getByRole('link');
+      expect(link).toHaveClass('focus-visible:outline-none');
+      expect(link).toHaveClass('focus-visible:ring-2');
+      expect(link).toHaveClass('focus-visible:ring-retro-blue');
+      expect(link).toHaveClass('focus-visible:ring-offset-2');
+    });
+  });
+
+  describe('Data Attributes', () => {
+    it('passes data attributes to text variant anchor element', () => {
+      render(
+        <ExternalLink
+          href="https://example.com"
+          data-testid="text-link"
+          data-cy="cypress-selector"
+          data-e2e="e2e-identifier"
+          data-test="test-selector"
+        >
+          Text Link with Data Attrs
+        </ExternalLink>
+      );
+      
+      const link = screen.getByRole('link');
+      expect(link).toHaveAttribute('data-testid', 'text-link');
+      expect(link).toHaveAttribute('data-cy', 'cypress-selector');
+      expect(link).toHaveAttribute('data-e2e', 'e2e-identifier');
+      expect(link).toHaveAttribute('data-test', 'test-selector');
+    });
+
+    it('passes data attributes to button variant anchor element, not button element', () => {
+      render(
+        <ExternalLink
+          href="https://example.com"
+          variant="button"
+          data-testid="button-link"
+          data-cy="cypress-selector"
+        >
+          Button Link with Data Attrs
+        </ExternalLink>
+      );
+      
+      const link = screen.getByTestId('button-link');
+      expect(link).toHaveAttribute('data-cy', 'cypress-selector');
+      
+      const button = screen.getByRole('button');
+      expect(button).not.toHaveAttribute('data-testid', 'button-link');
+      expect(button).not.toHaveAttribute('data-cy', 'cypress-selector');
+    });
   });
 });
