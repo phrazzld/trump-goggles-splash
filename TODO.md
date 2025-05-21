@@ -72,7 +72,7 @@
         1. Run the application and visually verify that all Trumpism examples display correctly as before.
     - **Depends‑on:** [T003]
 
-- [ ] **T007 · Refactor · P2: migrate app metadata from `layout.tsx` to config**
+- [x] **T007 · Refactor · P2: migrate app metadata from `layout.tsx` to config**
     - **Context:** PLAN.md - Implementation Steps (5. Identify and Migrate App Metadata); Architecture (Modified components: layout.tsx)
     - **Action:**
         1. Move the app title and description from `layout.tsx` into the `APP_CONFIG` object in `app-config.ts`.
