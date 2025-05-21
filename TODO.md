@@ -58,7 +58,7 @@
         1.  The line `linkProps.buttonProps = buttonProps;` is removed.
     - **Depends‑on:** [T005]
 
-- [ ] **T007 · Refactor · P1: remove eslint suppression and associated unused `buttonProps` destructuring in `ExternalLink.tsx`**
+- [x] **T007 · Refactor · P1: remove eslint suppression and associated unused `buttonProps` destructuring in `ExternalLink.tsx`**
     - **Context:** PLAN.md – cr‑02 Convoluted Handling of `buttonProps`, Step 4
     - **Action:**
         1.  In `app/components/shared/ExternalLink.tsx`, remove the `eslint-disable-next-line @typescript-eslint/no-unused-vars` comment.
