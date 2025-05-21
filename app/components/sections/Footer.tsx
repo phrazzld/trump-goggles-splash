@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import ExternalLink from "@/app/components/shared/ExternalLink";
 import AnimatedSection from "@/app/components/shared/AnimatedSection";
 import AnimatedStar from "@/app/components/shared/AnimatedStar";
+import { APP_CONFIG } from "@/app/config/app-config";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -37,7 +38,7 @@ export default function Footer() {
           viewport={{ once: true }}
         >
           <ExternalLink
-            href="https://github.com/phrazzld/trump-goggles"
+            href={APP_CONFIG.urls.githubRepo}
             className="text-retro-cream hover:text-retro-gold transition-colors text-lg font-semibold"
             ariaLabel="View Trump Goggles source code on GitHub"
           >

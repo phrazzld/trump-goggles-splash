@@ -47,7 +47,7 @@
         2. Click the Chrome Store link and confirm it navigates to the correct URL.
     - **Depends‑on:** [T003]
 
-- [ ] **T005 · Refactor · P2: migrate github repo url from `Footer.tsx` to config**
+- [x] **T005 · Refactor · P2: migrate github repo url from `Footer.tsx` to config**
     - **Context:** PLAN.md - Implementation Steps (3. Identify and Migrate URLs); Architecture (Modified components: Footer.tsx)
     - **Action:**
         1. Move the GitHub repo URL from `Footer.tsx` into the `APP_CONFIG` object in `app-config.ts`.
