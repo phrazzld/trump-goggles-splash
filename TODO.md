@@ -121,7 +121,7 @@
         4. No regressions in functionality related to the externalized strings are observed.
     - **Depends‑on:** [T009]
 
-- [~] **T011 · Chore · P1: create pull request for configuration externalization**
+- [x] **T011 · Chore · P1: create pull request for configuration externalization**
     - **Context:** PLAN.md - Implementation Branch
     - **Action:**
         1. Ensure all tasks (T001-T010) are completed and work as expected.
