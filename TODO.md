@@ -139,4 +139,4 @@
         2.  For button variant: Test anchor-specific props (e.g., `id` for `<a>`) and `buttonProps` (e.g., a button `variant`, `disabled`) are correctly applied to the `<a>` tag and the `<RetroButton>` respectively.
     - **Depends‑on:** [T013]
 
-- [ ] **T015 · Chore · P2: conduct final code review for all `ExternalLink.tsx
+- [x] **T015 · Chore · P2: conduct final code review for all `ExternalLink.tsx
