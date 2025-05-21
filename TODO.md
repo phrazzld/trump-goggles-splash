@@ -50,7 +50,7 @@
         1.  Component `props` for the button variant are destructured as specified, correctly isolating `buttonProps` and `anchorRestProps`.
     - **Depends‑on:** [T004]
 
-- [ ] **T006 · Refactor · P1: remove redundant `buttonProps` assignment to `linkProps` in `ExternalLink.tsx`**
+- [x] **T006 · Refactor · P1: remove redundant `buttonProps` assignment to `linkProps` in `ExternalLink.tsx`**
     - **Context:** PLAN.md – cr‑02 Convoluted Handling of `buttonProps`, Step 3
     - **Action:**
         1.  In `app/components/shared/ExternalLink.tsx`, delete the line `linkProps.buttonProps = buttonProps;`.
