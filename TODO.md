@@ -23,7 +23,7 @@
         1. Confirm `app/config/app-config.ts` path is present in the project structure.
     - **Depends‑on:** [T001]
 
-- [ ] **T003 · Feature · P1: define core configuration types and `APP_CONFIG` constant**
+- [x] **T003 · Feature · P1: define core configuration types and `APP_CONFIG` constant**
     - **Context:** PLAN.md - Implementation Steps (2. Define Core Types and Constants); Architecture (New module)
     - **Action:**
         1. In `app/config/app-config.ts`, define TypeScript interfaces for URLs, Trumpism examples, app metadata, and footer text.
