@@ -30,7 +30,7 @@
         2.  `pnpm tsc --noEmit` shows no new errors related to these newly typed attributes in `ExternalLink.tsx`.
     - **Depends‑on:** [T001, T002]
 
-- [ ] **T004 · Chore · P1: validate cr-01 type safety changes and linting for `ExternalLink.tsx`**
+- [x] **T004 · Chore · P1: validate cr-01 type safety changes and linting for `ExternalLink.tsx`**
     - **Context:** PLAN.md – cr‑01 Type Safety Loophole, Step 5 & Done-When criteria
     - **Action:**
         1.  Run `pnpm tsc --noEmit`.
