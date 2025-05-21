@@ -64,7 +64,7 @@ export default function Hero() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, delay: 0.5, type: "spring", stiffness: 100 }}
         >
-          Trump Goggles
+          {APP_CONFIG.uiText.hero.title}
         </motion.h1>
 
         {/* Accurate description with examples */}
@@ -74,8 +74,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.7 }}
         >
-          Translates text to Trumpisms (e.g., &apos;ISIS&apos; → &apos;Evil Losers&apos;, &apos;Hillary
-          Clinton&apos; → &apos;Crooked Hillary&apos;)
+          {APP_CONFIG.uiText.hero.description}
         </motion.p>
 
         {/* CTA Buttons */}
@@ -100,7 +99,7 @@ export default function Hero() {
                 className: "text-xl md:text-2xl px-10 py-5",
               }}
             >
-              Install Trump Goggles
+              {APP_CONFIG.uiText.hero.installButton}
             </ExternalLink>
           </motion.div>
 
@@ -110,7 +109,7 @@ export default function Hero() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.4, delay: 1.1 }}
           >
-            or
+            {APP_CONFIG.uiText.hero.orSeparator}
           </motion.div>
 
           <motion.div 
@@ -123,7 +122,7 @@ export default function Hero() {
               size="lg"
               className="text-xl md:text-2xl px-10 py-5"
             >
-              Learn More
+              {APP_CONFIG.uiText.hero.learnMoreButton}
             </RetroButton>
           </motion.div>
         </motion.div>

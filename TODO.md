@@ -96,7 +96,7 @@
         1. Run the application and visually verify the disclaimer and other static text in the Footer display correctly as before.
     - **Depends‑on:** [T003]
 
-- [ ] **T009 · Refactor · P2: conduct project-wide review for remaining hardcoded strings and externalize**
+- [x] **T009 · Refactor · P2: conduct project-wide review for remaining hardcoded strings and externalize**
     - **Context:** PLAN.md - Implementation Steps (7. Final Project-Wide Review); Risks and Mitigations (Missing hardcoded values)
     - **Action:**
         1. Search the entire project codebase (excluding `app-config.ts`) for any other hardcoded strings that should be externalized to `APP_CONFIG`.

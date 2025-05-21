@@ -40,6 +40,26 @@ export interface FooterText {
 }
 
 /**
+ * Interface for UI components text content
+ */
+export interface UITextContent {
+  readonly hero: {
+    readonly title: string;
+    readonly description: string;
+    readonly installButton: string;
+    readonly learnMoreButton: string;
+    readonly orSeparator: string;
+  };
+  readonly features: {
+    readonly sectionTitle: string;
+    readonly featureItems: readonly {
+      readonly title: string;
+      readonly description: string;
+    }[];
+  };
+}
+
+/**
  * Main application configuration interface
  */
 export interface AppConfig {
@@ -47,6 +67,7 @@ export interface AppConfig {
   readonly trumpismExamples: readonly TrumpismExample[];
   readonly metadata: AppMetadata;
   readonly footerText: FooterText;
+  readonly uiText: UITextContent;
 }
 
 /**
@@ -73,5 +94,35 @@ export const APP_CONFIG: AppConfig = {
     disclaimer: "Trump Goggles is a browser extension created for entertainment purposes only. This extension and its creators are not affiliated with, endorsed by, or connected to Donald Trump or any of his associated entities. All trademarks are property of their respective owners.",
     madeWithLove: "Made with ♥",
     viewOnGithub: "View on GitHub →"
+  },
+  uiText: {
+    hero: {
+      title: "Trump Goggles",
+      description: "Translates text to Trumpisms (e.g., 'ISIS' → 'Evil Losers', 'Hillary Clinton' → 'Crooked Hillary')",
+      installButton: "Install Trump Goggles",
+      learnMoreButton: "Learn More",
+      orSeparator: "or"
+    },
+    features: {
+      sectionTitle: "Features",
+      featureItems: [
+        {
+          title: "Instant Processing",
+          description: "Transform the web as you browse with lightning-fast text replacement."
+        },
+        {
+          title: "Customizable Filters",
+          description: "Choose your preferred language style and customize replacement patterns."
+        },
+        {
+          title: "Privacy Focused",
+          description: "No data collection - everything runs locally in your browser."
+        },
+        {
+          title: "Easy Toggle",
+          description: "Enable or disable with one click from your browser toolbar."
+        }
+      ] as const
+    }
   }
 } as const;

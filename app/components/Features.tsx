@@ -1,27 +1,12 @@
 import { Zap, Sliders, Shield, ToggleRight } from 'lucide-react';
 import TexturedCard from './shared/TexturedCard';
+import { APP_CONFIG } from '@/app/config/app-config';
 
-const features = [
-  {
-    icon: Zap,
-    title: 'Instant Processing',
-    description: 'Transform the web as you browse with lightning-fast text replacement.'
-  },
-  {
-    icon: Sliders,
-    title: 'Customizable Filters',
-    description: 'Choose your preferred language style and customize replacement patterns.'
-  },
-  {
-    icon: Shield,
-    title: 'Privacy Focused',
-    description: 'No data collection - everything runs locally in your browser.'
-  },
-  {
-    icon: ToggleRight,
-    title: 'Easy Toggle',
-    description: 'Enable or disable with one click from your browser toolbar.'
-  }
+const featureIcons = [
+  { icon: Zap },
+  { icon: Sliders },
+  { icon: Shield },
+  { icon: ToggleRight }
 ];
 
 export default function Features() {
@@ -29,11 +14,13 @@ export default function Features() {
     <section className="py-20">
       <div className="container mx-auto px-4">
         <h2 className="text-center text-retro-blue mb-12 text-shadow-vintage">
-          Features
+          {APP_CONFIG.uiText.features.sectionTitle}
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {features.map((feature, index) => {
-            const Icon = feature.icon;
+          {APP_CONFIG.uiText.features.featureItems.map((feature, index) => {
+            const Icon = featureIcons[index]?.icon;
+            if (!Icon) return null;
+            
             return (
               <TexturedCard key={index}>
                 <div className="p-8 text-center">
