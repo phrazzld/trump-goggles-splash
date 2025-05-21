@@ -34,7 +34,7 @@
         3. TypeScript compilation (`tsc --noEmit`) passes for `app-config.ts`.
     - **Depends‑on:** [T002]
 
-- [ ] **T004 · Refactor · P2: migrate chrome store url from `Hero.tsx` to config**
+- [x] **T004 · Refactor · P2: migrate chrome store url from `Hero.tsx` to config**
     - **Context:** PLAN.md - Implementation Steps (3. Identify and Migrate URLs); Architecture (Modified components: Hero.tsx)
     - **Action:**
         1. Move the Chrome Store URL from `Hero.tsx` into the `APP_CONFIG` object in `app-config.ts`.

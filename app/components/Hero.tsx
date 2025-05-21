@@ -4,6 +4,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import RetroButton from "./shared/RetroButton";
 import ExternalLink from "./shared/ExternalLink";
 import AnimatedStar from "./shared/AnimatedStar";
+import { APP_CONFIG } from "@/app/config/app-config";
 
 export default function Hero() {
   const shouldReduceMotion = useReducedMotion();
@@ -90,7 +91,7 @@ export default function Hero() {
             whileTap={shouldReduceMotion ? {} : { scale: 0.95 }}
           >
             <ExternalLink
-              href="https://chromewebstore.google.com/detail/trump-goggles/jffbimfdmgbfannficjejaffmnggoigd"
+              href={APP_CONFIG.urls.chromeStore}
               variant="button"
               ariaLabel="Install Trump Goggles from Chrome Web Store"
               buttonProps={{
