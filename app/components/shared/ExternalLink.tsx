@@ -42,13 +42,12 @@ interface ButtonLinkProps extends BaseProps, DataTestProps {
 
 export type ExternalLinkProps = TextLinkProps | ButtonLinkProps;
 
-// Type for the linkProps object that may include buttonProps
-type LinkPropsWithButtonProps = {
+// Type for the linkProps object used in the text variant
+type TextVariantLinkProps = {
   href: string;
   target: string;
   rel: string;
   "aria-label"?: string | undefined;
-  buttonProps?: Omit<RetroButtonProps, "children" | "onClick"> | undefined;
 };
 
 export default function ExternalLink(props: ExternalLinkProps) {
@@ -64,7 +63,7 @@ export default function ExternalLink(props: ExternalLinkProps) {
   } = props;
 
   // Security attributes for all external links with ability to override
-  const linkProps: LinkPropsWithButtonProps = {
+  const linkProps: TextVariantLinkProps = {
     ...restProps, // Spread additional props first so specific props take precedence
     href,
     target: target ?? "_blank", // Use provided target or default to _blank

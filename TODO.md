@@ -85,7 +85,7 @@
         1.  The `buttonProps` object is passed directly as a prop to the `<RetroButton />` component.
     - **Depends‑on:** [T005]
 
-- [ ] **T010 · Refactor · P1: adjust `LinkPropsWithButtonProps` type or its usage for button variant anchor props in `ExternalLink.tsx`**
+- [x] **T010 · Refactor · P1: adjust `LinkPropsWithButtonProps` type or its usage for button variant anchor props in `ExternalLink.tsx`**
     - **Context:** PLAN.md – cr‑02 Convoluted Handling of `buttonProps`, Step 7
     - **Action:**
         1.  Review the type used for props spread onto the `<a>` tag in the `variant === "button"` case in `app/components/shared/ExternalLink.tsx`.
