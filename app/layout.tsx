@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Inter, Courier_Prime } from "next/font/google";
 import "./globals.css";
+import { APP_CONFIG } from "@/app/config/app-config";
 
 // Bold display font for headings
 const playfairDisplayBlack = Playfair_Display({
@@ -38,8 +39,8 @@ const courierPrime = Courier_Prime({
 });
 
 export const metadata: Metadata = {
-  title: "Trump Goggles",
-  description: "Translates text to Trumpisms - See the web through a different lens",
+  title: APP_CONFIG.metadata.title,
+  description: APP_CONFIG.metadata.description,
 };
 
 export default function RootLayout({

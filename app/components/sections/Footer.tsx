@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import ExternalLink from "@/app/components/shared/ExternalLink";
 import AnimatedSection from "@/app/components/shared/AnimatedSection";
 import AnimatedStar from "@/app/components/shared/AnimatedStar";
+import { APP_CONFIG } from "@/app/config/app-config";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -37,11 +38,11 @@ export default function Footer() {
           viewport={{ once: true }}
         >
           <ExternalLink
-            href="https://github.com/phrazzld/trump-goggles"
+            href={APP_CONFIG.urls.githubRepo}
             className="text-retro-cream hover:text-retro-gold transition-colors text-lg font-semibold"
             ariaLabel="View Trump Goggles source code on GitHub"
           >
-            View on GitHub →
+            {APP_CONFIG.footerText.viewOnGithub}
           </ExternalLink>
         </motion.div>
 
@@ -64,10 +65,7 @@ export default function Footer() {
           transition={{ duration: 0.4, delay: 0.6 }}
           viewport={{ once: true }}
         >
-          Trump Goggles is a browser extension created for entertainment purposes
-          only. This extension and its creators are not affiliated with,
-          endorsed by, or connected to Donald Trump or any of his associated
-          entities. All trademarks are property of their respective owners.
+          {APP_CONFIG.footerText.disclaimer}
         </motion.div>
 
         {/* Made with love */}
@@ -78,7 +76,7 @@ export default function Footer() {
           transition={{ duration: 0.4, delay: 0.7 }}
           viewport={{ once: true }}
         >
-          Made with <span className="text-retro-red" aria-label="love">♥</span> for the internet
+          {APP_CONFIG.footerText.madeWithLove} for the internet
         </motion.div>
       </motion.div>
     </AnimatedSection>
