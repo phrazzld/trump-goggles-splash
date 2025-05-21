@@ -20,7 +20,7 @@
         1.  `BaseProps` (or equivalent type for spreadable anchor attributes) is confirmed or updated to correctly and strictly type passthrough attributes for the `<a>` tag.
     - **Depends‑on:** none
 
-- [ ] **T003 · Refactor · P1: explicitly type legitimate passthrough `data-*` or other attributes in `ExternalLink.tsx` if needed**
+- [x] **T003 · Refactor · P1: explicitly type legitimate passthrough `data-*` or other attributes in `ExternalLink.tsx` if needed**
     - **Context:** PLAN.md – cr‑01 Type Safety Loophole, Step 4
     - **Action:**
         1.  After T001 and T002 are complete, run `pnpm tsc --noEmit` to identify type errors from previously untyped passthrough props.

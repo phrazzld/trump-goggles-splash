@@ -22,11 +22,20 @@ type BaseProps = BaseExternalLinkProps & Omit<
   keyof BaseExternalLinkProps | 'aria-label'
 >;
 
-interface TextLinkProps extends BaseProps {
+// ReactHTMLAttributes already includes data-* attributes through index signatures,
+// but to be explicit and for better documentation, we'll define common testing props
+interface DataTestProps {
+  'data-testid'?: string;
+  'data-test'?: string;
+  'data-cy'?: string;
+  'data-e2e'?: string;
+}
+
+interface TextLinkProps extends BaseProps, DataTestProps {
   variant?: "text";
 }
 
-interface ButtonLinkProps extends BaseProps {
+interface ButtonLinkProps extends BaseProps, DataTestProps {
   variant: "button";
   buttonProps?: Omit<RetroButtonProps, "children" | "onClick">;
 }
