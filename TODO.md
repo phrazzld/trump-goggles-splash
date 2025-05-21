@@ -11,7 +11,7 @@
         2. Branch `feature/externalize-config` is pushed to the remote repository.
     - **Depends‑on:** none
 
-- [ ] **T002 · Feature · P1: create configuration directory and initial file**
+- [x] **T002 · Feature · P1: create configuration directory and initial file**
     - **Context:** PLAN.md - Implementation Steps (1. Create Configuration Directory and File)
     - **Action:**
         1. Create the `app/config/` directory.
