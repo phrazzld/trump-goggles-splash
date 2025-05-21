@@ -68,7 +68,7 @@
         2.  The unused `buttonProps` destructuring from `linkProps` is removed.
     - **Depends‑on:** [T006]
 
-- [ ] **T008 · Refactor · P1: construct `finalAnchorProps` with `anchorRestProps` for button variant in `ExternalLink.tsx`**
+- [x] **T008 · Refactor · P1: construct `finalAnchorProps` with `anchorRestProps` for button variant in `ExternalLink.tsx`**
     - **Context:** PLAN.md – cr‑02 Convoluted Handling of `buttonProps`, Step 5
     - **Action:**
         1.  In `app/components/shared/ExternalLink.tsx` for the button variant, construct the `finalAnchorProps` object for the `<a>` tag using `currentHref`, `currentTarget`, `currentRel`, `currentAriaLabel`, `currentClassName` (merged with `cn`), and spread `anchorRestProps` as per the plan's example.

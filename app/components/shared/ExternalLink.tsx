@@ -87,15 +87,21 @@ export default function ExternalLink(props: ExternalLinkProps) {
       ...anchorRestProps // These are the actual passthrough props for the <a> tag
     } = typedProps;
     
+    // Construct finalAnchorProps for the <a> tag
+    const finalAnchorProps = {
+      ...anchorRestProps,
+      href: currentHref,
+      target: currentTarget ?? "_blank",
+      rel: currentRel ?? "noopener noreferrer",
+      ...(currentAriaLabel && { "aria-label": currentAriaLabel }),
+      className: cn(
+        'inline-flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-retro-blue focus-visible:ring-offset-2 focus-visible:ring-offset-retro-cream', 
+        currentClassName
+      )
+    };
+
     return (
-      <a 
-        {...anchorRestProps}
-        href={currentHref}
-        className={currentClassName}
-        target={currentTarget ?? "_blank"}
-        rel={currentRel ?? "noopener noreferrer"}
-        {...(currentAriaLabel && { "aria-label": currentAriaLabel })}
-      >
+      <a {...finalAnchorProps}>
         <RetroButton {...buttonProps}>{currentChildren}</RetroButton>
       </a>
     );
