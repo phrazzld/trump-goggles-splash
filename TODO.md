@@ -77,7 +77,7 @@
         1.  `finalAnchorProps` is correctly constructed for the button variant, incorporating `anchorRestProps` and adhering to strict typing.
     - **Depends‑on:** [T005]
 
-- [ ] **T009 · Refactor · P1: pass `buttonProps` directly to `RetroButton` component in `ExternalLink.tsx`**
+- [x] **T009 · Refactor · P1: pass `buttonProps` directly to `RetroButton` component in `ExternalLink.tsx`**
     - **Context:** PLAN.md – cr‑02 Convoluted Handling of `buttonProps`, Step 6
     - **Action:**
         1.  In `app/components/shared/ExternalLink.tsx`, modify the `<RetroButton />` component invocation within the button variant to receive the isolated `buttonProps` directly.
