@@ -150,7 +150,7 @@ We will start with **simple type exports** and prepare the structure for future 
 
 ### T006 - Externalize Hero CTA Text 📋
 - **Priority**: P0 - Incomplete implementation
-- **Status**: [ ] Pending
+- **Status**: [x] Completed
 - **Dependencies**: T003
 - **Files**: `app/config/app-config.ts`, `app/components/Hero.tsx`
 - **Task**: Move "Install on Chrome" to config

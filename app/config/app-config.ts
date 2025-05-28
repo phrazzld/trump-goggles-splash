@@ -60,6 +60,7 @@ export interface UITextContent {
     readonly title: string;
     readonly description: string;
     readonly installButton: string;
+    readonly ctaText: string;
     readonly learnMoreButton: string;
     readonly orSeparator: string;
   };
@@ -139,6 +140,7 @@ export const APP_CONFIG: AppConfig = {
       title: "Trump Goggles",
       description: "Translates text to Trumpisms (e.g., 'ISIS' → 'Evil Losers', 'Hillary Clinton' → 'Crooked Hillary')",
       installButton: "Install Trump Goggles",
+      ctaText: "Install on Chrome",
       learnMoreButton: "Learn More",
       orSeparator: "or"
     },
