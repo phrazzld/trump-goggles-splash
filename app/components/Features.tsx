@@ -8,7 +8,7 @@ export const ICON_REGISTRY = {
   sliders: Sliders,
   shield: Shield,
   toggleRight: ToggleRight
-} as const satisfies Record<string, LucideIcon>;
+} satisfies Record<string, LucideIcon>;
 
 // Derive IconName type from registry keys
 export type IconName = keyof typeof ICON_REGISTRY;

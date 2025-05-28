@@ -113,7 +113,7 @@ export interface AppConfig {
 /**
  * Application configuration object - single source of truth for all static configuration
  */
-export const APP_CONFIG: AppConfig = {
+export const APP_CONFIG = {
   urls: {
     chromeStore: "https://chromewebstore.google.com/detail/trump-goggles/jffbimfdmgbfannficjejaffmnggoigd",
     githubRepo: "https://github.com/phrazzld/trump-goggles"
@@ -125,7 +125,7 @@ export const APP_CONFIG: AppConfig = {
     { original: "The Media", trumpified: "Fake News" },
     { original: "North Korea", trumpified: "Rocket Man" },
     { original: "Trade Deficit", trumpified: "Terrible Trade Deals" },
-  ] as const,
+  ],
   metadata: {
     title: "Trump Goggles",
     description: "Translates text to Trumpisms - See the web through a different lens"
@@ -175,7 +175,7 @@ export const APP_CONFIG: AppConfig = {
           iconName: 'toggleRight',
           iconLabel: "Toggle switch icon representing easy on/off control"
         }
-      ] as const
+      ]
     },
     trumpismExamplesSection: {
       title: "Iconic Trumpisms",
@@ -207,7 +207,7 @@ export const APP_CONFIG: AppConfig = {
       }
     }
   }
-} as const;
+} satisfies AppConfig;
 
 /**
  * Derived types from the actual configuration object
