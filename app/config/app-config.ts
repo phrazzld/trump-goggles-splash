@@ -67,6 +67,13 @@ export interface UITextContent {
     readonly sectionTitle: string;
     readonly featureItems: readonly AppFeatureItem[];
   };
+  readonly trumpismExamplesSection: {
+    readonly title: string;
+    readonly subtitle: string;
+    readonly originalLabel: string;
+    readonly trumpifiedLabel: string;
+    readonly bottomMessage: string;
+  };
 }
 
 /**
@@ -145,6 +152,13 @@ export const APP_CONFIG: AppConfig = {
           iconLabel: "Toggle switch icon representing easy on/off control"
         }
       ] as const
+    },
+    trumpismExamplesSection: {
+      title: "Iconic Trumpisms",
+      subtitle: "See the most memorable translations that give the internet a whole new personality!",
+      originalLabel: "Original",
+      trumpifiedLabel: "Trumpified",
+      bottomMessage: "And many more entertaining translations that make browsing the web an unforgettable experience!"
     }
   }
 } as const;

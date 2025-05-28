@@ -43,12 +43,11 @@ export default function TrumpismExamples() {
 
       <div className="max-w-7xl mx-auto">
         <SectionHeading level={2} className="text-center mb-4" id="trumpism-examples-heading">
-          Iconic Trumpisms
+          {APP_CONFIG.uiText.trumpismExamplesSection.title}
         </SectionHeading>
 
         <p className="text-lg md:text-xl text-center mb-16 max-w-3xl mx-auto text-gray-700">
-          See the most memorable translations that give the internet a whole new
-          personality!
+          {APP_CONFIG.uiText.trumpismExamplesSection.subtitle}
         </p>
 
         {/* Examples grid */}
@@ -73,7 +72,7 @@ export default function TrumpismExamples() {
                   {/* Original */}
                   <div className="mb-6">
                     <span className="text-xs uppercase tracking-wider text-gray-500 font-semibold">
-                      Original
+                      {APP_CONFIG.uiText.trumpismExamplesSection.originalLabel}
                     </span>
                     <p className="text-xl md:text-2xl font-semibold text-gray-800 mt-1">
                       &ldquo;{example.original}&rdquo;
@@ -94,7 +93,7 @@ export default function TrumpismExamples() {
                   {/* Trumpified */}
                   <div>
                     <span className="text-xs uppercase tracking-wider text-retro-red font-bold">
-                      Trumpified
+                      {APP_CONFIG.uiText.trumpismExamplesSection.trumpifiedLabel}
                     </span>
                     <p className="text-xl md:text-2xl font-black text-retro-blue mt-1">
                       &ldquo;{example.trumpified}&rdquo;
@@ -118,8 +117,7 @@ export default function TrumpismExamples() {
           viewport={{ once: true }}
         >
           <p className="text-lg text-gray-600">
-            And many more entertaining translations that make browsing the web
-            an unforgettable experience!
+            {APP_CONFIG.uiText.trumpismExamplesSection.bottomMessage}
           </p>
         </motion.div>
       </div>
