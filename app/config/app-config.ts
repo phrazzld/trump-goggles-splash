@@ -7,6 +7,7 @@
  */
 
 import type { IconName } from '@/app/components/Features';
+import { validateConfig } from './validate-config';
 
 /**
  * Interface for URL configurations
@@ -217,5 +218,18 @@ export const APP_CONFIG = {
  * but uses a different name to avoid conflict with the existing AppConfig interface
  */
 export type AppConfigType = typeof APP_CONFIG;
+
+/**
+ * Validated application configuration
+ * This ensures the configuration passes validation and provides a single export point
+ */
+export const VALIDATED_APP_CONFIG = validateConfig(APP_CONFIG);
+
+// Re-export as the main config for backward compatibility  
+export { VALIDATED_APP_CONFIG as APP_CONFIG_VALIDATED };
+
+/**
+ * Derived types for specific configuration sections
+ */
 export type AppFeature = AppConfigType['uiText']['features']['featureItems'][number];
 export type TrumpismExampleLiteral = AppConfigType['trumpismExamples'][number];
