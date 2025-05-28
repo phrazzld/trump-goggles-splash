@@ -1,139 +1,342 @@
-# Todo
+# Trump Goggles Splash Page - Configuration Externalization Fixes
 
-## Configuration Externalization (Issue #16)
+**Generated**: 2025-01-24
+**Objective**: Address all critical issues identified in the synthesized code review to achieve production-ready configuration externalization.
 
-- [x] **T001 · Chore · P2: create feature branch for configuration externalization**
-    - **Context:** PLAN.md - Implementation Branch
-    - **Action:**
-        1. Create a new Git branch named `feature/externalize-config` from the main development branch.
-    - **Done‑when:**
-        1. Branch `feature/externalize-config` exists in the local repository.
-        2. Branch `feature/externalize-config` is pushed to the remote repository.
-    - **Depends‑on:** none
+## Design Decisions & Rationale
 
-- [x] **T002 · Feature · P1: create configuration directory and initial file**
-    - **Context:** PLAN.md - Implementation Steps (1. Create Configuration Directory and File)
-    - **Action:**
-        1. Create the `app/config/` directory.
-        2. Create the `app/config/app-config.ts` file.
-    - **Done‑when:**
-        1. Directory `app/config/` exists.
-        2. File `app/config/app-config.ts` exists and is ready for content.
-    - **Verification:**
-        1. Confirm `app/config/app-config.ts` path is present in the project structure.
-    - **Depends‑on:** [T001]
+### Icon Architecture Decision
+We will implement a **factory pattern** for icon mapping rather than storing React components directly in config. This keeps configuration pure data while maintaining type safety.
 
-- [x] **T003 · Feature · P1: define core configuration types and `APP_CONFIG` constant**
-    - **Context:** PLAN.md - Implementation Steps (2. Define Core Types and Constants); Architecture (New module)
-    - **Action:**
-        1. In `app/config/app-config.ts`, define TypeScript interfaces for URLs, Trumpism examples, app metadata, and footer text.
-        2. Create and export the main immutable `APP_CONFIG` object, typed with the defined interfaces, containing initial placeholder values.
-    - **Done‑when:**
-        1. `app-config.ts` contains strongly-typed interfaces for all configuration categories.
-        2. `APP_CONFIG` constant is defined, typed, immutable, and exported.
-        3. TypeScript compilation (`tsc --noEmit`) passes for `app-config.ts`.
-    - **Depends‑on:** [T002]
+### String Organization Decision  
+We will **extend APP_CONFIG** with nested sections rather than creating separate files. This maintains a single source of truth while keeping organization clear.
 
-- [x] **T004 · Refactor · P2: migrate chrome store url from `Hero.tsx` to config**
-    - **Context:** PLAN.md - Implementation Steps (3. Identify and Migrate URLs); Architecture (Modified components: Hero.tsx)
-    - **Action:**
-        1. Move the Chrome Store URL from `Hero.tsx` into the `APP_CONFIG` object in `app-config.ts`.
-        2. Refactor `Hero.tsx` to import and use the Chrome Store URL from `APP_CONFIG`.
-    - **Done‑when:**
-        1. `Hero.tsx` no longer contains a hardcoded Chrome Store URL.
-        2. Chrome Store URL is sourced from `APP_CONFIG` in `Hero.tsx`.
-    - **Verification:**
-        1. Run the application and visually verify the Chrome Store link in the Hero section renders correctly.
-        2. Click the Chrome Store link and confirm it navigates to the correct URL.
-    - **Depends‑on:** [T003]
+### Testing Strategy Decision
+We will focus on **Vitest + React Testing Library** for immediate needs, deferring Storybook story updates to a future iteration.
 
-- [x] **T005 · Refactor · P2: migrate github repo url from `Footer.tsx` to config**
-    - **Context:** PLAN.md - Implementation Steps (3. Identify and Migrate URLs); Architecture (Modified components: Footer.tsx)
-    - **Action:**
-        1. Move the GitHub repo URL from `Footer.tsx` into the `APP_CONFIG` object in `app-config.ts`.
-        2. Refactor `Footer.tsx` to import and use the GitHub repo URL from `APP_CONFIG`.
-    - **Done‑when:**
-        1. `Footer.tsx` no longer contains a hardcoded GitHub repo URL.
-        2. GitHub repo URL is sourced from `APP_CONFIG` in `Footer.tsx`.
-    - **Verification:**
-        1. Run the application and visually verify the GitHub link in the Footer section renders correctly.
-        2. Click the GitHub link and confirm it navigates to the correct URL.
-    - **Depends‑on:** [T003]
+### Type Safety Decision
+We will start with **simple type exports** and prepare the structure for future Zod validation without adding the dependency now.
 
-- [x] **T006 · Refactor · P2: migrate trumpism examples from `TrumpismExamples.tsx` to config**
-    - **Context:** PLAN.md - Implementation Steps (4. Identify and Migrate Trumpism Examples); Architecture (Modified components: TrumpismExamples.tsx)
-    - **Action:**
-        1. Move the example conversions data from `TrumpismExamples.tsx` into the `APP_CONFIG` object in `app-config.ts`.
-        2. Refactor `TrumpismExamples.tsx` to import and use the example conversions from `APP_CONFIG`.
-    - **Done‑when:**
-        1. `TrumpismExamples.tsx` no longer contains hardcoded example conversions.
-        2. Example conversions are sourced from `APP_CONFIG` in `TrumpismExamples.tsx`.
-    - **Verification:**
-        1. Run the application and visually verify that all Trumpism examples display correctly as before.
-    - **Depends‑on:** [T003]
+---
 
-- [x] **T007 · Refactor · P2: migrate app metadata from `layout.tsx` to config**
-    - **Context:** PLAN.md - Implementation Steps (5. Identify and Migrate App Metadata); Architecture (Modified components: layout.tsx)
-    - **Action:**
-        1. Move the app title and description from `layout.tsx` into the `APP_CONFIG` object in `app-config.ts`.
-        2. Refactor `layout.tsx` to import and use the app title and description from `APP_CONFIG`.
-    - **Done‑when:**
-        1. `layout.tsx` no longer contains a hardcoded app title or description.
-        2. App title and description are sourced from `APP_CONFIG` in `layout.tsx`.
-    - **Verification:**
-        1. Run the application and verify the browser tab title and page meta description (via dev tools) reflect the configured values.
-    - **Depends‑on:** [T003]
+## Phase 1: Critical Fixes [IMMEDIATE]
 
-- [x] **T008 · Refactor · P2: migrate footer text from `Footer.tsx` to config**
-    - **Context:** PLAN.md - Implementation Steps (6. Identify and Migrate Footer Text); Architecture (Modified components: Footer.tsx)
-    - **Action:**
-        1. Move the disclaimer and other static text from `Footer.tsx` into the `APP_CONFIG` object in `app-config.ts`.
-        2. Refactor `Footer.tsx` to import and use this static text from `APP_CONFIG`.
-    - **Done‑when:**
-        1. `Footer.tsx` no longer contains hardcoded disclaimer or other static text.
-        2. Footer static text is sourced from `APP_CONFIG` in `Footer.tsx`.
-    - **Verification:**
-        1. Run the application and visually verify the disclaimer and other static text in the Footer display correctly as before.
-    - **Depends‑on:** [T003]
+### T001 - Fix Accessibility Regression ⚠️ CRITICAL
+- **Priority**: P0 - Accessibility blocker
+- **Status**: [x] Completed
+- **Dependencies**: None
+- **File**: `app/components/Features.tsx`
+- **Task**: Restore missing `aria-label="heart"` to Heart icon on line 65
+- **Implementation**: 
+  ```tsx
+  <Icon className="w-16 h-16 mx-auto mb-6 text-trump-gold" aria-label={feature.iconLabel || feature.id} />
+  ```
+- **Done When**: 
+  - Heart icon has aria-label
+  - All feature icons have meaningful aria-labels
+  - Passes `pnpm lint`
 
-- [x] **T009 · Refactor · P2: conduct project-wide review for remaining hardcoded strings and externalize**
-    - **Context:** PLAN.md - Implementation Steps (7. Final Project-Wide Review); Risks and Mitigations (Missing hardcoded values)
-    - **Action:**
-        1. Search the entire project codebase (excluding `app-config.ts`) for any other hardcoded strings that should be externalized to `APP_CONFIG`.
-        2. For any identified strings, add them to `APP_CONFIG` with appropriate typing.
-        3. Refactor the respective components/files to use these new values from `APP_CONFIG`.
-    - **Done‑when:**
-        1. A thorough review of the codebase for hardcoded strings is completed.
-        2. All identified and appropriate strings are moved to `APP_CONFIG`.
-        3. Affected components are refactored.
-    - **Depends‑on:** [T004, T005, T006, T007, T008]
+### T002 - Implement Safe Icon Factory Pattern 🏗️ CRITICAL  
+- **Priority**: P0 - Architecture fix
+- **Status**: [ ] Pending
+- **Dependencies**: None
+- **Files**: `app/config/app-config.ts`, `app/components/Features.tsx`
+- **Task**: Create type-safe icon mapping system
+- **Implementation**:
+  1. Add icon identifiers to feature config:
+     ```typescript
+     features: [
+       { 
+         id: 'nickname-replacement' as const,
+         title: 'Nickname Replacement',
+         description: 'Automatically replaces boring regular names with tremendous Trump-given nicknames',
+         iconName: 'sparkles' as const,
+         iconLabel: 'Sparkles icon'
+       },
+     ]
+     ```
+  2. Create icon factory in Features.tsx:
+     ```typescript
+     import { Sparkles, Target, Trophy, Heart, LucideIcon } from 'lucide-react';
+     
+     const ICON_REGISTRY = {
+       sparkles: Sparkles,
+       target: Target,
+       trophy: Trophy,
+       heart: Heart
+     } as const satisfies Record<string, LucideIcon>;
+     
+     type IconName = keyof typeof ICON_REGISTRY;
+     
+     // In AppFeature interface:
+     iconName: IconName;
+     iconLabel: string;
+     ```
+- **Done When**:
+  - No hardcoded icon mapping array
+  - TypeScript errors if invalid icon name used
+  - Each feature has iconName and iconLabel
+  - Components render correctly
 
-- [x] **T010 · Test · P1: perform full testing and verification of externalized configuration**
-    - **Context:** PLAN.md - Implementation Steps (8. Testing and Verification); Testing Strategy; Risks and Mitigations
-    - **Action:**
-        1. Run TypeScript type checking across the entire project (e.g., `tsc --noEmit`).
-        2. Run the application and visually verify all content previously using hardcoded strings (Hero, Footer, TrumpismExamples, Layout, and any identified in T009) displays correctly.
-        3. Test all externalized links (Chrome Store, GitHub, etc.) to ensure they function correctly.
-    - **Done‑when:**
-        1. TypeScript type checking passes with zero errors.
-        2. Visual inspection confirms UI appearance matches pre-refactoring state for all affected areas.
-        3. All configured links are verified to navigate to their correct destinations.
-        4. No regressions in functionality related to the externalized strings are observed.
-    - **Depends‑on:** [T009]
+### T003 - Export Configuration Types 📝
+- **Priority**: P0 - Type safety
+- **Status**: [ ] Pending  
+- **Dependencies**: T002 (to include icon types)
+- **File**: `app/config/app-config.ts`
+- **Task**: Export AppConfig type and update imports
+- **Implementation**:
+  ```typescript
+  export type AppConfig = typeof APP_CONFIG;
+  export type AppFeature = AppConfig['features'][number];
+  export type TrumpismExample = AppConfig['trumpismExamples'][number];
+  ```
+- **Done When**:
+  - Types exported from config
+  - All components import types from config
+  - No type errors with `pnpm tsc --noEmit`
 
-- [x] **T011 · Chore · P1: create pull request for configuration externalization**
-    - **Context:** PLAN.md - Implementation Branch
-    - **Action:**
-        1. Ensure all tasks (T001-T010) are completed and work as expected.
-        2. Push the `feature/externalize-config` branch to the remote repository.
-        3. Create a pull request that references issue #16.
-    - **Done‑when:**
-        1. Pull request is created with a descriptive title mentioning "Externalize configuration strings and example conversions".
-        2. Pull request description includes "Closes #16" to autolink and auto-close the issue when merged.
-        3. Pull request includes a summary of changes made.
-    - **Depends‑on:** [T010]
+---
 
-### Clarifications & Assumptions
-- [ ] **Issue:** The plan assumes the structure for complex data like `TrumpismExamples` will be defined during task T003 (Define core types and APP_CONFIG constant).
-    - **Context:** PLAN.md - Implementation Steps (2. Define Core Types and Constants)
-    - **Blocking?:** no (This is a standard part of the development task)
+## Phase 2: Complete String Externalization
+
+### T004 - Externalize TrumpismExamples Strings 📋
+- **Priority**: P0 - Incomplete implementation
+- **Status**: [ ] Pending
+- **Dependencies**: T003
+- **Files**: `app/config/app-config.ts`, `app/components/sections/TrumpismExamples.tsx`
+- **Task**: Move all hardcoded strings to config
+- **Implementation**:
+  1. Extend APP_CONFIG:
+     ```typescript
+     trumpismExamplesSection: {
+       title: 'See It In Action',
+       beforeLabel: 'Before',
+       afterLabel: 'After'
+     }
+     ```
+  2. Update component to use config values
+- **Done When**:
+  - No hardcoded strings in TrumpismExamples.tsx
+  - Component renders correctly
+  - TypeScript validates all usages
+
+### T005 - Externalize InstallationGuide Strings 📋
+- **Priority**: P0 - Incomplete implementation
+- **Status**: [ ] Pending
+- **Dependencies**: T003
+- **Files**: `app/config/app-config.ts`, `app/components/sections/InstallationGuide.tsx`
+- **Task**: Move browser availability messages to config
+- **Implementation**:
+  ```typescript
+  installation: {
+    chrome: {
+      available: true,
+      message: null
+    },
+    firefox: {
+      available: false,
+      message: 'Coming Soon!'
+    },
+    edge: {
+      available: false,
+      message: 'Coming Soon!'
+    }
+  }
+  ```
+- **Done When**:
+  - No hardcoded "Coming Soon!" strings
+  - Browser availability driven by config
+  - Maintains existing styling
+
+### T006 - Externalize Hero CTA Text 📋
+- **Priority**: P0 - Incomplete implementation
+- **Status**: [ ] Pending
+- **Dependencies**: T003
+- **Files**: `app/config/app-config.ts`, `app/components/Hero.tsx`
+- **Task**: Move "Install on Chrome" to config
+- **Implementation**:
+  ```typescript
+  hero: {
+    ctaText: 'Install on Chrome'
+  }
+  ```
+- **Done When**:
+  - CTA text comes from config
+  - No hardcoded button text
+
+### T007 - Clean Up Redundant Type Assertions 🧹
+- **Priority**: P1 - Code quality
+- **Status**: [ ] Pending
+- **Dependencies**: T003, T004, T005, T006
+- **File**: `app/config/app-config.ts`
+- **Task**: Remove redundant `as const` when using `satisfies`
+- **Implementation**: Use only `satisfies` operator, remove `as const`
+- **Done When**:
+  - Clean type assertions
+  - Types still work correctly
+  - No regression in type safety
+
+---
+
+## Phase 3: Testing & Validation
+
+### T008 - Unit Tests for Icon Factory 🧪
+- **Priority**: P0 - Testing gap
+- **Status**: [ ] Pending
+- **Dependencies**: T002
+- **File**: Create `app/components/Features.test.tsx`
+- **Task**: Test icon factory and rendering
+- **Tests**:
+  - Icon factory returns correct components
+  - Invalid icon names cause TypeScript errors
+  - Accessibility labels render correctly
+  - Features render with correct icons
+- **Done When**:
+  - All tests pass
+  - Coverage maintains 90% threshold
+
+### T009 - Unit Tests for Config Integration 🧪
+- **Priority**: P0 - Testing gap
+- **Status**: [ ] Pending
+- **Dependencies**: T004, T005, T006
+- **Files**: Create tests for affected components
+- **Task**: Test configuration usage in components
+- **Tests**:
+  - Components use config values
+  - Type safety is maintained
+  - No hardcoded strings remain
+  - Config changes reflect in components
+- **Done When**:
+  - Test files created for each component
+  - All tests pass
+  - Coverage maintained
+
+### T010 - Integration Tests for Full Page 🧪
+- **Priority**: P0 - Testing gap
+- **Status**: [ ] Pending
+- **Dependencies**: T008, T009
+- **File**: Create `app/page.test.tsx`
+- **Task**: Test page renders with external config
+- **Tests**:
+  - Page renders all sections
+  - Config values appear correctly
+  - No runtime errors
+  - Accessibility passes
+- **Done When**:
+  - Full page integration test passes
+  - jest-axe accessibility checks pass
+
+### T011 - Add Config Validation Helper 🛡️
+- **Priority**: P1 - Future-proofing
+- **Status**: [ ] Pending
+- **Dependencies**: T003
+- **File**: Create `app/config/validate-config.ts`
+- **Task**: Create validation function (prepare for future Zod)
+- **Implementation**:
+  ```typescript
+  export function validateConfig(config: unknown): AppConfig {
+    // For now, just type assertion
+    // Structure prepared for future Zod schema
+    return config as AppConfig;
+  }
+  ```
+- **Done When**:
+  - Validation function exists
+  - Used in app-config.ts
+  - Tests for validation function
+
+---
+
+## Phase 4: Documentation & Polish
+
+### T012 - Create Configuration Documentation 📚
+- **Priority**: P0 - Documentation gap
+- **Status**: [ ] Pending
+- **Dependencies**: T001-T007
+- **File**: Create `docs/CONFIGURATION.md`
+- **Task**: Document configuration structure and usage
+- **Sections**:
+  - Configuration structure overview
+  - How to add new features
+  - Icon system explanation
+  - String externalization patterns
+  - Type safety approach
+- **Done When**:
+  - Comprehensive documentation exists
+  - Examples included
+  - Reviewed for clarity
+
+### T013 - Update CLAUDE.md 🤖
+- **Priority**: P1 - AI assistance
+- **Status**: [ ] Pending
+- **Dependencies**: T012
+- **File**: `CLAUDE.md`
+- **Task**: Add configuration patterns and testing commands
+- **Additions**:
+  - How configuration is structured
+  - Icon factory pattern explanation
+  - Testing commands
+  - Common configuration tasks
+- **Done When**:
+  - CLAUDE.md updated
+  - Configuration section added
+
+### T014 - Fix Grid Layout UX Issue 🎨
+- **Priority**: P2 - UX improvement
+- **Status**: [ ] Pending
+- **Dependencies**: None
+- **File**: `app/components/Features.tsx`
+- **Task**: Adjust grid for 4 items (currently 3-1 split)
+- **Options**:
+  1. Force 2-2 layout on medium screens
+  2. Add 5th feature to balance
+  3. Center last item
+- **Recommendation**: Force 2-2 layout
+- **Implementation**:
+  ```tsx
+  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+  ```
+- **Done When**:
+  - Balanced layout on all screen sizes
+  - No awkward 3-1 split
+
+---
+
+## Phase 5: Process & Cleanup
+
+### T015 - Delete This TODO.md 🗑️
+- **Priority**: P0 - Process requirement
+- **Status**: [ ] Pending
+- **Dependencies**: ALL tasks complete
+- **Task**: Remove TODO.md after all tasks done
+- **Done When**:
+  - All tasks marked complete
+  - TODO.md deleted
+  - Clean git status
+
+---
+
+## Deferred for Future Iterations
+
+These items were identified but intentionally deferred:
+
+1. **Internationalization (i18n)** - Structure is prepared but not implemented
+2. **Runtime Config Validation with Zod** - Structure prepared, can add when needed  
+3. **Feature Flags** - Config structure can support it, not needed yet
+4. **Storybook Stories** - Existing components have stories, focus on unit tests for now
+5. **Config Hot Reloading** - Not needed for static site
+
+---
+
+## Success Criteria
+
+When all tasks are complete:
+- [ ] Zero TypeScript errors (`pnpm tsc --noEmit`)
+- [ ] All tests pass (`pnpm test`)
+- [ ] 90%+ test coverage maintained
+- [ ] Zero lint errors (`pnpm lint`)
+- [ ] Accessibility audit passes
+- [ ] No hardcoded strings in components
+- [ ] Type-safe icon system
+- [ ] Comprehensive documentation
+- [ ] This file is deleted

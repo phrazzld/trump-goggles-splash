@@ -24,7 +24,7 @@ export default function Features() {
             return (
               <TexturedCard key={index}>
                 <div className="p-8 text-center">
-                  <Icon className="w-12 h-12 text-retro-red mx-auto mb-4" />
+                  <Icon className="w-12 h-12 text-retro-red mx-auto mb-4" aria-label={`${feature.title} icon`} />
                   <h3 className="text-retro-blue mb-3 text-shadow-vintage">
                     {feature.title}
                   </h3>
