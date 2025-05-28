@@ -6,6 +6,8 @@
  * values used throughout the application.
  */
 
+import type { IconName } from '@/app/components/Features';
+
 /**
  * Interface for URL configurations
  */
@@ -40,6 +42,17 @@ export interface FooterText {
 }
 
 /**
+ * Interface for a feature item with icon information
+ */
+export interface AppFeatureItem {
+  readonly id: string;
+  readonly title: string;
+  readonly description: string;
+  readonly iconName: IconName;
+  readonly iconLabel: string;
+}
+
+/**
  * Interface for UI components text content
  */
 export interface UITextContent {
@@ -52,10 +65,7 @@ export interface UITextContent {
   };
   readonly features: {
     readonly sectionTitle: string;
-    readonly featureItems: readonly {
-      readonly title: string;
-      readonly description: string;
-    }[];
+    readonly featureItems: readonly AppFeatureItem[];
   };
 }
 
@@ -107,20 +117,32 @@ export const APP_CONFIG: AppConfig = {
       sectionTitle: "Features",
       featureItems: [
         {
+          id: 'instant-processing',
           title: "Instant Processing",
-          description: "Transform the web as you browse with lightning-fast text replacement."
+          description: "Transform the web as you browse with lightning-fast text replacement.",
+          iconName: 'zap',
+          iconLabel: "Lightning bolt icon representing instant processing"
         },
         {
+          id: 'customizable-filters',
           title: "Customizable Filters",
-          description: "Choose your preferred language style and customize replacement patterns."
+          description: "Choose your preferred language style and customize replacement patterns.",
+          iconName: 'sliders',
+          iconLabel: "Sliders icon representing customizable filters"
         },
         {
+          id: 'privacy-focused',
           title: "Privacy Focused",
-          description: "No data collection - everything runs locally in your browser."
+          description: "No data collection - everything runs locally in your browser.",
+          iconName: 'shield',
+          iconLabel: "Shield icon representing privacy protection"
         },
         {
+          id: 'easy-toggle',
           title: "Easy Toggle",
-          description: "Enable or disable with one click from your browser toolbar."
+          description: "Enable or disable with one click from your browser toolbar.",
+          iconName: 'toggleRight',
+          iconLabel: "Toggle switch icon representing easy on/off control"
         }
       ] as const
     }
