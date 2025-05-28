@@ -122,7 +122,7 @@ We will start with **simple type exports** and prepare the structure for future 
 
 ### T005 - Externalize InstallationGuide Strings 📋
 - **Priority**: P0 - Incomplete implementation
-- **Status**: [ ] Pending
+- **Status**: [x] Completed
 - **Dependencies**: T003
 - **Files**: `app/config/app-config.ts`, `app/components/sections/InstallationGuide.tsx`
 - **Task**: Move browser availability messages to config

@@ -74,6 +74,28 @@ export interface UITextContent {
     readonly trumpifiedLabel: string;
     readonly bottomMessage: string;
   };
+  readonly installationGuide: {
+    readonly title: string;
+    readonly subtitle: string;
+    readonly ctaButtonText: string;
+    readonly githubSectionText: string;
+    readonly githubLinkText: string;
+    readonly browserCompatibilityNote: string;
+    readonly browsers: {
+      readonly chrome: {
+        readonly available: boolean;
+        readonly message: string | null;
+      };
+      readonly firefox: {
+        readonly available: boolean;
+        readonly message: string | null;
+      };
+      readonly edge: {
+        readonly available: boolean;
+        readonly message: string | null;
+      };
+    };
+  };
 }
 
 /**
@@ -159,6 +181,28 @@ export const APP_CONFIG: AppConfig = {
       originalLabel: "Original",
       trumpifiedLabel: "Trumpified",
       bottomMessage: "And many more entertaining translations that make browsing the web an unforgettable experience!"
+    },
+    installationGuide: {
+      title: "How to Install Trump Goggles",
+      subtitle: "Get Trump Goggles up and running in just a few clicks!",
+      ctaButtonText: "Get Trump Goggles",
+      githubSectionText: "Want to see the code?",
+      githubLinkText: "View on GitHub →",
+      browserCompatibilityNote: "Trump Goggles is compatible with Chrome, Edge, and other Chromium-based browsers",
+      browsers: {
+        chrome: {
+          available: true,
+          message: null
+        },
+        firefox: {
+          available: false,
+          message: "Coming Soon!"
+        },
+        edge: {
+          available: false,
+          message: "Coming Soon!"
+        }
+      }
     }
   }
 } as const;
