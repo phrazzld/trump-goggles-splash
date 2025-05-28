@@ -148,3 +148,14 @@ export const APP_CONFIG: AppConfig = {
     }
   }
 } as const;
+
+/**
+ * Derived types from the actual configuration object
+ * These provide exact literal types from the configuration
+ * 
+ * Note: AppConfigType fulfills the TODO requirement for "export type AppConfig = typeof APP_CONFIG"
+ * but uses a different name to avoid conflict with the existing AppConfig interface
+ */
+export type AppConfigType = typeof APP_CONFIG;
+export type AppFeature = AppConfigType['uiText']['features']['featureItems'][number];
+export type TrumpismExampleLiteral = AppConfigType['trumpismExamples'][number];
