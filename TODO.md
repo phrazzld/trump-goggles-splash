@@ -46,7 +46,7 @@
     - **Depends‑on:** [T002]
 
 ## Hero Layout
-- [ ] **T004 · Bugfix · P0: ensure hero background covers full viewport**
+- [x] **T004 · Bugfix · P0: ensure hero background covers full viewport**
     - **Context:** PLAN.md > Detailed Implementation Plan > Phase 2: Layout Fixes > 2.1 Fix Background Coverage
     - **Code Area:** `app/components/Hero.tsx` (or its primary container element styling)
     - **Action:**
