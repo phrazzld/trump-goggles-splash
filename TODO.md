@@ -30,7 +30,7 @@
         2. Check for any visual glitches or elements animating out of sync.
     - **Depends‑on:** [T001]
 
-- [ ] **T003 · Refactor · P0: optimize hero animation performance with css properties**
+- [x] **T003 · Refactor · P0: optimize hero animation performance with css properties**
     - **Context:** PLAN.md > Detailed Implementation Plan > Phase 1: Animation Smoothing > 1.3 Optimize Animation Performance
     - **Code Area:** `app/components/Hero.tsx`, `app/components/shared/AnimatedStar.tsx`, relevant CSS/Tailwind utility classes
     - **Action:**

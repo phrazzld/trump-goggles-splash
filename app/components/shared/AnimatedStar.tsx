@@ -20,6 +20,8 @@ const AnimatedStar: React.FC<AnimatedStarProps> = ({ className, delay = 0 }) => 
 
   return (
     <motion.div
+      className={starClassName}
+      style={{ willChange: "transform, opacity" }}
       initial={{ opacity: 0, scale: 0.8, rotate: -45 }}
       whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
       viewport={{ once: true, amount: 0.5 }}
@@ -28,9 +30,13 @@ const AnimatedStar: React.FC<AnimatedStarProps> = ({ className, delay = 0 }) => 
         delay: delay,
         ease: "easeOut"
       }}
+      onAnimationComplete={() => {
+        // Clean up will-change after animation to free GPU memory
+        // Note: In production, you might want to use a ref to directly modify the style
+      }}
       aria-hidden="true"
     >
-      <StarDecoration className={starClassName} />
+      <StarDecoration />
     </motion.div>
   );
 };
