@@ -24,10 +24,9 @@ const AnimatedStar: React.FC<AnimatedStarProps> = ({ className, delay = 0 }) => 
       whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
       viewport={{ once: true, amount: 0.5 }}
       transition={{ 
-        duration: 0.6, 
-        delay: delay + Math.random() * 0.3,
-        type: "spring",
-        stiffness: 100
+        duration: 0.8,
+        delay: delay,
+        ease: "easeOut"
       }}
       aria-hidden="true"
     >
