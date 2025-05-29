@@ -139,6 +139,43 @@ body > * {
     text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
   }
   
+  /* Enhanced typography utilities for better visual rhythm */
+  .hero-heading {
+    letter-spacing: -0.02em; /* Tighter tracking for large text */
+    line-height: 1.1; /* Better proportion for hero text */
+  }
+  
+  .hero-description {
+    line-height: 1.6; /* Optimal readability for body text */
+  }
+  
+  /* Responsive content spacing */
+  .hero-content-padding {
+    padding-left: 1.5rem; /* 24px */
+    padding-right: 1.5rem;
+  }
+  
+  @media (min-width: 640px) {
+    .hero-content-padding {
+      padding-left: 2rem; /* 32px */
+      padding-right: 2rem;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .hero-content-padding {
+      padding-left: 2.5rem; /* 40px */
+      padding-right: 2.5rem;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .hero-content-padding {
+      padding-left: 3rem; /* 48px */
+      padding-right: 3rem;
+    }
+  }
+  
   .border-double-retro {
     border: 3px double currentColor;
   }

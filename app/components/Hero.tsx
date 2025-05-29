@@ -56,7 +56,7 @@ export default function Hero() {
 
       {/* Content */}
       <motion.div 
-        className="relative z-10 text-center px-6 max-w-6xl mx-auto"
+        className="relative z-10 text-center hero-content-padding max-w-6xl mx-auto"
         style={{ willChange: "transform, opacity" }}
         initial={shouldReduceMotion ? {} : { opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
@@ -65,7 +65,7 @@ export default function Hero() {
         {/* Main headline */}
         <motion.h1 
           id="hero-heading"
-          className="text-retro-blue mb-10 text-shadow-hero"
+          className="text-6xl md:text-7xl lg:text-8xl xl:text-9xl text-retro-blue mb-8 text-shadow-hero hero-heading"
           style={{ willChange: "transform, opacity" }}
           initial={shouldReduceMotion ? {} : { opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -76,7 +76,7 @@ export default function Hero() {
 
         {/* Accurate description with examples */}
         <motion.p 
-          className="lead text-gray-800 mb-16 max-w-3xl mx-auto"
+          className="lead text-lg md:text-xl lg:text-2xl text-gray-800 mb-12 max-w-4xl mx-auto hero-description"
           style={{ willChange: "transform, opacity" }}
           initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

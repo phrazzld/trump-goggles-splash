@@ -106,7 +106,7 @@
         2. Check page load performance (e.g., Lighthouse, WebPageTest) and browser rendering performance (DevTools) for any improvements or regressions.
     - **Depends‑on:** [T004]
 
-- [ ] **T008 · Refactor · P1: refine hero typography and spacing for responsive visual rhythm**
+- [x] **T008 · Refactor · P1: refine hero typography and spacing for responsive visual rhythm**
     - **Context:** PLAN.md > Detailed Implementation Plan > Phase 3: Visual Polish > 3.2 Typography and Spacing Refinement
     - **Code Area:** `app/components/Hero.tsx` and its child elements containing text and layout structure; relevant Tailwind CSS configuration or global styles.
     - **Action:**

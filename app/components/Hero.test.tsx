@@ -49,7 +49,7 @@ describe('Hero', () => {
       
       const description = screen.getByText(APP_CONFIG.uiText.hero.description);
       expect(description).toBeInTheDocument();
-      expect(description).toHaveClass('lead', 'text-gray-800', 'mb-16', 'max-w-3xl', 'mx-auto');
+      expect(description).toHaveClass('lead', 'text-lg', 'md:text-xl', 'lg:text-2xl', 'text-gray-800', 'mb-12', 'max-w-4xl', 'mx-auto', 'hero-description');
     });
   });
 
