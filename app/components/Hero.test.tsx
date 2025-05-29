@@ -123,12 +123,13 @@ describe('Hero', () => {
       expect(stars.length).toBeGreaterThan(0);
     });
 
-    it('renders background texture overlay', () => {
+    it('relies on global body texture for background', () => {
+      // The redundant Hero texture overlay was removed for performance
+      // Background texture now comes from the global body::before element
       const { container } = render(<Hero />);
       
       const textureOverlay = container.querySelector('.texture-paper');
-      expect(textureOverlay).toBeInTheDocument();
-      expect(textureOverlay).toHaveClass('absolute', 'inset-0', 'opacity-10');
+      expect(textureOverlay).not.toBeInTheDocument();
     });
 
     it('renders stripe pattern accent', () => {

@@ -6,16 +6,17 @@ import StarDecoration from './StarDecoration';
 interface AnimatedStarProps {
   className?: string;
   delay?: number;
+  'data-decorative'?: string;
 }
 
-const AnimatedStar: React.FC<AnimatedStarProps> = ({ className, delay = 0 }) => {
+const AnimatedStar: React.FC<AnimatedStarProps> = ({ className, delay = 0, 'data-decorative': dataDecorative }) => {
   const shouldReduceMotion = useReducedMotion();
 
   // Properly handle className by ensuring it's never undefined when passed to StarDecoration
   const starClassName = className || "";
 
   if (shouldReduceMotion) {
-    return <StarDecoration className={starClassName} />;
+    return <StarDecoration className={starClassName} {...(dataDecorative && { 'data-decorative': dataDecorative })} />;
   }
 
   return (
@@ -35,6 +36,7 @@ const AnimatedStar: React.FC<AnimatedStarProps> = ({ className, delay = 0 }) => 
         // Note: In production, you might want to use a ref to directly modify the style
       }}
       aria-hidden="true"
+      {...(dataDecorative && { 'data-decorative': dataDecorative })}
     >
       <StarDecoration />
     </motion.div>

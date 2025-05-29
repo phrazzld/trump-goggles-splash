@@ -90,7 +90,7 @@
     - **Depends‑on:** none
 
 ## Hero Visual Polish
-- [ ] **T007 · Refactor · P1: optimize hero background patterns for performance and hierarchy**
+- [x] **T007 · Refactor · P1: optimize hero background patterns for performance and hierarchy**
     - **Context:** PLAN.md > Detailed Implementation Plan > Phase 3: Visual Polish > 3.1 Background Pattern Optimization
     - **Code Area:** CSS/Styling for hero background patterns (likely in `app/components/Hero.tsx` or related global/component CSS)
     - **Action:**

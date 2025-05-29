@@ -11,17 +11,22 @@ export default function Hero() {
 
   return (
     <motion.section 
-      className="relative min-h-screen w-full flex items-center justify-center overflow-hidden"
+      className="relative min-h-screen w-full flex items-center justify-center overflow-hidden hero-optimized"
       initial={shouldReduceMotion ? {} : { opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
       aria-labelledby="hero-heading"
+      style={{
+        contain: "layout style paint",
+        isolation: "isolate"
+      }}
     >
-      {/* Background texture overlay */}
-      <div className="absolute inset-0 texture-paper opacity-10" />
-
       {/* Stripe pattern accent - diagonal stripes */}
-      <div className="absolute inset-0 opacity-[0.03]">
+      <div 
+        className="absolute inset-0 opacity-[0.03]"
+        data-testid="stripe-pattern"
+        data-decorative="true"
+      >
         <div
           className="absolute inset-0"
           style={{
@@ -41,13 +46,13 @@ export default function Hero() {
       </div>
 
       {/* Star decorations - positioned with responsive safe zones */}
-      <AnimatedStar className="star-safe-top-left w-14 h-14 md:w-20 md:h-20 opacity-80" delay={0.1} />
-      <AnimatedStar className="star-safe-top-right w-8 h-8 md:w-12 md:h-12 opacity-70" delay={0.2} />
-      <AnimatedStar className="star-safe-bottom-left w-12 h-12 md:w-16 md:h-16 opacity-75" delay={0.3} />
-      <AnimatedStar className="star-safe-bottom-right w-10 h-10 md:w-14 md:h-14 opacity-80" delay={0.4} />
-      <AnimatedStar className="star-safe-mid-left w-6 h-6 opacity-40" delay={0.5} />
-      <AnimatedStar className="star-safe-accent w-5 h-5 opacity-40" delay={0.6} />
-      <AnimatedStar className="star-safe-mid-right w-4 h-4 opacity-30" delay={0.7} />
+      <AnimatedStar className="star-safe-top-left w-14 h-14 md:w-20 md:h-20 opacity-80" delay={0.1} data-decorative="true" />
+      <AnimatedStar className="star-safe-top-right w-8 h-8 md:w-12 md:h-12 opacity-70" delay={0.2} data-decorative="true" />
+      <AnimatedStar className="star-safe-bottom-left w-12 h-12 md:w-16 md:h-16 opacity-75" delay={0.3} data-decorative="true" />
+      <AnimatedStar className="star-safe-bottom-right w-10 h-10 md:w-14 md:h-14 opacity-80" delay={0.4} data-decorative="true" />
+      <AnimatedStar className="star-safe-mid-left w-6 h-6 opacity-40 hidden sm:block" delay={0.5} data-decorative="true" />
+      <AnimatedStar className="star-safe-accent w-5 h-5 opacity-40 hidden sm:block" delay={0.6} data-decorative="true" />
+      <AnimatedStar className="star-safe-mid-right w-4 h-4 opacity-30 hidden sm:block" delay={0.7} data-decorative="true" />
 
       {/* Content */}
       <motion.div 
