@@ -122,7 +122,7 @@
     - **Depends‑on:** none
 
 ## Testing
-- [ ] **T009 · Test · P0: create/update unit tests for AnimatedStar component**
+- [x] **T009 · Test · P0: create/update unit tests for AnimatedStar component**
     - **Context:** PLAN.md > Testing Strategy > Unit Tests (related to 1.1 Fix Star Animation Issues)
     - **Code Area:** Test file for `app/components/shared/AnimatedStar.tsx` (e.g., `AnimatedStar.test.tsx`)
     - **Action:**
