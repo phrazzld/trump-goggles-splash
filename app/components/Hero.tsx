@@ -40,14 +40,14 @@ export default function Hero() {
         />
       </div>
 
-      {/* Star decorations - positioned artfully */}
-      <AnimatedStar className="absolute top-[10%] left-[7%] w-14 h-14 md:w-20 md:h-20 opacity-80" delay={0.1} />
-      <AnimatedStar className="absolute top-[15%] right-[10%] w-8 h-8 md:w-12 md:h-12 opacity-70" delay={0.2} />
-      <AnimatedStar className="absolute bottom-[15%] left-[8%] w-12 h-12 md:w-16 md:h-16 opacity-75" delay={0.3} />
-      <AnimatedStar className="absolute bottom-[10%] right-[7%] w-10 h-10 md:w-14 md:h-14 opacity-80" delay={0.4} />
-      <AnimatedStar className="absolute top-[35%] left-[20%] w-6 h-6 opacity-40" delay={0.5} />
-      <AnimatedStar className="absolute bottom-[35%] right-[25%] w-5 h-5 opacity-40" delay={0.6} />
-      <AnimatedStar className="absolute top-[60%] right-[15%] w-4 h-4 opacity-30" delay={0.7} />
+      {/* Star decorations - positioned with responsive safe zones */}
+      <AnimatedStar className="star-safe-top-left w-14 h-14 md:w-20 md:h-20 opacity-80" delay={0.1} />
+      <AnimatedStar className="star-safe-top-right w-8 h-8 md:w-12 md:h-12 opacity-70" delay={0.2} />
+      <AnimatedStar className="star-safe-bottom-left w-12 h-12 md:w-16 md:h-16 opacity-75" delay={0.3} />
+      <AnimatedStar className="star-safe-bottom-right w-10 h-10 md:w-14 md:h-14 opacity-80" delay={0.4} />
+      <AnimatedStar className="star-safe-mid-left w-6 h-6 opacity-40" delay={0.5} />
+      <AnimatedStar className="star-safe-accent w-5 h-5 opacity-40" delay={0.6} />
+      <AnimatedStar className="star-safe-mid-right w-4 h-4 opacity-30" delay={0.7} />
 
       {/* Content */}
       <motion.div 

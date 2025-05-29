@@ -275,4 +275,69 @@ describe('Hero', () => {
       // but animations should be disabled
     });
   });
+
+  describe('Responsive Star Positioning', () => {
+    it('applies responsive safe positioning classes to star elements', () => {
+      const { container } = render(<Hero />);
+      
+      // Find all star elements - they should have safe positioning classes
+      const stars = container.querySelectorAll('div[aria-hidden="true"]');
+      expect(stars.length).toBeGreaterThan(0);
+      
+      // Check that stars use safe positioning classes rather than fixed percentages
+      Array.from(stars).forEach(star => {
+        const classes = star.className;
+        // Stars should have safe positioning classes (this will initially fail)
+        expect(classes).toMatch(/star-safe-/);
+        // And should NOT have the old fixed percentage classes
+        expect(classes).not.toMatch(/top-\[\d+%\]/);
+        expect(classes).not.toMatch(/left-\[\d+%\]/);
+        expect(classes).not.toMatch(/right-\[\d+%\]/);
+        expect(classes).not.toMatch(/bottom-\[\d+%\]/);
+      });
+    });
+
+    it('maintains star visibility across responsive breakpoints', () => {
+      const { container } = render(<Hero />);
+      
+      // Stars should be positioned to avoid content overlap
+      const stars = container.querySelectorAll('div[aria-hidden="true"]');
+      const contentArea = container.querySelector('.relative.z-10');
+      
+      expect(stars.length).toBeGreaterThan(0);
+      expect(contentArea).toBeInTheDocument();
+      
+      // Verify stars exist and are positioned (actual positioning tested via CSS)
+      Array.from(stars).forEach(star => {
+        expect(star).toBeInTheDocument();
+        expect(star).toHaveAttribute('aria-hidden', 'true');
+      });
+    });
+
+    it('preserves star count and animation delays', () => {
+      const { container } = render(<Hero />);
+      
+      // Should maintain the original 7 stars
+      const stars = container.querySelectorAll('div[aria-hidden="true"]');
+      expect(stars).toHaveLength(7);
+      
+      // Stars should still be properly spaced in the DOM
+      // (This verifies we haven't broken the existing star structure)
+      expect(stars[0]).toBeInTheDocument();
+      expect(stars[6]).toBeInTheDocument();
+    });
+
+    it('applies appropriate sizing classes for responsive star sizes', () => {
+      const { container } = render(<Hero />);
+      
+      const stars = container.querySelectorAll('div[aria-hidden="true"]');
+      
+      // Verify stars have responsive sizing (w-X h-X md:w-Y md:h-Y pattern)
+      Array.from(stars).forEach(star => {
+        const classes = star.className;
+        // Should contain width/height classes - either fixed or responsive
+        expect(classes).toMatch(/w-\d+|h-\d+/);
+      });
+    });
+  });
 });

@@ -59,7 +59,7 @@
         2. Test on different device emulators.
     - **Depends‑on:** none
 
-- [ ] **T005 · Refactor · P0: improve star positioning for responsiveness and visibility**
+- [x] **T005 · Refactor · P0: improve star positioning for responsiveness and visibility**
     - **Context:** PLAN.md > Detailed Implementation Plan > Phase 2: Layout Fixes > 2.2 Improve Star Positioning
     - **Code Area:** `app/components/shared/AnimatedStar.tsx` (if positioning is internal) or `app/components/Hero.tsx` (if stars are positioned there)
     - **Action:**

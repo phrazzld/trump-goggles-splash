@@ -165,6 +165,124 @@ body > * {
   .will-change-auto {
     will-change: auto;
   }
+  
+  /* Responsive star positioning with safe zones */
+  .star-safe-top-left {
+    @apply absolute;
+    top: 15%;
+    left: 15%;
+  }
+  
+  .star-safe-top-right {
+    @apply absolute;
+    top: 15%;
+    right: 15%;
+  }
+  
+  .star-safe-bottom-left {
+    @apply absolute;
+    bottom: 15%;
+    left: 15%;
+  }
+  
+  .star-safe-bottom-right {
+    @apply absolute;
+    bottom: 15%;
+    right: 15%;
+  }
+  
+  .star-safe-mid-left {
+    @apply absolute;
+    top: 35%;
+    left: 20%;
+  }
+  
+  .star-safe-mid-right {
+    @apply absolute;
+    top: 60%;
+    right: 20%;
+  }
+  
+  .star-safe-accent {
+    @apply absolute;
+    bottom: 35%;
+    right: 25%;
+  }
+  
+  /* Tablet and desktop breakpoints with expanded safe areas */
+  @media (min-width: 768px) {
+    .star-safe-top-left {
+      top: 12%;
+      left: 10%;
+    }
+    
+    .star-safe-top-right {
+      top: 12%;
+      right: 10%;
+    }
+    
+    .star-safe-bottom-left {
+      bottom: 12%;
+      left: 10%;
+    }
+    
+    .star-safe-bottom-right {
+      bottom: 12%;
+      right: 10%;
+    }
+    
+    .star-safe-mid-left {
+      top: 35%;
+      left: 18%;
+    }
+    
+    .star-safe-mid-right {
+      top: 60%;
+      right: 18%;
+    }
+    
+    .star-safe-accent {
+      bottom: 35%;
+      right: 22%;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .star-safe-top-left {
+      top: 10%;
+      left: 7%;
+    }
+    
+    .star-safe-top-right {
+      top: 15%;
+      right: 10%;
+    }
+    
+    .star-safe-bottom-left {
+      bottom: 15%;
+      left: 8%;
+    }
+    
+    .star-safe-bottom-right {
+      bottom: 10%;
+      right: 7%;
+    }
+    
+    .star-safe-mid-left {
+      top: 35%;
+      left: 20%;
+    }
+    
+    .star-safe-mid-right {
+      top: 60%;
+      right: 15%;
+    }
+    
+    .star-safe-accent {
+      bottom: 35%;
+      right: 25%;
+    }
+  }
 }
 
 /* Font CSS Variables for Tailwind v4 */
