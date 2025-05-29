@@ -73,7 +73,7 @@
         2. Ensure stars do not overlap critical UI elements.
     - **Depends‑on:** none
 
-- [ ] **T006 · Refactor · P0: make vintage border frame responsive and content-safe**
+- [x] **T006 · Refactor · P0: make vintage border frame responsive and content-safe**
     - **Context:** PLAN.md > Detailed Implementation Plan > Phase 2: Layout Fixes > 2.3 Enhanced Border Frame
     - **Code Area:** Component/styling for the vintage border frame (likely within or used by `app/components/Hero.tsx`)
     - **Action:**

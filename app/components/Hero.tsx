@@ -135,7 +135,7 @@ export default function Hero() {
       </motion.div>
 
       {/* Vintage border frame effect */}
-      <div className="absolute inset-8 md:inset-16 border-8 border-retro-blue/10 pointer-events-none" />
+      <div className="border-frame-responsive" />
     </motion.section>
   );
 }

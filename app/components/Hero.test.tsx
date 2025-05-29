@@ -138,12 +138,12 @@ describe('Hero', () => {
       expect(stripePattern).toBeInTheDocument();
     });
 
-    it('renders vintage border frame', () => {
+    it('renders vintage border frame with responsive class', () => {
       const { container } = render(<Hero />);
       
-      const borderFrame = container.querySelector('.border-8.border-retro-blue\\/10');
+      const borderFrame = container.querySelector('.border-frame-responsive');
       expect(borderFrame).toBeInTheDocument();
-      expect(borderFrame).toHaveClass('absolute', 'pointer-events-none');
+      expect(borderFrame).toHaveClass('border-frame-responsive');
     });
   });
 

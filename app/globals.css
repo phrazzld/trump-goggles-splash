@@ -283,6 +283,56 @@ body > * {
       right: 25%;
     }
   }
+  
+  /* Responsive vintage border frame with content-safe spacing */
+  .border-frame-responsive {
+    @apply absolute border-8 border-retro-blue/10 pointer-events-none;
+    /* Mobile: conservative margins to prevent content overlap */
+    top: 6%;
+    left: 4%;
+    right: 4%;
+    bottom: 6%;
+  }
+  
+  @media (min-width: 640px) {
+    .border-frame-responsive {
+      /* Small tablets: slightly larger margins */
+      top: 5%;
+      left: 3.5%;
+      right: 3.5%;
+      bottom: 5%;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .border-frame-responsive {
+      /* Tablets: balanced proportional spacing */
+      top: 4%;
+      left: 3%;
+      right: 3%;
+      bottom: 4%;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .border-frame-responsive {
+      /* Desktop: optimal visual spacing */
+      top: 3.5%;
+      left: 2.5%;
+      right: 2.5%;
+      bottom: 3.5%;
+    }
+  }
+  
+  @media (min-width: 1280px) {
+    .border-frame-responsive {
+      /* Large desktop: refined artistic spacing */
+      top: 3%;
+      left: 2%;
+      right: 2%;
+      bottom: 3%;
+    }
+  }
 }
 
 /* Font CSS Variables for Tailwind v4 */
