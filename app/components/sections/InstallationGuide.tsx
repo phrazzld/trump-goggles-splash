@@ -6,6 +6,7 @@ import ExternalLink from "@/app/components/shared/ExternalLink";
 import TexturedCard from "@/app/components/shared/TexturedCard";
 import AnimatedSection from "@/app/components/shared/AnimatedSection";
 import AnimatedStar from "@/app/components/shared/AnimatedStar";
+import { APP_CONFIG } from "@/app/config/app-config";
 
 interface InstallStep {
   number: number;
@@ -70,11 +71,11 @@ export default function InstallationGuide() {
 
       <div className="max-w-5xl mx-auto">
         <SectionHeading level={2} className="text-center mb-8" id="installation-guide-heading">
-          How to Install Trump Goggles
+          {APP_CONFIG.uiText.installationGuide.title}
         </SectionHeading>
 
         <p className="text-lg md:text-xl text-center mb-16 max-w-3xl mx-auto text-gray-700">
-          Get Trump Goggles up and running in just a few clicks!
+          {APP_CONFIG.uiText.installationGuide.subtitle}
         </p>
 
         {/* Installation steps */}
@@ -130,7 +131,7 @@ export default function InstallationGuide() {
           {/* Chrome Store button */}
           <div>
             <ExternalLink
-              href="https://chromewebstore.google.com/detail/trump-goggles/jffbimfdmgbfannficjejaffmnggoigd"
+              href={APP_CONFIG.urls.chromeStore}
               variant="button"
               ariaLabel="Install Trump Goggles from Chrome Web Store"
               buttonProps={{
@@ -139,7 +140,7 @@ export default function InstallationGuide() {
                 className: "text-xl md:text-2xl px-10 py-5",
               }}
             >
-              Get Trump Goggles
+              {APP_CONFIG.uiText.installationGuide.ctaButtonText}
             </ExternalLink>
           </div>
 
@@ -150,13 +151,13 @@ export default function InstallationGuide() {
             transition={{ duration: 0.4, delay: 0.6 }}
             viewport={{ once: true }}
           >
-            <p className="text-gray-600 mb-2">Want to see the code?</p>
+            <p className="text-gray-600 mb-2">{APP_CONFIG.uiText.installationGuide.githubSectionText}</p>
             <ExternalLink
-              href="https://github.com/phrazzld/trump-goggles"
+              href={APP_CONFIG.urls.githubRepo}
               className="text-lg font-semibold"
               ariaLabel="View Trump Goggles source code on GitHub"
             >
-              View on GitHub →
+              {APP_CONFIG.uiText.installationGuide.githubLinkText}
             </ExternalLink>
           </motion.div>
         </motion.div>
@@ -170,8 +171,7 @@ export default function InstallationGuide() {
           viewport={{ once: true }}
         >
           <p className="text-sm text-gray-500">
-            Trump Goggles is compatible with Chrome, Edge, and other
-            Chromium-based browsers
+            {APP_CONFIG.uiText.installationGuide.browserCompatibilityNote}
           </p>
         </motion.div>
       </div>

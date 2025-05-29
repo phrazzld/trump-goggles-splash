@@ -27,7 +27,24 @@ pnpm tsc --noEmit
 ```
 
 ### Testing
-Currently, no test framework is configured. Tests are included as a TODO item (T012, T013, T014).
+```bash
+# Run unit tests
+pnpm test
+
+# Run all tests (unit + integration)
+pnpm test:all
+
+# Run tests in watch mode
+pnpm test:watch
+
+# Run tests with coverage
+pnpm test:cov
+
+# Run E2E tests (Playwright)
+pnpm test:e2e
+```
+
+The project uses Vitest for unit/integration testing and Playwright for E2E tests. Test files follow the pattern `*.test.ts(x)` and are colocated with components.
 
 ## Package Manager: pnpm ONLY
 
@@ -59,15 +76,79 @@ Commands will fail if you use npm or yarn instead of pnpm.
 app/
   components/
     shared/        # Reusable components (RetroButton, ExternalLink, etc.)
-    sections/      # Page sections (planned)
+    sections/      # Page sections (TrumpismExamples, InstallationGuide, etc.)
+  config/
+    app-config.ts  # Central configuration file
+    validate-config.ts  # Configuration validation
   page.tsx         # Main page
   layout.tsx       # Root layout with font configuration
   globals.css      # Global styles with Tailwind directives
+docs/
+  CONFIGURATION.md # Comprehensive config system documentation
 ```
 
 ### Key URLs
 - Chrome Web Store: `https://chromewebstore.google.com/detail/trump-goggles/jffbimfdmgbfannficjejaffmnggoigd`
 - GitHub Repository: `https://github.com/phrazzld/trump-goggles`
+
+## Configuration System
+
+### Overview
+The project uses a centralized configuration system with strong TypeScript typing. All static configuration lives in `app/config/app-config.ts` as a single source of truth.
+
+### Key Concepts
+
+1. **APP_CONFIG Object**: Central configuration object containing URLs, UI text, features, and examples
+2. **Icon Factory Pattern**: Type-safe icon system using `ICON_REGISTRY` in `Features.tsx`
+3. **String Externalization**: All user-facing text is in configuration, not hardcoded
+4. **Type Safety**: Strong interfaces with `readonly` properties and `satisfies` operator
+
+### Common Configuration Tasks
+
+#### Adding a New Feature
+```typescript
+// 1. Add icon to ICON_REGISTRY in Features.tsx
+export const ICON_REGISTRY = {
+  // ... existing icons
+  star: Star, // New icon from lucide-react
+};
+
+// 2. Add feature to APP_CONFIG
+features: {
+  featureItems: [
+    // ... existing features
+    {
+      id: 'new-feature',
+      title: 'New Feature Title',
+      description: 'Feature description',
+      iconName: 'star', // Must match ICON_REGISTRY key
+      iconLabel: 'Star icon representing new feature'
+    }
+  ]
+}
+```
+
+#### Adding UI Text
+```typescript
+// Add to appropriate section in APP_CONFIG.uiText
+uiText: {
+  hero: {
+    // ... existing text
+    newMessage: "Your new message here"
+  }
+}
+```
+
+#### Accessing Configuration
+```typescript
+import { APP_CONFIG } from '@/app/config/app-config';
+
+// Use in components
+const title = APP_CONFIG.uiText.hero.title;
+const chromeUrl = APP_CONFIG.urls.chromeStore;
+```
+
+For detailed configuration documentation, see `docs/CONFIGURATION.md`.
 
 ## Current Work (TODO.md)
 
@@ -83,11 +164,12 @@ Current focus areas:
 4. Page assembly and polish (Phase 4)
 5. Testing and QA (Phase 5)
 
-### Critical Fixes Needed
-1. Update Hero description (currently incorrect)
-2. Add Chrome Store link (currently missing)
-3. Add GitHub repository link (currently missing)
-4. Implement bold typography (current fonts are weak)
+### Recently Completed Work
+1. ✅ Configuration externalization (T001-T007)
+2. ✅ Icon factory pattern implementation
+3. ✅ Comprehensive test coverage (100%)
+4. ✅ Full configuration documentation
+5. ✅ Type safety improvements
 
 ## Tailwind v4 Considerations
 

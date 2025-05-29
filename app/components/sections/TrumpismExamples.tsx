@@ -5,20 +5,7 @@ import SectionHeading from "@/app/components/shared/SectionHeading";
 import TexturedCard from "@/app/components/shared/TexturedCard";
 import AnimatedSection from "@/app/components/shared/AnimatedSection";
 import AnimatedStar from "@/app/components/shared/AnimatedStar";
-
-interface TrumpismExample {
-  original: string;
-  trumpified: string;
-}
-
-const examples: TrumpismExample[] = [
-  { original: "ISIS", trumpified: "Evil Losers" },
-  { original: "Hillary Clinton", trumpified: "Crooked Hillary" },
-  { original: "Climate Change", trumpified: "The Chinese Hoax" },
-  { original: "The Media", trumpified: "Fake News" },
-  { original: "North Korea", trumpified: "Rocket Man" },
-  { original: "Trade Deficit", trumpified: "Terrible Trade Deals" },
-];
+import { APP_CONFIG } from "@/app/config/app-config";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -56,12 +43,11 @@ export default function TrumpismExamples() {
 
       <div className="max-w-7xl mx-auto">
         <SectionHeading level={2} className="text-center mb-4" id="trumpism-examples-heading">
-          Iconic Trumpisms
+          {APP_CONFIG.uiText.trumpismExamplesSection.title}
         </SectionHeading>
 
         <p className="text-lg md:text-xl text-center mb-16 max-w-3xl mx-auto text-gray-700">
-          See the most memorable translations that give the internet a whole new
-          personality!
+          {APP_CONFIG.uiText.trumpismExamplesSection.subtitle}
         </p>
 
         {/* Examples grid */}
@@ -72,7 +58,7 @@ export default function TrumpismExamples() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
         >
-          {examples.map((example, index) => (
+          {APP_CONFIG.trumpismExamples.map((example, index) => (
             <motion.div
               key={index}
               variants={cardVariants}
@@ -86,7 +72,7 @@ export default function TrumpismExamples() {
                   {/* Original */}
                   <div className="mb-6">
                     <span className="text-xs uppercase tracking-wider text-gray-500 font-semibold">
-                      Original
+                      {APP_CONFIG.uiText.trumpismExamplesSection.originalLabel}
                     </span>
                     <p className="text-xl md:text-2xl font-semibold text-gray-800 mt-1">
                       &ldquo;{example.original}&rdquo;
@@ -107,7 +93,7 @@ export default function TrumpismExamples() {
                   {/* Trumpified */}
                   <div>
                     <span className="text-xs uppercase tracking-wider text-retro-red font-bold">
-                      Trumpified
+                      {APP_CONFIG.uiText.trumpismExamplesSection.trumpifiedLabel}
                     </span>
                     <p className="text-xl md:text-2xl font-black text-retro-blue mt-1">
                       &ldquo;{example.trumpified}&rdquo;
@@ -131,8 +117,7 @@ export default function TrumpismExamples() {
           viewport={{ once: true }}
         >
           <p className="text-lg text-gray-600">
-            And many more entertaining translations that make browsing the web
-            an unforgettable experience!
+            {APP_CONFIG.uiText.trumpismExamplesSection.bottomMessage}
           </p>
         </motion.div>
       </div>
