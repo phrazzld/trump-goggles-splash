@@ -14,7 +14,7 @@ export default function Hero() {
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
       initial={shouldReduceMotion ? {} : { opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ duration: 0.7 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
       aria-labelledby="hero-heading"
     >
       {/* Background texture overlay */}
@@ -54,7 +54,7 @@ export default function Hero() {
         className="relative z-10 text-center px-6 max-w-6xl mx-auto"
         initial={shouldReduceMotion ? {} : { opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+        transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
       >
         {/* Main headline */}
         <motion.h1 
@@ -62,7 +62,7 @@ export default function Hero() {
           className="text-retro-blue mb-10 text-shadow-hero"
           initial={shouldReduceMotion ? {} : { opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, delay: 0.5, type: "spring", stiffness: 100 }}
+          transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
         >
           {APP_CONFIG.uiText.hero.title}
         </motion.h1>
@@ -72,7 +72,7 @@ export default function Hero() {
           className="lead text-gray-800 mb-16 max-w-3xl mx-auto"
           initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.7 }}
+          transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
         >
           {APP_CONFIG.uiText.hero.description}
         </motion.p>
@@ -82,7 +82,7 @@ export default function Hero() {
           className="flex flex-col sm:flex-row items-center justify-center gap-6"
           initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.9 }}
+          transition={{ duration: 0.6, delay: 0.8, ease: "easeOut" }}
         >
           <motion.div 
             className="transform hover:scale-105 transition-transform duration-200"
@@ -107,7 +107,7 @@ export default function Hero() {
             className="text-gray-600"
             initial={shouldReduceMotion ? {} : { opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.4, delay: 1.1 }}
+            transition={{ duration: 0.6, delay: 0.8, ease: "easeOut" }}
           >
             {APP_CONFIG.uiText.hero.orSeparator}
           </motion.div>

@@ -16,7 +16,7 @@
         2. Enable "Prefer reduced motion" OS/browser setting and verify animations are disabled or significantly reduced.
     - **Depends‑on:** none
 
-- [ ] **T002 · Refactor · P0: simplify hero component animation sequence**
+- [x] **T002 · Refactor · P0: simplify hero component animation sequence**
     - **Context:** PLAN.md > Detailed Implementation Plan > Phase 1: Animation Smoothing > 1.2 Simplify Hero Animation Sequence
     - **Code Area:** `app/components/Hero.tsx`
     - **Action:**

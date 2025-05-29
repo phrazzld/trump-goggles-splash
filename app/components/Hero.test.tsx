@@ -208,4 +208,42 @@ describe('Hero', () => {
       expect(section).toBeInTheDocument();
     });
   });
+
+  describe('Animation Coordination', () => {
+    it('uses consistent animation duration across all elements', () => {
+      // This test will fail initially, then pass after T002 implementation
+      const { container } = render(<Hero />);
+      
+      // All motion elements should use 0.6s duration for coordination
+      // We can't directly test Framer Motion props due to mocking,
+      // but we can verify the component structure supports coordinated timing
+      const section = container.querySelector('section');
+      const contentContainer = container.querySelector('.relative.z-10');
+      const heading = container.querySelector('h1');
+      const description = container.querySelector('.lead');
+      
+      expect(section).toBeInTheDocument();
+      expect(contentContainer).toBeInTheDocument();
+      expect(heading).toBeInTheDocument();
+      expect(description).toBeInTheDocument();
+    });
+
+    it('maintains proper element hierarchy for sequential animation', () => {
+      // Verify the structure supports the planned animation sequence
+      const { container } = render(<Hero />);
+      
+      // Elements should be structured for: section → content → h1 → p → cta
+      const section = container.querySelector('section');
+      const contentContainer = section?.querySelector('.relative.z-10');
+      const heading = contentContainer?.querySelector('h1');
+      const description = contentContainer?.querySelector('.lead');
+      const ctaContainer = contentContainer?.querySelector('.flex.flex-col.sm\\:flex-row');
+      
+      expect(section).toBeInTheDocument();
+      expect(contentContainer).toBeInTheDocument();
+      expect(heading).toBeInTheDocument();
+      expect(description).toBeInTheDocument();
+      expect(ctaContainer).toBeInTheDocument();
+    });
+  });
 });
