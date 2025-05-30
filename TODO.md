@@ -155,7 +155,7 @@
         2. Tests pass, covering component composition, props propagation, and configuration integration.
     - **Depends‑on:** [T001, T002, T003, T004, T005, T006]
 
-- [ ] **T012 · Test · P0: implement/update e2e tests for hero visual regression**
+- [x] **T012 · Test · P0: implement/update e2e tests for hero visual regression**
     - **Context:** PLAN.md > Testing Strategy > E2E Tests
     - **Code Area:** E2E test suite (e.g., Cypress, Playwright with visual regression tooling)
     - **Action:**
