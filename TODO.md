@@ -144,7 +144,7 @@
         2. All tests pass.
     - **Depends‑on:** [T002, T004, T006]
 
-- [ ] **T011 · Test · P0: create/update integration tests for hero section**
+- [x] **T011 · Test · P0: create/update integration tests for hero section**
     - **Context:** PLAN.md > Testing Strategy > Integration Tests
     - **Code Area:** Integration test suite (e.g., using React Testing Library or Cypress component tests)
     - **Action:**
