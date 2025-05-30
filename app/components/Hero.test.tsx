@@ -139,7 +139,7 @@ describe('Hero', () => {
       expect(stripePattern).toBeInTheDocument();
     });
 
-    it('renders vintage border frame with responsive class', () => {
+    it('renders vintage border frame with responsive class from T006', () => {
       const { container } = render(<Hero />);
       
       const borderFrame = container.querySelector('.border-frame-responsive');
@@ -212,7 +212,7 @@ describe('Hero', () => {
 
   describe('Animation Coordination', () => {
     it('uses consistent animation duration across all elements', () => {
-      // This test will fail initially, then pass after T002 implementation
+      // T002 implementation: coordinated 0.6s duration with staggered delays
       const { container } = render(<Hero />);
       
       // All motion elements should use 0.6s duration for coordination
@@ -252,28 +252,28 @@ describe('Hero', () => {
     it('applies will-change to animated elements for GPU acceleration', () => {
       const { container } = render(<Hero />);
       
-      // Main animated elements should have will-change applied
+      // Main animated elements should have will-change applied from T003
       const contentContainer = container.querySelector('.relative.z-10');
       const heading = container.querySelector('h1');
       const description = container.querySelector('.lead');
       const ctaContainer = container.querySelector('.flex.flex-col.sm\\:flex-row');
       
-      // In the real implementation, these would have will-change styles
-      // For now, we're verifying the elements exist and can be optimized
-      expect(contentContainer).toBeInTheDocument();
-      expect(heading).toBeInTheDocument();
-      expect(description).toBeInTheDocument();
-      expect(ctaContainer).toBeInTheDocument();
+      // Verify will-change is applied to animated elements
+      expect(contentContainer).toHaveStyle({ willChange: 'transform, opacity' });
+      expect(heading).toHaveStyle({ willChange: 'transform, opacity' });
+      expect(description).toHaveStyle({ willChange: 'transform, opacity' });
+      expect(ctaContainer).toHaveStyle({ willChange: 'transform, opacity' });
     });
 
-    it('maintains performance optimizations with reduced motion', () => {
-      // Ensure optimizations don't break accessibility
+    it('applies CSS containment and isolation for performance', () => {
+      // T007 performance optimizations
       const { container } = render(<Hero />);
       
       const section = container.querySelector('section');
-      expect(section).toBeInTheDocument();
-      // When reduced motion is active, will-change should still be applied
-      // but animations should be disabled
+      expect(section).toHaveStyle({ 
+        contain: 'layout style paint',
+        isolation: 'isolate'
+      });
     });
   });
 
@@ -288,7 +288,7 @@ describe('Hero', () => {
       // Check that stars use safe positioning classes rather than fixed percentages
       Array.from(stars).forEach(star => {
         const classes = star.className;
-        // Stars should have safe positioning classes (this will initially fail)
+        // Stars should have safe positioning classes from T005 implementation
         expect(classes).toMatch(/star-safe-/);
         // And should NOT have the old fixed percentage classes
         expect(classes).not.toMatch(/top-\[\d+%\]/);

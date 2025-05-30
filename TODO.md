@@ -134,7 +134,7 @@
         2. All tests pass.
     - **Depends‑on:** [T001]
 
-- [ ] **T010 · Test · P0: create/update unit tests for Hero component**
+- [x] **T010 · Test · P0: create/update unit tests for Hero component**
     - **Context:** PLAN.md > Testing Strategy > Unit Tests (related to 1.2, 2.1, 2.3)
     - **Code Area:** Test file for `app/components/Hero.tsx` (e.g., `Hero.test.tsx`)
     - **Action:**
@@ -190,7 +190,7 @@
     - **Depends‑on:** [T001, T002, T003, T007]
 
 ## Project Chores
-- [ ] **T015 · Chore · P0: set up feature branch for hero ui enhancement**
+- [x] **T015 · Chore · P0: set up feature branch for hero ui enhancement**
     - **Context:** PLAN.md > Implementation Steps > 1. Setup Branch
     - **Code Area:** Git repository
     - **Action:**
