@@ -166,7 +166,7 @@
         2. Tests pass against the established or updated baseline images, flagging only intended changes.
     - **Depends‑on:** [T001, T002, T003, T004, T005, T006, T007, T008]
 
-- [ ] **T013 · Test · P0: implement/update e2e tests for hero animation smoothness and accessibility**
+- [x] **T013 · Test · P0: implement/update e2e tests for hero animation smoothness and accessibility**
     - **Context:** PLAN.md > Testing Strategy > E2E Tests
     - **Code Area:** E2E test suite (e.g., Cypress, Playwright)
     - **Action:**

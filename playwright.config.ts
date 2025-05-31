@@ -4,7 +4,7 @@ import { defineConfig, devices } from '@playwright/test';
 const port = process.env.PORT || process.env.E2E_PORT || '3000';
 const baseURL = process.env.E2E_BASE_URL || `http://localhost:${port}`;
 
-export default defineConfig({
+const config = defineConfig({
   testDir: './e2e',
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
@@ -41,10 +41,15 @@ export default defineConfig({
       use: { ...devices['iPad'] },
     },
   ],
-  // Only start webServer if not explicitly disabled and not already running
-  webServer: process.env.E2E_NO_WEBSERVER ? undefined : {
+});
+
+// Only add webServer if not explicitly disabled
+if (!process.env.E2E_NO_WEBSERVER) {
+  config.webServer = {
     command: 'pnpm dev',
     port: parseInt(port),
     reuseExistingServer: !process.env.CI,
-  },
-});
+  };
+}
+
+export default config;
