@@ -1,0 +1,83 @@
+{
+  "url": "http://localhost:3000",
+  "scenario": "baseline",
+  "timestamp": "2025-05-31T17:27:12.430Z",
+  "performance": {
+    "score": 64,
+    "metrics": {
+      "largest-contentful-paint": {
+        "value": 6900,
+        "displayValue": "6.9 s",
+        "score": 0.06
+      },
+      "cumulative-layout-shift": {
+        "value": 1,
+        "displayValue": "0",
+        "score": 1
+      },
+      "first-contentful-paint": {
+        "value": 6866,
+        "displayValue": "6.9 s",
+        "score": 0.01
+      },
+      "speed-index": {
+        "value": 4578,
+        "displayValue": "4.6 s",
+        "score": 0.71
+      },
+      "total-blocking-time": {
+        "value": 1,
+        "displayValue": "0 ms",
+        "score": 1
+      },
+      "first-meaningful-paint": {
+        "value": 0,
+        "score": null
+      }
+    },
+    "thresholds": {
+      "largest-contentful-paint": {
+        "threshold": 2500,
+        "passed": false
+      },
+      "cumulative-layout-shift": {
+        "threshold": 0.1,
+        "passed": false
+      },
+      "first-contentful-paint": {
+        "threshold": 1800,
+        "passed": false
+      },
+      "speed-index": {
+        "threshold": 3400,
+        "passed": false
+      },
+      "total-blocking-time": {
+        "threshold": 300,
+        "passed": true
+      },
+      "first-meaningful-paint": {
+        "threshold": 2000,
+        "passed": true
+      }
+    },
+    "passed": false,
+    "coreWebVitals": {
+      "lcp": {
+        "value": 6900,
+        "displayValue": "6.9 s",
+        "score": 0.06
+      },
+      "cls": {
+        "value": 1,
+        "displayValue": "0",
+        "score": 1
+      },
+      "fcp": {
+        "value": 6866,
+        "displayValue": "6.9 s",
+        "score": 0.01
+      }
+    }
+  }
+}

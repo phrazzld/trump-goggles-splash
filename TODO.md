@@ -177,7 +177,7 @@
         2. Tests pass, confirming basic animation integrity and accessibility compliance.
     - **Depends‑on:** [T001, T002, T003]
 
-- [ ] **T014 · Test · P0: conduct performance tests for hero animations**
+- [x] **T014 · Test · P0: conduct performance tests for hero animations**
     - **Context:** PLAN.md > Testing Strategy > Performance Tests
     - **Code Area:** Performance testing tools/scripts (e.g., Lighthouse, Puppeteer with DevTools protocol, manual profiling)
     - **Action:**
