@@ -6,6 +6,33 @@ import ExternalLink from "./shared/ExternalLink";
 import AnimatedStar from "./shared/AnimatedStar";
 import { APP_CONFIG } from "@/app/config/app-config";
 
+/**
+ * Hero section component for the Trump Goggles splash page.
+ * 
+ * Features a coordinated animation sequence with performance optimizations and accessibility support.
+ * The component implements a single timeline approach where all elements animate in sequence,
+ * creating a cohesive entrance effect while maintaining smooth 60fps performance.
+ * 
+ * ## Animation Design Decisions:
+ * - Uses a staggered delay system (0.2s intervals) to create visual hierarchy
+ * - Implements `will-change` CSS property for GPU acceleration on animated elements
+ * - Respects user's `prefers-reduced-motion` preference by disabling animations when requested
+ * - Utilizes CSS containment (`contain: layout style paint`) to improve rendering performance
+ * 
+ * ## Responsive Design:
+ * - Full viewport coverage with `min-h-screen` and `w-full` (addresses T004)
+ * - Stars positioned in "safe zones" using responsive utility classes (T005)
+ * - Vintage border frame uses responsive spacing (T006)
+ * - Typography scales across breakpoints for optimal readability (T008)
+ * 
+ * ## Performance Optimizations:
+ * - Consolidated background patterns to minimize render layers (T007)
+ * - GPU-accelerated transforms via `will-change` property (T003)
+ * - Simplified animation sequence to reduce complexity (T002)
+ * - Isolation context to prevent unwanted stacking issues
+ * 
+ * @returns Hero section with animated stars, heading, description, and CTA buttons
+ */
 export default function Hero() {
   const shouldReduceMotion = useReducedMotion();
 
@@ -21,7 +48,9 @@ export default function Hero() {
         isolation: "isolate"
       }}
     >
-      {/* Stripe pattern accent - diagonal stripes */}
+      {/* Stripe pattern accent - diagonal stripes 
+          Optimized in T007: Single-layer gradient pattern for minimal render complexity
+          Ultra-low opacity (0.03) maintains visual hierarchy without overwhelming content */}
       <div 
         className="absolute inset-0 opacity-[0.03]"
         data-testid="stripe-pattern"
@@ -45,7 +74,9 @@ export default function Hero() {
         />
       </div>
 
-      {/* Star decorations - positioned with responsive safe zones */}
+      {/* Star decorations - positioned with responsive safe zones 
+          T005 implementation: Uses CSS utility classes (star-safe-*) defined in globals.css
+          for viewport-aware positioning that prevents edge clipping on all devices */}
       <AnimatedStar className="star-safe-top-left w-14 h-14 md:w-20 md:h-20 opacity-80" delay={0.1} data-decorative="true" />
       <AnimatedStar className="star-safe-top-right w-8 h-8 md:w-12 md:h-12 opacity-70" delay={0.2} data-decorative="true" />
       <AnimatedStar className="star-safe-bottom-left w-12 h-12 md:w-16 md:h-16 opacity-75" delay={0.3} data-decorative="true" />
@@ -139,7 +170,9 @@ export default function Hero() {
         </motion.div>
       </motion.div>
 
-      {/* Vintage border frame effect */}
+      {/* Vintage border frame effect 
+          T006 implementation: Responsive border using CSS utility class defined in globals.css
+          Adapts spacing using viewport units to maintain consistent visual weight across devices */}
       <div className="border-frame-responsive" />
     </motion.section>
   );

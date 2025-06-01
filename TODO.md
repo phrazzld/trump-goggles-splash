@@ -200,7 +200,7 @@
         2. Local development environment is switched to the new branch.
     - **Depends‑on:** none
 
-- [ ] **T016 · Chore · P1: update component documentation for Hero and AnimatedStar**
+- [x] **T016 · Chore · P1: update component documentation for Hero and AnimatedStar**
     - **Context:** PLAN.md > Implementation Steps > 6. Documentation
     - **Code Area:** Project documentation files (e.g., READMEs, Storybook stories, JSDoc/TSDoc comments)
     - **Action:**
