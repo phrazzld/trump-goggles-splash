@@ -5,6 +5,7 @@ import RetroButton from "./shared/RetroButton";
 import ExternalLink from "./shared/ExternalLink";
 import AnimatedStar from "./shared/AnimatedStar";
 import { APP_CONFIG } from "@/app/config/app-config";
+import { animationLogger, createAnimationTimer } from '@/lib/dev-logger';
 
 /**
  * Hero section component for the Trump Goggles splash page.
@@ -36,12 +37,42 @@ import { APP_CONFIG } from "@/app/config/app-config";
 export default function Hero() {
   const shouldReduceMotion = useReducedMotion();
 
+  // Development logging: Track reduced motion state and animation sequence
+  animationLogger.accessibility('Hero', {
+    reducedMotion: shouldReduceMotion,
+    animationElements: ['section', 'content', 'heading', 'description', 'cta-buttons'],
+    staggeredDelays: [0, 0.2, 0.4, 0.6, 0.8],
+  });
+
+  // Development logging: Animation sequence start
+  const timer = createAnimationTimer('Hero');
+  animationLogger.start('Hero', {
+    sequence: 'coordinated-stagger',
+    totalDuration: 1.4, // 0.6s base + 0.8s final delay
+    elementCount: 5,
+    baseDelay: 0.2,
+    reducedMotion: shouldReduceMotion,
+  });
+
   return (
     <motion.section 
       className="relative min-h-screen w-full flex items-center justify-center overflow-hidden hero-optimized"
       initial={shouldReduceMotion ? {} : { opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
+      onAnimationStart={() => {
+        // Development logging: Section animation start
+        animationLogger.timing('Hero', { section_start: timer.measure('section_start') });
+      }}
+      onAnimationComplete={() => {
+        // Development logging: Section animation complete  
+        const duration = timer.measure('section_complete');
+        animationLogger.complete('Hero', {
+          element: 'section',
+          actualDuration: duration,
+          expectedDuration: 0.6 * 1000,
+        });
+      }}
       aria-labelledby="hero-heading"
       style={{
         contain: "layout style paint",
@@ -92,6 +123,20 @@ export default function Hero() {
         initial={shouldReduceMotion ? {} : { opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+        onAnimationStart={() => {
+          // Development logging: Content container animation start
+          animationLogger.timing('Hero', { content_start: timer.measure('content_start') });
+        }}
+        onAnimationComplete={() => {
+          // Development logging: Content container animation complete
+          const duration = timer.measure('content_complete');
+          animationLogger.complete('Hero', {
+            element: 'content',
+            actualDuration: duration,
+            expectedDuration: (0.6 + 0.2) * 1000,
+            delay: 0.2,
+          });
+        }}
       >
         {/* Main headline */}
         <motion.h1 
@@ -101,6 +146,20 @@ export default function Hero() {
           initial={shouldReduceMotion ? {} : { opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+          onAnimationStart={() => {
+            // Development logging: Heading animation start
+            animationLogger.timing('Hero', { heading_start: timer.measure('heading_start') });
+          }}
+          onAnimationComplete={() => {
+            // Development logging: Heading animation complete
+            const duration = timer.measure('heading_complete');
+            animationLogger.complete('Hero', {
+              element: 'heading',
+              actualDuration: duration,
+              expectedDuration: (0.6 + 0.4) * 1000,
+              delay: 0.4,
+            });
+          }}
         >
           {APP_CONFIG.uiText.hero.title}
         </motion.h1>
@@ -112,6 +171,20 @@ export default function Hero() {
           initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
+          onAnimationStart={() => {
+            // Development logging: Description animation start
+            animationLogger.timing('Hero', { description_start: timer.measure('description_start') });
+          }}
+          onAnimationComplete={() => {
+            // Development logging: Description animation complete
+            const duration = timer.measure('description_complete');
+            animationLogger.complete('Hero', {
+              element: 'description',
+              actualDuration: duration,
+              expectedDuration: (0.6 + 0.6) * 1000,
+              delay: 0.6,
+            });
+          }}
         >
           {APP_CONFIG.uiText.hero.description}
         </motion.p>
@@ -123,6 +196,32 @@ export default function Hero() {
           initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.8, ease: "easeOut" }}
+          onAnimationStart={() => {
+            // Development logging: CTA buttons animation start
+            animationLogger.timing('Hero', { cta_start: timer.measure('cta_start') });
+          }}
+          onAnimationComplete={() => {
+            // Development logging: CTA buttons animation complete
+            const duration = timer.measure('cta_complete');
+            animationLogger.complete('Hero', {
+              element: 'cta-buttons',
+              actualDuration: duration,
+              expectedDuration: (0.6 + 0.8) * 1000,
+              delay: 0.8,
+            });
+            
+            // Development logging: Overall sequence coordination complete
+            const totalSequenceTime = timer.measure('total_sequence_duration');
+            animationLogger.performance('Hero', {
+              total_sequence_time: totalSequenceTime,
+            });
+            
+            animationLogger.info('Hero', 'Animation sequence completed successfully', {
+              coordination_success: true,
+              final_element_delay: 0.8,
+              sequence_type: 'staggered',
+            });
+          }}
         >
           <motion.div 
             className="transform hover:scale-105 transition-transform duration-200"

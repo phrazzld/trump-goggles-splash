@@ -211,7 +211,7 @@
         2. Changes are clearly explained for other developers.
     - **Depends‑on:** [T001, T002, T003, T004, T005, T006, T007, T008]
 
-- [ ] **T017 · Chore · P2: add development-only logging for animation performance**
+- [x] **T017 · Chore · P2: add development-only logging for animation performance**
     - **Context:** PLAN.md > Logging & Observability
     - **Code Area:** `app/components/Hero.tsx`, `app/components/shared/AnimatedStar.tsx`
     - **Action:**

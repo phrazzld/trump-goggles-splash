@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion } from 'framer-motion';
 import StarDecoration from './StarDecoration';
+import { animationLogger, createAnimationTimer } from '@/lib/dev-logger';
 
 /**
  * Props for the AnimatedStar component
@@ -54,9 +55,31 @@ const AnimatedStar: React.FC<AnimatedStarProps> = ({ className, delay = 0, 'data
   // Properly handle className by ensuring it's never undefined when passed to StarDecoration
   const starClassName = className || "";
 
+  // Development logging: Track reduced motion state
+  animationLogger.accessibility('AnimatedStar', {
+    reducedMotion: shouldReduceMotion,
+    delay,
+    className: starClassName,
+  });
+
   if (shouldReduceMotion) {
+    animationLogger.info('AnimatedStar', 'Rendering static star due to reduced motion preference', {
+      delay,
+      className: starClassName,
+    });
     return <StarDecoration className={starClassName} {...(dataDecorative && { 'data-decorative': dataDecorative })} />;
   }
+
+  // Development logging: Animation setup
+  const timer = createAnimationTimer('AnimatedStar');
+  animationLogger.start('AnimatedStar', {
+    delay,
+    duration: 0.8,
+    ease: 'easeOut',
+    className: starClassName,
+    initial: { opacity: 0, scale: 0.8, rotate: -45 },
+    target: { opacity: 1, scale: 1, rotate: 0 },
+  });
 
   return (
     <motion.div
@@ -74,6 +97,21 @@ const AnimatedStar: React.FC<AnimatedStarProps> = ({ className, delay = 0, 'data
         // T003 Performance optimization: Clean up will-change after animation 
         // to free GPU memory and prevent unnecessary compositing layers
         // Note: Framer Motion handles this automatically, but keeping for documentation
+        
+        // Development logging: Animation completion
+        const duration = timer.measure('total_duration');
+        animationLogger.complete('AnimatedStar', {
+          delay,
+          actualDuration: duration,
+          expectedDuration: 0.8 * 1000, // Convert to ms for comparison
+          className: starClassName,
+        });
+        
+        animationLogger.performance('AnimatedStar', {
+          total_animation_time: duration,
+          delay_ms: delay * 1000,
+          duration_ms: 0.8 * 1000,
+        });
       }}
       aria-hidden="true"
       {...(dataDecorative && { 'data-decorative': dataDecorative })}
