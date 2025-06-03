@@ -13,6 +13,18 @@
   --shadow-retro: 4px 4px 0px 0px rgba(0, 0, 0, 0.1);
 }
 
+/* Global reset for consistent full-width layouts */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+}
+
 /* Global styles */
 html {
   font-size: 16px;
@@ -46,9 +58,6 @@ html {
     background-color: var(--color-retro-cream);
     position: relative;
     min-height: 100vh;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
   }
   
   /* Heading hierarchy for retro Americana impact */

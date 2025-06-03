@@ -7,8 +7,8 @@ import Footer from "./components/Footer";
 export default function Home() {
   return (
     <>
+      <Hero />
       <main className="container mx-auto px-4">
-        <Hero />
         <FeatureShowcase />
         <TrumpismExamples />
         <InstallationGuide />
