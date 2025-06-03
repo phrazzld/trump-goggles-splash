@@ -37,6 +37,17 @@ import { animationLogger, createAnimationTimer } from '@/lib/dev-logger';
 export default function Hero() {
   const shouldReduceMotion = useReducedMotion();
 
+  // Smooth scroll to Trumpism Examples section
+  const scrollToExamples = () => {
+    const element = document.getElementById('trumpism-examples');
+    if (element) {
+      element.scrollIntoView({ 
+        behavior: shouldReduceMotion ? 'auto' : 'smooth',
+        block: 'start'
+      });
+    }
+  };
+
   // Development logging: Track reduced motion state and animation sequence
   animationLogger.accessibility('Hero', {
     reducedMotion: shouldReduceMotion,
@@ -262,6 +273,7 @@ export default function Hero() {
               variant="secondary"
               size="lg"
               className="text-xl md:text-2xl px-10 py-5"
+              onClick={scrollToExamples}
             >
               {APP_CONFIG.uiText.hero.learnMoreButton}
             </RetroButton>

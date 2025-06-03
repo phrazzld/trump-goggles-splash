@@ -33,7 +33,7 @@ const cardVariants: Variants = {
 
 export default function TrumpismExamples() {
   return (
-    <section aria-labelledby="trumpism-examples-heading">
+    <section id="trumpism-examples" aria-labelledby="trumpism-examples-heading">
       <AnimatedSection className="py-20 px-6 relative bg-retro-cream" delay={0.2}>
       {/* Background accent elements */}
       <AnimatedStar className="absolute top-[10%] right-[15%] w-12 h-12 opacity-20 rotate-12" delay={0.1} />
