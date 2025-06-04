@@ -1,4 +1,4 @@
-name: Sync Leyline Content
+name: Sync Leyline
 on:
   schedule:
     - cron: '0 0 * * 1'  # Weekly on Mondays
@@ -8,9 +8,10 @@ jobs:
   sync:
     uses: phrazzld/leyline/.github/workflows/sync-leyline-content.yml@master
     with:
-      token: ${{ secrets.GITHUB_TOKEN }}
       leyline_ref: master  # Pin to a specific Leyline version
       categories: typescript,frontend  # Optional: only sync specific categories
       target_path: docs/leyline  # Optional: customize target directory
       create_pr: true  # Optional: create a PR instead of direct commit
+    secrets:
+      token: ${{ secrets.GITHUB_TOKEN }}
 
