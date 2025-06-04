@@ -6,7 +6,7 @@ on:
 
 jobs:
   sync:
-    uses: phrazzld/leyline/.github/workflows/sync-leyline-content.yml@v1
+    uses: phrazzld/leyline/.github/workflows/sync-leyline-content.yml@master
     with:
       token: ${{ secrets.GITHUB_TOKEN }}
       leyline_ref: master  # Pin to a specific Leyline version
