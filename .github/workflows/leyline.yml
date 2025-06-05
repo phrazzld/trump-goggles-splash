@@ -4,6 +4,10 @@ on:
     - cron: '0 0 * * 1'  # Weekly on Mondays
   workflow_dispatch:  # Allow manual triggers
 
+permissions:
+  contents: write
+  pull-requests: write
+
 jobs:
   sync:
     uses: phrazzld/leyline/.github/workflows/sync-leyline-content.yml@master
