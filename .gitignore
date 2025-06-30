@@ -47,3 +47,5 @@ next-env.d.ts
 thinktank_*/
 
 *storybook.log
+
+/docs/leyline
