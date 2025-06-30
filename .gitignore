@@ -48,4 +48,9 @@ thinktank_*/
 
 *storybook.log
 
+# test artifacts and temporary files
+/artifacts
+/temp
+/performance-results
+
 /docs/leyline
