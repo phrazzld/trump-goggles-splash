@@ -149,43 +149,7 @@ describe('RetroButton', () => {
     });
   });
 
-  describe('Star Decoration', () => {
-    it('renders star for primary variant', () => {
-      const { container } = render(
-        <RetroButton variant="primary">Primary Button</RetroButton>
-      );
-      const star = container.querySelector('.lucide-star');
-      expect(star).toBeInTheDocument();
-      expect(star).toHaveClass('text-retro-gold');
-      expect(star).toHaveClass('fill-retro-gold');
-    });
-
-    it('does not render star for secondary variant', () => {
-      const { container } = render(
-        <RetroButton variant="secondary">Secondary Button</RetroButton>
-      );
-      const star = container.querySelector('.lucide-star');
-      expect(star).not.toBeInTheDocument();
-    });
-
-    it('renders star with correct size for different button sizes', () => {
-      const { container: smallContainer } = render(
-        <RetroButton variant="primary" size="sm">Small</RetroButton>
-      );
-      const smallStar = smallContainer.querySelector('.lucide-star');
-      expect(smallStar).toHaveAttribute('width', '14');
-
-      const { container: mediumContainer } = render(
-        <RetroButton variant="primary" size="md">Medium</RetroButton>
-      );
-      const mediumStar = mediumContainer.querySelector('.lucide-star');
-      expect(mediumStar).toHaveAttribute('width', '16');
-
-      const { container: largeContainer } = render(
-        <RetroButton variant="primary" size="lg">Large</RetroButton>
-      );
-      const largeStar = largeContainer.querySelector('.lucide-star');
-      expect(largeStar).toHaveAttribute('width', '20');
-    });
-  });
+  // [REMOVED] Star Decoration tests: Star icons were removed from RetroButton
+  // as part of aesthetic cleanup. Typography + double border provides sufficient
+  // visual personality without icon decoration.
 });

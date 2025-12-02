@@ -1,181 +1,85 @@
 "use client";
 
-import { motion, Variants } from "framer-motion";
+import { motion } from "framer-motion";
 import SectionHeading from "@/app/components/shared/SectionHeading";
 import ExternalLink from "@/app/components/shared/ExternalLink";
-import TexturedCard from "@/app/components/shared/TexturedCard";
 import AnimatedSection from "@/app/components/shared/AnimatedSection";
-import AnimatedStar from "@/app/components/shared/AnimatedStar";
 import { APP_CONFIG } from "@/app/config/app-config";
-
-interface InstallStep {
-  number: number;
-  title: string;
-  description: string;
-}
-
-const installSteps: InstallStep[] = [
-  {
-    number: 1,
-    title: "Visit Chrome Web Store",
-    description: "Click the button below to go to the Trump Goggles extension page",
-  },
-  {
-    number: 2,
-    title: "Add to Chrome",
-    description: "Click the \"Add to Chrome\" button on the extension page",
-  },
-  {
-    number: 3,
-    title: "Confirm Installation",
-    description: "Click \"Add extension\" when Chrome asks for confirmation",
-  },
-  {
-    number: 4,
-    title: "Start Browsing!",
-    description: "Trump Goggles is now active - watch the web transform!",
-  },
-];
-
-const stepVariants: Variants = {
-  hidden: { opacity: 0, x: -30 },
-  visible: { 
-    opacity: 1, 
-    x: 0,
-    transition: {
-      duration: 0.5,
-      ease: "easeOut"
-    }
-  },
-};
-
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-      delayChildren: 0.1,
-    },
-  },
-};
 
 export default function InstallationGuide() {
   return (
-    <section aria-labelledby="installation-guide-heading">
-      <AnimatedSection className="py-20 px-6 relative bg-white" delay={0.3}>
-      {/* Background decorations */}
-      <AnimatedStar className="absolute top-[15%] left-[10%] w-10 h-10 opacity-20 rotate-45" delay={0.2} />
-      <AnimatedStar className="absolute bottom-[25%] right-[5%] w-12 h-12 opacity-15 -rotate-12" delay={0.4} />
-      <AnimatedStar className="absolute top-[70%] right-[20%] w-6 h-6 opacity-10" delay={0.6} />
+    <section aria-labelledby="installation-guide-heading" className="bg-retro-red relative">
+      <AnimatedSection className="py-20 md:py-28 px-6 relative" delay={0.3}>
+        <div className="max-w-4xl mx-auto text-center">
+          <SectionHeading level={2} className="text-retro-cream mb-8" id="installation-guide-heading">
+            Ready to See the Web Differently?
+          </SectionHeading>
 
-      <div className="max-w-5xl mx-auto">
-        <SectionHeading level={2} className="text-center mb-8" id="installation-guide-heading">
-          {APP_CONFIG.uiText.installationGuide.title}
-        </SectionHeading>
-
-        <p className="text-lg md:text-xl text-center mb-16 max-w-3xl mx-auto text-gray-700">
-          {APP_CONFIG.uiText.installationGuide.subtitle}
-        </p>
-
-        {/* Installation steps */}
-        <motion.div 
-          className="grid gap-6 mb-12"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-        >
-          {installSteps.map((step) => (
-            <motion.div
-              key={step.number}
-              variants={stepVariants}
-              whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
-            >
-              <TexturedCard className="flex items-start gap-6 bg-gray-50 hover:bg-gray-100 transition-colors">
-                {/* Step number */}
-                <motion.div 
-                  className="flex-shrink-0 w-12 h-12 bg-retro-blue text-retro-cream rounded-full flex items-center justify-center font-black text-xl"
-                  initial={{ scale: 0 }}
-                  whileInView={{ scale: 1 }}
-                  transition={{ 
-                    delay: step.number * 0.1 + 0.3,
-                    type: "spring",
-                    stiffness: 200
-                  }}
-                  viewport={{ once: true }}
-                >
-                  {step.number}
-                </motion.div>
-
-                {/* Step content */}
-                <div className="flex-grow">
-                  <h3 className="font-display text-xl md:text-2xl text-retro-blue mb-2">
-                    {step.title}
-                  </h3>
-                  <p className="text-gray-700">{step.description}</p>
-                </div>
-              </TexturedCard>
-            </motion.div>
-          ))}
-        </motion.div>
-
-        {/* CTAs */}
-        <motion.div 
-          className="text-center space-y-8"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          viewport={{ once: true }}
-        >
-          {/* Chrome Store button */}
-          <div>
+          {/* Large CTA button */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
             <ExternalLink
               href={APP_CONFIG.urls.chromeStore}
               variant="button"
               ariaLabel="Install Trump Goggles from Chrome Web Store"
               buttonProps={{
-                variant: "primary",
+                variant: "secondary",
                 size: "lg",
-                className: "text-xl md:text-2xl px-10 py-5",
+                className: "text-xl md:text-2xl px-10 md:px-14 py-5 md:py-6 bg-retro-cream text-retro-red border-retro-cream hover:bg-retro-gold hover:border-retro-gold hover:text-retro-black font-black rounded-none shadow-lg",
               }}
             >
               {APP_CONFIG.uiText.installationGuide.ctaButtonText}
             </ExternalLink>
-          </div>
+          </motion.div>
 
-          {/* GitHub link */}
+          {/* Simple steps as inline list */}
           <motion.div
+            className="mt-12 flex flex-wrap justify-center items-center gap-4 md:gap-8 text-retro-cream/90"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            viewport={{ once: true }}
+          >
+            <span className="text-lg">1. Click Install</span>
+            <span className="text-retro-cream/50 hidden md:inline">→</span>
+            <span className="text-lg">2. Add to Chrome</span>
+            <span className="text-retro-cream/50 hidden md:inline">→</span>
+            <span className="text-lg">3. Enjoy!</span>
+          </motion.div>
+
+          {/* GitHub link - subtle */}
+          <motion.div
+            className="mt-12"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.4, delay: 0.6 }}
             viewport={{ once: true }}
           >
-            <p className="text-gray-600 mb-2">{APP_CONFIG.uiText.installationGuide.githubSectionText}</p>
             <ExternalLink
               href={APP_CONFIG.urls.githubRepo}
-              className="text-lg font-semibold"
+              className="text-retro-cream/70 hover:text-retro-cream transition-colors underline underline-offset-4"
               ariaLabel="View Trump Goggles source code on GitHub"
             >
               {APP_CONFIG.uiText.installationGuide.githubLinkText}
             </ExternalLink>
           </motion.div>
-        </motion.div>
 
-        {/* Browser compatibility note */}
-        <motion.div 
-          className="mt-16 text-center"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.4, delay: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <p className="text-sm text-gray-500">
+          {/* Browser compatibility note */}
+          <motion.p
+            className="mt-8 text-sm text-retro-cream/50"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.4, delay: 0.8 }}
+            viewport={{ once: true }}
+          >
             {APP_CONFIG.uiText.installationGuide.browserCompatibilityNote}
-          </p>
-        </motion.div>
-      </div>
-    </AnimatedSection>
+          </motion.p>
+        </div>
+      </AnimatedSection>
     </section>
   );
 }

@@ -66,8 +66,7 @@ describe('TexturedCard', () => {
       );
       const card = container.firstChild;
       expect(card).toHaveClass('rounded-lg');
-      expect(card).toHaveClass('shadow-vintage');
-      expect(card).toHaveClass('texture-paper');
+      expect(card).toHaveClass('shadow-retro');
       expect(card).toHaveClass('p-6');
     });
 
@@ -78,7 +77,7 @@ describe('TexturedCard', () => {
         </TexturedCard>
       );
       const card = container.firstChild;
-      expect(card).toHaveClass('shadow-vintage');
+      expect(card).toHaveClass('shadow-retro');
     });
 
     it('has hover effect', () => {
@@ -100,7 +99,7 @@ describe('TexturedCard', () => {
       );
       const card = container.firstChild;
       expect(card).toHaveClass('custom-card');
-      expect(card).toHaveClass('texture-paper'); // Default class should still be present
+      expect(card).toHaveClass('shadow-retro'); // Default class should still be present
     });
   });
 

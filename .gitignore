@@ -54,3 +54,6 @@ thinktank_*/
 /performance-results
 
 /docs/leyline
+
+# MCP server config (local only)
+.mcp.json

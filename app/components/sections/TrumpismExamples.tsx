@@ -2,9 +2,7 @@
 
 import { motion, Variants } from "framer-motion";
 import SectionHeading from "@/app/components/shared/SectionHeading";
-import TexturedCard from "@/app/components/shared/TexturedCard";
 import AnimatedSection from "@/app/components/shared/AnimatedSection";
-import AnimatedStar from "@/app/components/shared/AnimatedStar";
 import { APP_CONFIG } from "@/app/config/app-config";
 
 const containerVariants: Variants = {
@@ -31,68 +29,63 @@ const cardVariants: Variants = {
   },
 };
 
+// Slight random rotations for organic feel
+const rotations = [-2, 1, -1, 2, -1.5, 1.5];
+
 export default function TrumpismExamples() {
   return (
-    <section id="trumpism-examples" aria-labelledby="trumpism-examples-heading">
-      <AnimatedSection className="py-20 px-6 relative bg-retro-cream" delay={0.2}>
-      {/* Background accent elements */}
-      <AnimatedStar className="absolute top-[10%] right-[15%] w-12 h-12 opacity-20 rotate-12" delay={0.1} />
-      <AnimatedStar className="absolute bottom-[20%] left-[10%] w-8 h-8 opacity-20 -rotate-45" delay={0.3} />
-      <AnimatedStar className="absolute top-[50%] left-[5%] w-6 h-6 opacity-15" delay={0.5} />
-      <AnimatedStar className="absolute bottom-[10%] right-[5%] w-10 h-10 opacity-15 rotate-30" delay={0.7} />
+    <section id="trumpism-examples" aria-labelledby="trumpism-examples-heading" className="bg-retro-cream">
+      <AnimatedSection className="py-20 px-6 relative" delay={0.2}>
+        <div className="max-w-7xl mx-auto">
+          <SectionHeading level={2} className="text-center mb-4" id="trumpism-examples-heading">
+            {APP_CONFIG.uiText.trumpismExamplesSection.title}
+          </SectionHeading>
 
-      <div className="max-w-7xl mx-auto">
-        <SectionHeading level={2} className="text-center mb-4" id="trumpism-examples-heading">
-          {APP_CONFIG.uiText.trumpismExamplesSection.title}
-        </SectionHeading>
+          <p className="text-lg md:text-xl text-center mb-16 max-w-3xl mx-auto text-gray-700">
+            {APP_CONFIG.uiText.trumpismExamplesSection.subtitle}
+          </p>
 
-        <p className="text-lg md:text-xl text-center mb-16 max-w-3xl mx-auto text-gray-700">
-          {APP_CONFIG.uiText.trumpismExamplesSection.subtitle}
-        </p>
-
-        {/* Examples grid */}
-        <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-        >
-          {APP_CONFIG.trumpismExamples.map((example, index) => (
-            <motion.div
-              key={index}
-              variants={cardVariants}
-              whileHover={{ y: -4, transition: { duration: 0.2 } }}
-            >
-              <TexturedCard
-                className="group relative overflow-hidden transition-all duration-300 hover:shadow-xl bg-white h-full"
+          {/* Examples grid - Ballot/flash card style */}
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+          >
+            {APP_CONFIG.trumpismExamples.map((example, index) => (
+              <motion.div
+                key={index}
+                variants={cardVariants}
+                className="relative"
+                style={{ transform: `rotate(${rotations[index % rotations.length]}deg)` }}
+                whileHover={{ rotate: 0, y: -4, transition: { duration: 0.2 } }}
               >
-                {/* Card content */}
-                <div className="relative z-10">
+                {/* Ballot-style card */}
+                <div className="relative bg-retro-cream border-4 border-retro-black p-6 pt-10 shadow-lg h-full">
+                  {/* "TRUMP'D" stamp in corner */}
+                  <div className="absolute -top-4 -right-4 w-16 h-16 bg-retro-red rounded-full flex items-center justify-center transform rotate-12 shadow-md border-2 border-retro-gold">
+                    <span className="text-[10px] font-black text-retro-cream uppercase leading-tight text-center">
+                      Trump&apos;d
+                    </span>
+                  </div>
+
+                  {/* Punched hole effect */}
+                  <div className="absolute top-3 left-3 w-5 h-5 rounded-full border-4 border-retro-black/20" aria-hidden="true" />
+
                   {/* Original */}
-                  <div className="mb-6">
-                    <span className="text-xs uppercase tracking-wider text-gray-500 font-semibold">
+                  <div className="border-b-2 border-dashed border-retro-black/30 pb-4 mb-4">
+                    <span className="text-xs uppercase tracking-widest text-retro-black/50 font-bold">
                       {APP_CONFIG.uiText.trumpismExamplesSection.originalLabel}
                     </span>
-                    <p className="text-xl md:text-2xl font-semibold text-gray-800 mt-1">
+                    <p className="text-xl md:text-2xl font-black text-retro-black mt-1">
                       &ldquo;{example.original}&rdquo;
                     </p>
                   </div>
 
-                  {/* Arrow separator */}
-                  <motion.div 
-                    className="text-center my-4"
-                    initial={{ scale: 0 }}
-                    whileInView={{ scale: 1 }}
-                    transition={{ delay: 0.5 + index * 0.1, type: "spring", stiffness: 200 }}
-                    viewport={{ once: true }}
-                  >
-                    <span className="text-3xl font-black text-retro-red">↓</span>
-                  </motion.div>
-
                   {/* Trumpified */}
                   <div>
-                    <span className="text-xs uppercase tracking-wider text-retro-red font-bold">
+                    <span className="text-xs uppercase tracking-widest text-retro-red font-bold">
                       {APP_CONFIG.uiText.trumpismExamplesSection.trumpifiedLabel}
                     </span>
                     <p className="text-xl md:text-2xl font-black text-retro-blue mt-1">
@@ -100,28 +93,24 @@ export default function TrumpismExamples() {
                     </p>
                   </div>
                 </div>
+              </motion.div>
+            ))}
+          </motion.div>
 
-                {/* Hover effect overlay */}
-                <div className="absolute inset-0 bg-gradient-to-br from-retro-red/5 to-retro-blue/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </TexturedCard>
-            </motion.div>
-          ))}
-        </motion.div>
-
-        {/* Bottom message */}
-        <motion.div 
-          className="mt-16 text-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          viewport={{ once: true }}
-        >
-          <p className="text-lg text-gray-600">
-            {APP_CONFIG.uiText.trumpismExamplesSection.bottomMessage}
-          </p>
-        </motion.div>
-      </div>
-    </AnimatedSection>
+          {/* Bottom message */}
+          <motion.div
+            className="mt-16 text-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            viewport={{ once: true }}
+          >
+            <p className="text-lg text-gray-600">
+              {APP_CONFIG.uiText.trumpismExamplesSection.bottomMessage}
+            </p>
+          </motion.div>
+        </div>
+      </AnimatedSection>
     </section>
   );
 }

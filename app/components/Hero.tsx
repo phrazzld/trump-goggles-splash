@@ -3,7 +3,6 @@
 import { motion, useReducedMotion } from "framer-motion";
 import RetroButton from "./shared/RetroButton";
 import ExternalLink from "./shared/ExternalLink";
-import AnimatedStar from "./shared/AnimatedStar";
 import { APP_CONFIG } from "@/app/config/app-config";
 import { animationLogger, createAnimationTimer } from '@/lib/dev-logger';
 
@@ -66,8 +65,8 @@ export default function Hero() {
   });
 
   return (
-    <motion.section 
-      className="relative min-h-screen w-full flex items-center justify-center overflow-hidden hero-optimized"
+    <motion.section
+      className="relative min-h-screen w-full flex items-center justify-center overflow-hidden hero-optimized bg-retro-cream"
       initial={shouldReduceMotion ? {} : { opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
@@ -76,7 +75,7 @@ export default function Hero() {
         animationLogger.timing('Hero', { section_start: timer.measure('section_start') });
       }}
       onAnimationComplete={() => {
-        // Development logging: Section animation complete  
+        // Development logging: Section animation complete
         const duration = timer.measure('section_complete');
         animationLogger.complete('Hero', {
           element: 'section',
@@ -90,42 +89,37 @@ export default function Hero() {
         isolation: "isolate"
       }}
     >
-      {/* Stripe pattern accent - diagonal stripes 
-          Optimized in T007: Single-layer gradient pattern for minimal render complexity
-          Ultra-low opacity (0.03) maintains visual hierarchy without overwhelming content */}
-      <div 
-        className="absolute inset-0 opacity-[0.03]"
-        data-testid="stripe-pattern"
-        data-decorative="true"
-      >
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `repeating-linear-gradient(
-              45deg,
-              transparent,
-              transparent 50px,
-              #B91C1C 50px,
-              #B91C1C 54px,
-              transparent 54px,
-              transparent 104px,
-              #1E3A8A 104px,
-              #1E3A8A 108px
-            )`,
-          }}
-        />
-      </div>
+      {/* Diagonal stripe background pattern */}
+      <div
+        className="absolute inset-0 opacity-[0.04]"
+        style={{
+          backgroundImage: `repeating-linear-gradient(
+            -45deg,
+            var(--color-retro-blue) 0px,
+            var(--color-retro-blue) 2px,
+            transparent 2px,
+            transparent 40px
+          )`
+        }}
+        aria-hidden="true"
+      />
 
-      {/* Star decorations - positioned with responsive safe zones 
-          T005 implementation: Uses CSS utility classes (star-safe-*) defined in globals.css
-          for viewport-aware positioning that prevents edge clipping on all devices */}
-      <AnimatedStar className="star-safe-top-left w-14 h-14 md:w-20 md:h-20 opacity-80" delay={0.1} data-decorative="true" />
-      <AnimatedStar className="star-safe-top-right w-8 h-8 md:w-12 md:h-12 opacity-70" delay={0.2} data-decorative="true" />
-      <AnimatedStar className="star-safe-bottom-left w-12 h-12 md:w-16 md:h-16 opacity-75" delay={0.3} data-decorative="true" />
-      <AnimatedStar className="star-safe-bottom-right w-10 h-10 md:w-14 md:h-14 opacity-80" delay={0.4} data-decorative="true" />
-      <AnimatedStar className="star-safe-mid-left w-6 h-6 opacity-40 hidden sm:block" delay={0.5} data-decorative="true" />
-      <AnimatedStar className="star-safe-accent w-5 h-5 opacity-40 hidden sm:block" delay={0.6} data-decorative="true" />
-      <AnimatedStar className="star-safe-mid-right w-4 h-4 opacity-30 hidden sm:block" delay={0.7} data-decorative="true" />
+      {/* Decorative "CERTIFIED" badge in corner */}
+      <motion.div
+        className="absolute top-8 right-8 md:top-12 md:right-12 w-20 h-20 md:w-28 md:h-28 z-20"
+        initial={shouldReduceMotion ? {} : { scale: 0, rotate: -180 }}
+        animate={{ scale: 1, rotate: 12 }}
+        transition={{ duration: 0.8, delay: 1, type: "spring", stiffness: 100 }}
+        aria-hidden="true"
+      >
+        <div className="w-full h-full bg-retro-red rounded-full flex items-center justify-center border-4 border-retro-gold shadow-lg">
+          <div className="text-center">
+            <span className="block text-[8px] md:text-[10px] font-black text-retro-cream uppercase tracking-wider">100%</span>
+            <span className="block text-[10px] md:text-xs font-black text-retro-cream uppercase">Authentic</span>
+          </div>
+        </div>
+      </motion.div>
+
 
       {/* Content */}
       <motion.div 

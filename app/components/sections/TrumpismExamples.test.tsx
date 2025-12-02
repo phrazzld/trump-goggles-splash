@@ -52,9 +52,9 @@ describe('TrumpismExamples', () => {
 
     it('renders correct number of example cards', () => {
       const { container } = render(<TrumpismExamples />);
-      
-      // Find all TexturedCard components (they have the specific class combination)
-      const cards = container.querySelectorAll('.group.relative.overflow-hidden');
+
+      // Find all ballot-style cards (they have border-4 border-retro-black)
+      const cards = container.querySelectorAll('.border-4.border-retro-black');
       expect(cards).toHaveLength(APP_CONFIG.trumpismExamples.length);
     });
 
@@ -76,18 +76,18 @@ describe('TrumpismExamples', () => {
 
     it('applies correct styling to labels', () => {
       render(<TrumpismExamples />);
-      
-      // Check original label styling
+
+      // Check original label styling (ballot-style: tracking-widest, muted color)
       const originalLabel = screen.getAllByText(
         APP_CONFIG.uiText.trumpismExamplesSection.originalLabel
       )[0];
-      expect(originalLabel).toHaveClass('text-xs', 'uppercase', 'tracking-wider', 'text-gray-500');
-      
-      // Check trumpified label styling
+      expect(originalLabel).toHaveClass('text-xs', 'uppercase', 'tracking-widest');
+
+      // Check trumpified label styling (red accent)
       const trumpifiedLabel = screen.getAllByText(
         APP_CONFIG.uiText.trumpismExamplesSection.trumpifiedLabel
       )[0];
-      expect(trumpifiedLabel).toHaveClass('text-xs', 'uppercase', 'tracking-wider', 'text-retro-red');
+      expect(trumpifiedLabel).toHaveClass('text-xs', 'uppercase', 'tracking-widest', 'text-retro-red');
     });
   });
 
@@ -111,15 +111,12 @@ describe('TrumpismExamples', () => {
       expect(grid).toHaveClass('grid-cols-1', 'md:grid-cols-2', 'lg:grid-cols-3');
     });
 
-    it('renders arrow separators between original and trumpified text', () => {
-      render(<TrumpismExamples />);
-      
-      const arrows = screen.getAllByText('↓');
-      expect(arrows).toHaveLength(APP_CONFIG.trumpismExamples.length);
-      
-      arrows.forEach(arrow => {
-        expect(arrow).toHaveClass('text-3xl', 'font-black', 'text-retro-red');
-      });
+    it('renders dashed dividers between original and trumpified text', () => {
+      const { container } = render(<TrumpismExamples />);
+
+      // Ballot-style cards use dashed border dividers instead of arrow separators
+      const dividers = container.querySelectorAll('.border-b-2.border-dashed');
+      expect(dividers).toHaveLength(APP_CONFIG.trumpismExamples.length);
     });
   });
 

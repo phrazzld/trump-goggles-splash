@@ -12,9 +12,9 @@ const TexturedCard: React.FC<TexturedCardProps> = ({
   ...props 
 }) => {
   return (
-    <div 
+    <div
       className={cn(
-        'rounded-lg shadow-vintage texture-paper p-6 transition-transform hover:translate-y-[-2px]',
+        'rounded-lg shadow-retro p-6 transition-transform hover:translate-y-[-2px]',
         className
       )}
       {...props}

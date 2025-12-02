@@ -1,40 +1,21 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Inter, Courier_Prime } from "next/font/google";
+import { Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { APP_CONFIG } from "@/app/config/app-config";
 
-// Bold display font for headings
+// Bold display font for headings (900 weight)
 const playfairDisplayBlack = Playfair_Display({
   variable: "--font-display",
   subsets: ["latin"],
-  weight: "900", // Black weight for maximum impact
+  weight: "900",
   display: "swap",
 });
 
-// Clean body font
-const inter = Inter({
+// Body font - Playfair Display in regular weights for vintage coherence
+const playfairBody = Playfair_Display({
   variable: "--font-body",
   subsets: ["latin"],
-  display: "swap",
-});
-
-// Keep existing fonts for compatibility
-const playfairDisplay = Playfair_Display({
-  variable: "--font-playfair",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const interCompat = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const courierPrime = Courier_Prime({
-  variable: "--font-courier",
-  subsets: ["latin"],
-  weight: ["400", "700"],
+  weight: ["400", "500", "600"],
   display: "swap",
 });
 
@@ -49,7 +30,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${playfairDisplayBlack.variable} ${inter.variable} ${playfairDisplay.variable} ${interCompat.variable} ${courierPrime.variable}`}>
+    <html lang="en" className={`${playfairDisplayBlack.variable} ${playfairBody.variable}`}>
       <body className="antialiased">
         {children}
       </body>

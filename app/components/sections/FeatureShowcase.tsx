@@ -2,9 +2,7 @@
 
 import { motion, Variants } from "framer-motion";
 import SectionHeading from "@/app/components/shared/SectionHeading";
-import TexturedCard from "@/app/components/shared/TexturedCard";
 import AnimatedSection from "@/app/components/shared/AnimatedSection";
-import AnimatedStar from "@/app/components/shared/AnimatedStar";
 
 const translations = [
   {
@@ -34,8 +32,8 @@ const containerVariants: Variants = {
 
 const itemVariants: Variants = {
   hidden: { opacity: 0, y: 30 },
-  visible: { 
-    opacity: 1, 
+  visible: {
+    opacity: 1,
     y: 0,
     transition: {
       duration: 0.6,
@@ -46,95 +44,93 @@ const itemVariants: Variants = {
 
 export default function FeatureShowcase() {
   return (
-    <section aria-labelledby="feature-showcase-heading">
+    <section aria-labelledby="feature-showcase-heading" className="bg-retro-blue relative">
+      {/* Subtle diagonal stripe pattern */}
+      <div
+        className="absolute inset-0 opacity-[0.03]"
+        style={{
+          backgroundImage: 'repeating-linear-gradient(45deg, transparent, transparent 20px, white 20px, white 22px)'
+        }}
+        aria-hidden="true"
+      />
+
       <AnimatedSection className="py-20 px-6 relative">
-      {/* Background accent elements */}
-      <AnimatedStar className="absolute top-[20%] left-[5%] w-8 h-8 opacity-30 -rotate-12" delay={0.2} />
-      <AnimatedStar className="absolute bottom-[30%] right-[8%] w-10 h-10 opacity-30 rotate-45" delay={0.4} />
-      <AnimatedStar className="absolute top-[50%] left-[90%] w-6 h-6 opacity-20" delay={0.6} />
+        <div className="max-w-6xl mx-auto">
+          <SectionHeading level={2} className="text-center mb-8 text-retro-cream" id="feature-showcase-heading">
+            How Trump Goggles Works
+          </SectionHeading>
 
-      <div className="max-w-6xl mx-auto">
-        <SectionHeading level={2} className="text-center mb-8" id="feature-showcase-heading">
-          How Trump Goggles Works
-        </SectionHeading>
+          <p className="text-xl md:text-2xl text-center mb-16 max-w-4xl mx-auto text-retro-cream/80">
+            Trump Goggles automatically translates text as you browse the web,
+            converting ordinary phrases into memorable Trumpisms inspired by the
+            45th President&apos;s unique speaking style.
+          </p>
 
-        <p className="text-xl md:text-2xl text-center mb-16 max-w-4xl mx-auto text-gray-700">
-          Trump Goggles automatically translates text as you browse the web,
-          converting ordinary phrases into memorable Trumpisms inspired by the
-          45th President&apos;s unique speaking style.
-        </p>
-
-        {/* Translation examples */}
-        <motion.div 
-          className="space-y-12"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-        >
-          {translations.map((translation, index) => (
-            <motion.div
-              key={index}
-              className="grid md:grid-cols-7 gap-6 items-center"
-              variants={itemVariants}
-            >
-              {/* Before card */}
-              <TexturedCard className="md:col-span-3 bg-gray-50 border-2 border-gray-200">
-                <div className="text-center">
-                  <span className="block text-sm uppercase tracking-wide text-gray-600 mb-2">
+          {/* Translation examples - horizontal layout on dark background */}
+          <motion.div
+            className="space-y-8"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+          >
+            {translations.map((translation, index) => (
+              <motion.div
+                key={index}
+                className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8"
+                variants={itemVariants}
+              >
+                {/* Before */}
+                <div className="bg-retro-cream/10 backdrop-blur-sm border-2 border-retro-cream/20 rounded-none px-8 py-4 min-w-[200px]">
+                  <span className="block text-xs uppercase tracking-widest text-retro-cream/60 mb-1">
                     Before
                   </span>
-                  <p className="text-2xl md:text-3xl font-bold text-gray-800">
+                  <p className="text-xl md:text-2xl font-bold text-retro-cream">
                     &ldquo;{translation.before}&rdquo;
                   </p>
                 </div>
-              </TexturedCard>
 
-              {/* Arrow */}
-              <div className="md:col-span-1 text-center hidden md:block">
-                <motion.div 
-                  className="text-4xl font-black text-retro-blue"
-                  initial={{ scale: 0, rotate: 0 }}
-                  whileInView={{ scale: 1, rotate: 360 }}
-                  transition={{ duration: 0.5, delay: 0.2 }}
+                {/* Arrow */}
+                <motion.div
+                  className="text-3xl font-black text-retro-gold"
+                  initial={{ scale: 0 }}
+                  whileInView={{ scale: 1 }}
+                  transition={{ duration: 0.3, delay: 0.2 }}
                   viewport={{ once: true }}
                 >
                   →
                 </motion.div>
-              </div>
 
-              {/* After card */}
-              <TexturedCard className="md:col-span-3 bg-retro-blue border-4 border-retro-red shadow-lg transform rotate-1 hover:rotate-0 transition-transform">
-                <div className="text-center">
-                  <span className="block text-sm uppercase tracking-wide text-retro-cream mb-2">
-                    After
+                {/* After */}
+                <div className="bg-retro-red border-4 border-retro-gold px-8 py-4 min-w-[200px] transform rotate-1 hover:rotate-0 transition-transform">
+                  <span className="block text-xs uppercase tracking-widest text-retro-cream/80 mb-1">
+                    Trumpified
                   </span>
-                  <p className="text-2xl md:text-3xl font-black text-retro-cream text-shadow-hero">
+                  <p className="text-xl md:text-2xl font-black text-retro-cream text-shadow-hero">
                     &ldquo;{translation.after}&rdquo;
                   </p>
                 </div>
-              </TexturedCard>
-            </motion.div>
-          ))}
-        </motion.div>
+              </motion.div>
+            ))}
+          </motion.div>
 
-        {/* Explanation */}
-        <motion.div 
-          className="mt-16 text-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          viewport={{ once: true }}
-        >
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            The extension works in real-time, detecting key phrases and names
-            across any website and replacing them with Trump&apos;s signature
-            nicknames and expressions. It&apos;s like seeing the internet through
-            Trump-tinted glasses!
-          </p>
-        </motion.div>
-      </div>
-    </AnimatedSection>
+          {/* Explanation */}
+          <motion.div
+            className="mt-16 text-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            viewport={{ once: true }}
+          >
+            <p className="text-lg text-retro-cream/70 max-w-3xl mx-auto">
+              The extension works in real-time, detecting key phrases and names
+              across any website and replacing them with Trump&apos;s signature
+              nicknames and expressions. It&apos;s like seeing the internet through
+              Trump-tinted glasses!
+            </p>
+          </motion.div>
+        </div>
+      </AnimatedSection>
     </section>
   );
 }
