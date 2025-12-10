@@ -39,77 +39,15 @@ describe('Hero Integration Tests', () => {
 
     it('provides proper z-index layering for page context', () => {
       const { container } = render(<Hero />);
-      
+
       // Content should have proper z-index for layering above background elements
       const contentContainer = container.querySelector('.relative.z-10');
       expect(contentContainer).toBeInTheDocument();
-      
-      // Background elements should be positioned appropriately
-      const stripePattern = container.querySelector('[data-testid="stripe-pattern"]');
+
+      // Background pattern should be positioned appropriately
+      const stripePattern = container.querySelector('[style*="repeating-linear-gradient"]');
       expect(stripePattern).toBeInTheDocument();
       expect(stripePattern).toHaveClass('absolute', 'inset-0');
-    });
-  });
-
-  describe('AnimatedStar Integration', () => {
-    it('renders all AnimatedStar instances with proper positioning', () => {
-      const { container } = render(<Hero />);
-      
-      // Should have 7 star decorations based on Hero component implementation
-      const stars = container.querySelectorAll('div[aria-hidden="true"]');
-      expect(stars).toHaveLength(7);
-      
-      // Each star should have positioning classes and be decorative
-      Array.from(stars).forEach(star => {
-        expect(star).toHaveAttribute('aria-hidden', 'true');
-        expect(star).toHaveAttribute('data-decorative', 'true');
-        
-        // Should have safe positioning classes (from T005 implementation)
-        const classes = star.className;
-        expect(classes).toMatch(/star-safe-/);
-      });
-    });
-
-    it('passes proper delay props to AnimatedStar instances', () => {
-      const { container } = render(<Hero />);
-      
-      // Stars should be rendered in DOM (we can't directly test delay props due to mocking,
-      // but we can verify all stars are present with expected structure)
-      const stars = container.querySelectorAll('div[aria-hidden="true"]');
-      expect(stars).toHaveLength(7);
-      
-      // Verify stars have expected size classes for responsive design
-      const starClasses = Array.from(stars).map(star => star.className);
-      expect(starClasses.some(classes => classes.includes('w-14 h-14'))).toBe(true); // Large star
-      expect(starClasses.some(classes => classes.includes('w-8 h-8'))).toBe(true);   // Medium star
-      expect(starClasses.some(classes => classes.includes('w-4 h-4'))).toBe(true);   // Small star
-    });
-
-    it('handles star visibility across responsive breakpoints', () => {
-      const { container } = render(<Hero />);
-      
-      // Some stars should be hidden on small screens
-      const hiddenOnSmallStars = container.querySelectorAll('.hidden.sm\\:block');
-      expect(hiddenOnSmallStars.length).toBeGreaterThan(0);
-      
-      // All stars should have proper opacity settings
-      const stars = container.querySelectorAll('div[aria-hidden="true"]');
-      Array.from(stars).forEach(star => {
-        const classes = star.className;
-        expect(classes).toMatch(/opacity-\d+/);
-      });
-    });
-
-    it('maintains star decorative attributes in integration context', () => {
-      const { container } = render(<Hero />);
-      
-      const stars = container.querySelectorAll('div[aria-hidden="true"]');
-      
-      // All stars should be properly marked as decorative
-      Array.from(stars).forEach(star => {
-        expect(star).toHaveAttribute('aria-hidden', 'true');
-        expect(star).toHaveAttribute('data-decorative', 'true');
-      });
     });
   });
 
@@ -205,16 +143,15 @@ describe('Hero Integration Tests', () => {
 
     it('maintains proper component prop propagation', () => {
       const { container } = render(<Hero />);
-      
-      // AnimatedStar components should receive proper className props
-      const stars = container.querySelectorAll('div[aria-hidden="true"]');
-      Array.from(stars).forEach(star => {
-        // Should have size classes (w-* h-*) and positioning classes (star-safe-*)
-        const classes = star.className;
-        expect(classes).toMatch(/w-\d+/);
-        expect(classes).toMatch(/h-\d+/);
-        expect(classes).toMatch(/star-safe-/);
-      });
+
+      // RetroButton and ExternalLink should receive proper className props
+      const installLink = container.querySelector('a[href*="chromewebstore"]');
+      const innerButton = installLink?.querySelector('button');
+      expect(innerButton).toHaveClass('text-xl', 'md:text-2xl', 'px-10', 'py-5');
+
+      // Content container should have proper classes
+      const contentContainer = container.querySelector('.relative.z-10');
+      expect(contentContainer).toBeInTheDocument();
     });
   });
 
@@ -279,24 +216,24 @@ describe('Hero Integration Tests', () => {
     });
 
     it('handles focus management properly', () => {
-      render(<Hero />);
-      
+      const { container } = render(<Hero />);
+
       // Interactive elements should be focusable
-      const installButton = screen.getByRole('link', { 
-        name: 'Install Trump Goggles from Chrome Web Store' 
+      const installButton = screen.getByRole('link', {
+        name: 'Install Trump Goggles from Chrome Web Store'
       });
-      const learnMoreButton = screen.getByRole('button', { 
-        name: APP_CONFIG.uiText.hero.learnMoreButton 
+      const learnMoreButton = screen.getByRole('button', {
+        name: APP_CONFIG.uiText.hero.learnMoreButton
       });
-      
+
       expect(installButton).toBeInTheDocument();
       expect(learnMoreButton).toBeInTheDocument();
-      
+
       // Decorative elements should not be focusable
-      const { container } = render(<Hero />);
-      const stars = container.querySelectorAll('div[aria-hidden="true"]');
-      Array.from(stars).forEach(star => {
-        expect(star).toHaveAttribute('aria-hidden', 'true');
+      const decorativeElements = container.querySelectorAll('div[aria-hidden="true"]');
+      expect(decorativeElements.length).toBeGreaterThan(0);
+      Array.from(decorativeElements).forEach(element => {
+        expect(element).toHaveAttribute('aria-hidden', 'true');
       });
     });
   });
@@ -315,17 +252,6 @@ describe('Hero Integration Tests', () => {
       // Content padding should be responsive (T008 implementation)
       const contentContainer = container.querySelector('.hero-content-padding');
       expect(contentContainer).toBeInTheDocument();
-    });
-
-    it('handles responsive star positioning correctly', () => {
-      const { container } = render(<Hero />);
-      
-      // Stars should have responsive sizing
-      const stars = container.querySelectorAll('div[aria-hidden="true"]');
-      const responsiveStars = Array.from(stars).filter(star => 
-        star.className.includes('md:w-') || star.className.includes('md:h-')
-      );
-      expect(responsiveStars.length).toBeGreaterThan(0);
     });
 
     it('maintains proper CTA button layout across breakpoints', () => {
@@ -360,16 +286,12 @@ describe('Hero Integration Tests', () => {
     it('maintains functionality with animation system failures', () => {
       // Since framer-motion is mocked, this tests that the component
       // still renders all essential content even if animations fail
-      const { container } = render(<Hero />);
-      
+      render(<Hero />);
+
       // Essential content should be present regardless of animation state
       expect(screen.getByRole('heading', { level: 1 })).toBeInTheDocument();
       expect(screen.getByRole('link', { name: /Chrome Web Store/i })).toBeInTheDocument();
       expect(screen.getByRole('button', { name: APP_CONFIG.uiText.hero.learnMoreButton })).toBeInTheDocument();
-      
-      // Stars should be present
-      const stars = container.querySelectorAll('div[aria-hidden="true"]');
-      expect(stars).toHaveLength(7);
     });
   });
 });

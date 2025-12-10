@@ -12,7 +12,7 @@ export default function InstallationGuide() {
       <AnimatedSection className="py-20 md:py-28 px-6 relative" delay={0.3}>
         <div className="max-w-4xl mx-auto text-center">
           <SectionHeading level={2} className="text-retro-cream mb-8" id="installation-guide-heading">
-            Ready to See the Web Differently?
+            {APP_CONFIG.uiText.installationGuide.title}
           </SectionHeading>
 
           {/* Large CTA button */}
