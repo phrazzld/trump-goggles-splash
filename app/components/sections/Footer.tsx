@@ -59,7 +59,7 @@ export default function Footer() {
               className="hover:text-retro-gold transition-colors font-semibold"
               ariaLabel="View Trump Goggles source code on GitHub"
             >
-              GitHub
+              {APP_CONFIG.footerText.viewOnGithub}
             </ExternalLink>
             <span className="text-retro-cream/30">|</span>
             <span className="text-sm text-retro-cream/50">&copy; {currentYear}</span>

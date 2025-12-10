@@ -132,14 +132,14 @@ describe('Hero Performance Optimizations', () => {
   describe('Visual Hierarchy Preservation', () => {
     it('should maintain all essential visual elements', () => {
       const { container } = render(<Hero />);
-      
+
       // Essential elements that must be preserved
       const essentialElements = {
         borderFrame: container.querySelector('.border-frame-responsive'),
         heading: container.querySelector('h1'),
         description: container.querySelector('.lead'),
         primaryCTA: container.querySelector('[href*="chromewebstore"]'),
-        stars: container.querySelectorAll('.lucide-star')
+        decorativeBadge: container.querySelectorAll('div[aria-hidden="true"]')
       };
 
       // All essential elements should be present
@@ -147,7 +147,7 @@ describe('Hero Performance Optimizations', () => {
       expect(essentialElements.heading).toBeInTheDocument();
       expect(essentialElements.description).toBeInTheDocument();
       expect(essentialElements.primaryCTA).toBeInTheDocument();
-      expect(essentialElements.stars.length).toBeGreaterThan(0);
+      expect(essentialElements.decorativeBadge.length).toBeGreaterThan(0);
     });
 
     it('should preserve retro Americana color scheme', () => {

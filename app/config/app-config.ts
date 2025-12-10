@@ -133,8 +133,8 @@ export const APP_CONFIG = {
   },
   footerText: {
     disclaimer: "Trump Goggles is a browser extension created for entertainment purposes only. This extension and its creators are not affiliated with, endorsed by, or connected to Donald Trump or any of his associated entities. All trademarks are property of their respective owners.",
-    madeWithLove: "Made with ♥",
-    viewOnGithub: "View on GitHub →"
+    madeWithLove: "See the web differently™",
+    viewOnGithub: "GitHub"
   },
   uiText: {
     hero: {
@@ -186,7 +186,7 @@ export const APP_CONFIG = {
       bottomMessage: "And many more entertaining translations that make browsing the web an unforgettable experience!"
     },
     installationGuide: {
-      title: "How to Install Trump Goggles",
+      title: "Ready to See the Web Differently?",
       subtitle: "Get Trump Goggles up and running in just a few clicks!",
       ctaButtonText: "Get Trump Goggles",
       githubSectionText: "Want to see the code?",
