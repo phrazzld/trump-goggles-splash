@@ -43,16 +43,18 @@ describe('Home Page Integration', () => {
   });
 
   describe('Component Integration', () => {
-    it('renders Hero component within main', () => {
+    it('renders Hero component outside main as a sibling', () => {
       const { container } = render(<Home />);
-      
+
       const main = container.querySelector('main');
-      const heroHeading = screen.getByRole('heading', { 
-        level: 1, 
-        name: APP_CONFIG.uiText.hero.title 
+      const heroHeading = screen.getByRole('heading', {
+        level: 1,
+        name: APP_CONFIG.uiText.hero.title
       });
-      
-      expect(main?.contains(heroHeading)).toBe(true);
+
+      // Hero is rendered as a full-viewport section outside of main, as a sibling
+      expect(heroHeading).toBeInTheDocument();
+      expect(main?.contains(heroHeading)).toBe(false);
     });
 
     it('renders FeatureShowcase component within main', () => {
