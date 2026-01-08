@@ -17,8 +17,9 @@ export default defineConfig({
     exclude: [
       'e2e/**/*', // Exclude all Playwright E2E tests
       '**/*.e2e.{js,jsx,ts,tsx}', // Exclude any other E2E tests that might be scattered
-      'node_modules/**/*.{spec,test}.{ts,tsx,js,jsx}', // Exclude tests in node_modules
-      '**/node_modules/**/*.{spec,test}.{ts,tsx,js,jsx}', // Ensure all node_modules tests are excluded
+      'node_modules/**/*.{spec,test}.{ts,tsx,js,jsx,mjs,mts}', // Exclude tests in node_modules
+      '**/node_modules/**/*.{spec,test}.{ts,tsx,js,jsx,mjs,mts}', // Ensure all node_modules tests are excluded
+      '**/node_modules/**', // Blanket exclude all node_modules
     ],
     coverage: {
       provider: 'v8',
