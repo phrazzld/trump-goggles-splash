@@ -1,0 +1,12 @@
+/*
+!/api
+!/api/**
+!/favicon.ico
+!/index.html
+!/scripts
+/scripts/*
+!/scripts/canary.js
+!/scripts/main.js
+!/styles
+!/styles/main.css
+!/vercel.json
