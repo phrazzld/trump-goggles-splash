@@ -17,6 +17,7 @@ Static splash page for the Trump Goggles browser extension.
 ├── scripts/main.js # Scroll observer
 ├── api/health.js # Vercel health endpoint
 ├── api/canary/api/v1/errors.js # Browser error relay to Canary
+├── tools/ci.js # Local CI gate used by GitHub Actions
 ├── tools/verify-canary.js # Canary route verification
 ├── tools/smoke-canary-production.js # Production Canary smoke/readback
 └── favicon.ico
@@ -33,6 +34,9 @@ python3 -m http.server 3000
 
 # Verify Canary health and relay behavior
 node tools/verify-canary.js
+
+# Run the full local CI gate
+node tools/ci.js
 
 # Verify deployed Canary ingest and readback
 CANARY_READ_API_KEY=... node tools/smoke-canary-production.js

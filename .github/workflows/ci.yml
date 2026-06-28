@@ -6,27 +6,19 @@ on:
   pull_request:
     branches: [main, master]
 
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 jobs:
-  validate:
+  gate:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
-      - name: Validate HTML
-        run: |
-          if [ ! -f "index.html" ]; then
-            echo "❌ Error: index.html not found!"
-            exit 1
-          fi
-          echo "✅ index.html exists"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
 
-      - name: Check required files
-        run: |
-          files=("styles/main.css" "scripts/main.js" "favicon.ico")
-          for file in "${files[@]}"; do
-            if [ ! -f "$file" ]; then
-              echo "❌ Error: $file not found!"
-              exit 1
-            fi
-            echo "✅ $file exists"
-          done
+      - name: Run repo gate
+        run: node tools/ci.js

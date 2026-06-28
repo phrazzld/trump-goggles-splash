@@ -24,6 +24,9 @@ npx serve .
 # Verify Canary health and relay behavior
 node tools/verify-canary.js
 
+# Run the full local CI gate
+node tools/ci.js
+
 # After production deploy, verify Canary ingest and readback
 CANARY_READ_API_KEY=... node tools/smoke-canary-production.js
 ```
@@ -41,6 +44,7 @@ CANARY_READ_API_KEY=... node tools/smoke-canary-production.js
 │   ├── health.js
 │   └── canary/api/v1/errors.js
 ├── tools/
+│   ├── ci.js
 │   ├── verify-canary.js
 │   └── smoke-canary-production.js
 ├── favicon.ico
