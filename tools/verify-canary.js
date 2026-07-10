@@ -51,6 +51,8 @@ async function verifyRelayRoute() {
   const relay = require('../api/canary/api/v1/errors');
   let forwarded;
 
+  delete process.env.CANARY_ENDPOINT;
+
   global.fetch = async (url, init) => {
     forwarded = { url, init, body: JSON.parse(init.body) };
     return new Response('{}', { status: 202 });
@@ -89,7 +91,7 @@ async function verifyRelayRoute() {
   );
 
   assert.equal(response.statusCode, 202);
-  assert.equal(forwarded.url, 'https://canary-obs.fly.dev/api/v1/errors');
+  assert.equal(forwarded.url, 'https://canary.mistystep.io/api/v1/errors');
   assert.equal(forwarded.body.service, 'trump-goggles-splash');
   assert.equal(forwarded.body.message.includes('test@example.com'), false);
   assert.equal(forwarded.body.message.includes('Bearer abc123'), false);

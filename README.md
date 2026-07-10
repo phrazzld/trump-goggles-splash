@@ -53,13 +53,14 @@ CANARY_READ_API_KEY=... node tools/smoke-canary-production.js
 
 ## Observability
 
-Production deploys to Vercel. Canary observability requires the Vercel
-functions in `api/` or an equivalent server-side relay.
+Production deploys to DigitalOcean as a static site plus the dependency-free
+Node sidecar in `server.js`. Vercel remains a rollback surface during the
+migration soak. Both providers run the handlers in `api/`.
 
 Vercel production, preview, and development environments should define:
 
 - `CANARY_API_KEY` - service-bound ingest key for `trump-goggles-splash`
-- `CANARY_ENDPOINT` - defaults to `https://canary-obs.fly.dev`
+- `CANARY_ENDPOINT` - defaults to `https://canary.mistystep.io`
 - `CANARY_SERVICE_NAME` - defaults to `trump-goggles-splash`
 - `NEXT_PUBLIC_SITE_URL` - canonical origin, `https://www.trumpgoggles.com`
 

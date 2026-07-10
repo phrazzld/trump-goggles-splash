@@ -1,5 +1,5 @@
 const DEFAULT_SERVICE = 'trump-goggles-splash';
-const DEFAULT_ENDPOINT = 'https://canary-obs.fly.dev';
+const DEFAULT_ENDPOINT = 'https://canary.mistystep.io';
 const DEFAULT_SITE_URL = 'https://www.trumpgoggles.com';
 const DEFAULT_SITE_ALIASES = ['https://trumpgoggles.com'];
 const MAX_BODY_BYTES = 32768;
