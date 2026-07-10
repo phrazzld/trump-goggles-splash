@@ -22,3 +22,23 @@ jobs:
 
       - name: Run repo gate
         run: node tools/ci.js
+
+      - name: Build and exercise DigitalOcean image
+        run: |
+          docker build -t trump-goggles-canary:ci .
+          docker run --detach --rm --name trump-goggles-canary \
+            --publish 127.0.0.1:8080:8080 \
+            --env CANARY_API_KEY=ci-placeholder \
+            --env CANARY_ENDPOINT=http://127.0.0.1:9 \
+            --env CANARY_SERVICE_NAME=trump-goggles-splash \
+            trump-goggles-canary:ci
+          trap 'docker stop trump-goggles-canary' EXIT
+          for attempt in $(seq 1 30); do
+            if curl --fail --silent --show-error \
+              http://127.0.0.1:8080/api/health > /tmp/health.json; then
+              break
+            fi
+            sleep 1
+          done
+          node -e "const h=require('/tmp/health.json'); if(h.status!=='ok'||h.dependencies.canary!=='configured') process.exit(1)"
+          test "$(curl --silent --output /dev/null --write-out '%{http_code}' http://127.0.0.1:8080/)" = 404
