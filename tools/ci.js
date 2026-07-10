@@ -14,7 +14,10 @@ const REQUIRED_FILES = [
   'scripts/canary.js',
   'api/health.js',
   'api/canary/api/v1/errors.js',
+  'server.js',
+  'Dockerfile',
   'tools/verify-canary.js',
+  'tools/verify-server.js',
   'tools/smoke-canary-production.js',
   'favicon.ico',
   'vercel.json',
@@ -190,6 +193,9 @@ function main() {
   step('CSS local references resolve', assertCssReferences);
   step('JavaScript parses', assertJavaScriptSyntax);
   step('Canary routes preserve behavior', () => runNodeScript('tools/verify-canary.js'));
+  step('DigitalOcean server adapter preserves behavior', () =>
+    runNodeScript('tools/verify-server.js')
+  );
   console.log('trump-goggles-splash CI gate passed');
 }
 
