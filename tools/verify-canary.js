@@ -51,6 +51,8 @@ async function verifyRelayRoute() {
   const relay = require('../api/canary/api/v1/errors');
   let forwarded;
 
+  delete process.env.CANARY_ENDPOINT;
+
   global.fetch = async (url, init) => {
     forwarded = { url, init, body: JSON.parse(init.body) };
     return new Response('{}', { status: 202 });
