@@ -4,7 +4,7 @@ function canaryStatus() {
   return {
     status: process.env.CANARY_API_KEY ? 'configured' : 'not_configured',
     service: process.env.CANARY_SERVICE_NAME || DEFAULT_SERVICE,
-    endpoint: process.env.CANARY_ENDPOINT || 'https://canary-obs.fly.dev',
+    endpoint: process.env.CANARY_ENDPOINT || 'https://canary.mistystep.io',
   };
 }
 

@@ -89,7 +89,7 @@ async function verifyRelayRoute() {
   );
 
   assert.equal(response.statusCode, 202);
-  assert.equal(forwarded.url, 'https://canary-obs.fly.dev/api/v1/errors');
+  assert.equal(forwarded.url, 'https://canary.mistystep.io/api/v1/errors');
   assert.equal(forwarded.body.service, 'trump-goggles-splash');
   assert.equal(forwarded.body.message.includes('test@example.com'), false);
   assert.equal(forwarded.body.message.includes('Bearer abc123'), false);
