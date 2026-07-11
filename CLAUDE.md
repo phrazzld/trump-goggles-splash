@@ -15,7 +15,7 @@ Static splash page for the Trump Goggles browser extension.
 ├── styles/main.css # Theme + animations
 ├── scripts/canary.js # Browser error observer
 ├── scripts/main.js # Scroll observer
-├── api/health.js # Vercel health endpoint
+├── api/health.js # DigitalOcean sidecar health endpoint
 ├── api/canary/api/v1/errors.js # Browser error relay to Canary
 ├── tools/ci.js # Local CI gate used by GitHub Actions
 ├── tools/verify-canary.js # Canary route verification
@@ -47,4 +47,4 @@ CANARY_READ_API_KEY=... node tools/smoke-canary-production.js
 - Chrome Store: https://chromewebstore.google.com/detail/trump-goggles/jffbimfdmgbfannficjejaffmnggoigd
 - GitHub: https://github.com/phrazzld/trump-goggles
 - Production: https://www.trumpgoggles.com
-- Canary: `/api/health` and `/api/canary/api/v1/errors` on Vercel; keep `CANARY_API_KEY` server-only.
+- Canary: `/api/health` and `/api/canary/api/v1/errors` on the DigitalOcean sidecar; keep `CANARY_API_KEY` server-only.

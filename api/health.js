@@ -9,11 +9,7 @@ function canaryStatus() {
 }
 
 function requiresCanaryConfig() {
-  return (
-    process.env.VERCEL_ENV === 'production' ||
-    process.env.VERCEL_ENV === 'preview' ||
-    process.env.NODE_ENV === 'production'
-  );
+  return process.env.NODE_ENV === 'production';
 }
 
 module.exports = function handler(req, res) {

@@ -54,19 +54,19 @@ CANARY_READ_API_KEY=... node tools/smoke-canary-production.js
 ## Observability
 
 Production deploys to DigitalOcean as a static site plus the dependency-free
-Node sidecar in `server.js`. Vercel remains a rollback surface during the
-migration soak. Both providers run the handlers in `api/`.
+Node sidecar in `server.js`. The handlers in `api/` are provider-neutral and
+the retired provider has no deployment manifest in this repository.
 
-Vercel production, preview, and development environments should define:
+DigitalOcean should define:
 
 - `CANARY_API_KEY` - service-bound ingest key for `trump-goggles-splash`
 - `CANARY_ENDPOINT` - defaults to `https://canary.mistystep.io`
 - `CANARY_SERVICE_NAME` - defaults to `trump-goggles-splash`
 - `NEXT_PUBLIC_SITE_URL` - canonical origin, `https://www.trumpgoggles.com`
 
-`/api/health` is a liveness/config check and returns `503` in production or
-preview if Canary is not configured. Use `tools/smoke-canary-production.js`
-after deploy to prove end-to-end Canary ingest.
+`/api/health` is a liveness/config check and returns `503` in production if
+Canary is not configured. Use `tools/smoke-canary-production.js` after deploy
+to prove end-to-end Canary ingest.
 
 ## Links
 
