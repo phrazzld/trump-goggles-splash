@@ -38,6 +38,13 @@ async function verifyHealthRoute() {
   assert.equal(response.statusCode, 503);
   assert.equal(response.body.observability.canary.status, 'not_configured');
 
+  process.env.NODE_ENV = 'development';
+  process.env.VERCEL_ENV = 'production';
+  response = makeResponse();
+  health({ method: 'GET' }, response);
+  assert.equal(response.statusCode, 200);
+  delete process.env.VERCEL_ENV;
+
   process.env.CANARY_API_KEY = 'test-key';
   process.env.CANARY_SERVICE_NAME = 'trump-goggles-splash';
 
@@ -116,6 +123,43 @@ async function verifyRelayRoute() {
     response
   );
   assert.equal(response.statusCode, 403);
+
+  process.env.VERCEL_URL = 'old-preview.vercel.app';
+  response = makeResponse();
+  await relay(
+    {
+      method: 'POST',
+      headers: {
+        host: 'old-preview.vercel.app',
+        origin: 'https://old-preview.vercel.app',
+        'content-length': '31',
+        'x-vercel-forwarded-for': '127.0.0.9',
+      },
+      body: { message: 'retired origin blocked' },
+    },
+    response
+  );
+  assert.equal(response.statusCode, 403);
+  delete process.env.VERCEL_URL;
+
+  for (let attempt = 1; attempt <= 31; attempt += 1) {
+    response = makeResponse();
+    await relay(
+      {
+        method: 'POST',
+        headers: {
+          host: 'www.trumpgoggles.com',
+          origin: 'https://www.trumpgoggles.com',
+          'content-length': '27',
+          'do-connecting-ip': '198.51.100.10',
+          'x-vercel-forwarded-for': `198.51.100.${attempt}`,
+        },
+        body: { message: 'rate limit chain' },
+      },
+      response
+    );
+    assert.equal(response.statusCode, attempt <= 30 ? 202 : 429);
+  }
 
   response = makeResponse();
   await relay(
